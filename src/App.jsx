@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { Suspense } from 'react'
+import NavBar from './components/NavBar'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <NavBar />
+      
+      <main> 
+        <Suspense fallback={<div className="h-screen flex items-center justify-center bg-slate-900 text-white">Učitavanje...</div>}>
+          <Outlet />
+        </Suspense>
+      </main>
     </>
   )
 }
