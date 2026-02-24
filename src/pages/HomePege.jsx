@@ -40,7 +40,7 @@ function HomePage() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="/videos/hero-video2.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -65,7 +65,7 @@ function HomePage() {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight md:leading-tight tracking-tight mb-6"
         >
           SNAGA KOJA <br className="hidden sm:block" />
-          POKREĆE <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">POSAO</span>
+          POKREĆE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-200">POSAO</span>
         </motion.h1>
         
         {/* Podnaslov (Tekst ispod naslova) */}
@@ -83,7 +83,7 @@ function HomePage() {
         >
           <Link 
             to="/katalog" 
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:scale-105"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:scale-105"
           >
             <FaTractor className="text-lg" />
             Pogledaj Katalog

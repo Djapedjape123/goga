@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+//predovof
+import { useTranslation } from 'react-i18next';
+
 function NavBar() {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -18,10 +22,9 @@ function NavBar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const changeLanguage = (lng) => {
-    console.log("Menjam jezik na:", lng);
-    // Ovde će ići i18n.changeLanguage(lng)
-    setIsOpen(false); // Zatvaramo meni na mobilnom pri promeni jezika
+ const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng); // Ovo sada STVARNO menja jezik
+    setIsOpen(false);
   };
 
   // LOGIKA ZA BOJU POZADINE:
@@ -46,18 +49,18 @@ function NavBar() {
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-sm font-extrabold uppercase tracking-widest text-white hover:text-orange-600 transition-colors">
-              Početna
+              {t('nav.home')}
             </Link>
             <Link to="/katalog" className="text-sm font-extrabold uppercase tracking-widest text-white hover:text-orange-600 transition-colors">
-              Katalog
+              {t('nav.catalog')}
             </Link>
             
             {/* Call to Action Dugme */}
             <Link 
               to="/konsultacije" 
-              className="bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-extrabold uppercase tracking-wider hover:bg-orange-500 transition-all shadow-lg shadow-orange-600/30"
+              className="bg-gradient-to-r from-blue-800 to-blue-300 hover:text-black text-white px-6 py-2.5 rounded-full text-sm font-extrabold uppercase tracking-wider  transition-all shadow-lg shadow-orange-600/30"
             >
-              Konsultacije
+              {t('nav.consulting')}
             </Link>
 
             {/* Language Switcher */}
@@ -89,9 +92,9 @@ function NavBar() {
       {/* MOBILE MENU DROPDOWN (Takodje prebačen u tamnu temu da se slaže sa video pozadinom) */}
       <div className={`md:hidden absolute w-full transition-all duration-300 ease-in-out origin-top ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}>
         <div className="bg-slate-950/95 backdrop-blur-xl border-b border-white/10 px-4 pt-2 pb-6 space-y-2 shadow-2xl">
-          <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">Početna</Link>
-          <Link to="/katalog" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">Katalog</Link>
-          <Link to="/konsultacije" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-orange-600 border-b border-white/5">Besplatne konsultacije</Link>
+          <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.home')}</Link>
+          <Link to="/katalog" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.catalog')}</Link>
+          <Link to="/konsultacije" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.consulting')}</Link>
           <div className="flex space-x-6 px-3 py-4 justify-center">
             <button onClick={() => changeLanguage('sr')} className="text-sm font-extrabold text-white hover:text-orange-600">SRB</button>
             <span className="text-white/30">|</span>
