@@ -3,7 +3,8 @@ import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom'
 
 // Ovde unesi tačno ime svog logo fajla iz assets foldera
-import logo from './assets/gogaa.png' 
+import logo from './assets/gogaPoz.webp' 
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ function App() {
           <Outlet />
         </Suspense>
       </main>
+      
     </>
   )
 }
