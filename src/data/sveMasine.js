@@ -274,5 +274,6 @@ export const sveMasine = [
       "/images/teleh14.webp"
     ],
     model3D: null
-  }
+  },
+  
 ];

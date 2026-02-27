@@ -34,9 +34,9 @@ function MachineCard({ masina }) {
           </div>
         </div>
 
-        <p className="text-slate-600 text-sm line-clamp-2 mb-6 flex-grow">
+        {/* <p className="text-slate-600 text-sm line-clamp-2 mb-6 flex-grow">
           {masina.opis}
-        </p>
+        </p> */}
 
         {/* --- OVDE JE PROMENA --- */}
         <div className="flex items-center justify-between mt-auto">
