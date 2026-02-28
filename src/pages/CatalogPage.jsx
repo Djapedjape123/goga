@@ -28,8 +28,13 @@ function CatalogPage() {
 
   return (
     <>
+      
+        
+     
       {/* OBRISAN overflow-x-hidden! Vraćen tvoj originalni div! */}
-      <div className="min-h-screen bg-slate-50 pt-32 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-sky-200 via-blue-300 to-sky-400 pt-32 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30"></div>
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-16">

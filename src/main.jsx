@@ -8,6 +8,7 @@ import './i18n';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import FavoritePege from './pages/FavoritePege.jsx';
 
 // --- OBRISANI OBIČNI IMPORTI ---
 // import CatalogPage from './pages/CatalogPage.jsx';
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader tekst="Pripremam detalje mašine" />}>
             <SinglePege />
+          </Suspense>
+        ) 
+      },
+       { 
+        path: "/favorite",
+        element: (
+          <Suspense fallback={<Loader tekst="Pripremam detalje mašine" />}>
+            <FavoritePege />
           </Suspense>
         ) 
       },

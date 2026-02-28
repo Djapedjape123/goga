@@ -1,17 +1,19 @@
 export const sveMasine = [
   {
-    id: "te3007",
+    id: "te3007-A",
     slug: "te3007-telehender",
     naziv: "TE3007",
     kategorija: "telehenderi",
     cena: "42 000€ + PDV",
-    opis: "TE3007 | 2026 | 7m | 3000Kg | Novo sa garancijom",
+    opis: "TE3007 | 2026 | 7m | 3000Kg |",
     specifikacije: {
       visinaDizanja: 7, // Broj za filter
       nosivost: 3000,   // Broj za filter
       motor: "YN38GBZ",
       snaga: "103Hp / 76kW",
-      godiste: "2026"
+      tipTransmisije:'Hidraulična',
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
     },
     coverSlika: "/images/teleh11.webp",
     galerija: [
@@ -34,7 +36,9 @@ export const sveMasine = [
       nosivost: 3500,
       motor: "YN38GBZ",
       snaga: "103Hp / 76kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh15.webp",
     galerija: [
@@ -57,7 +61,9 @@ export const sveMasine = [
       nosivost: 3500,
       motor: "YCD4M22T-105",
       snaga: "103Hp / 77kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh24.webp",
     galerija: [
@@ -80,7 +86,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh29.webp",
     galerija: [
@@ -103,7 +111,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh14.webp",
     galerija: [
@@ -126,7 +136,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh23.webp",
     galerija: [
@@ -149,7 +161,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh28.webp",
     galerija: [
@@ -172,7 +186,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh13.webp",
     galerija: [
@@ -195,7 +211,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh13.webp",
     galerija: [
@@ -218,7 +236,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh27.webp",
     galerija: [
@@ -241,7 +261,9 @@ export const sveMasine = [
       nosivost: 6000,
       motor: "1PG60S",
       snaga: "150Hp / 110kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika:"/images/teleh28.webp",
     galerija: [
@@ -264,7 +286,9 @@ export const sveMasine = [
       nosivost: 7000,
       motor: "QSB4.5-C160-30",
       snaga: "160Hp / 119kW",
-      godiste: "2026"
+      pogon:"Dizel",
+      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije:'Torque',
     },
     coverSlika: "/images/teleh14.webp",
     galerija: [
