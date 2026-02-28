@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { sveMasine } from '../data/sveMasine'; 
+import { sveMasine } from '../data/sveMasine';
+
+import MachineMarquee from '../components/MachineMarquee';
+
+
+// Pomoćna funkcija za formatiranje ključeva iz baze (npr. tipTransmisije -> Tip Transmisije)
+const formatKey = (key) => {
+  const result = key.replace(/([A-Z])/g, " $1");
+  return result.charAt(0).toUpperCase() + result.slice(1);
+};
 
 function SinglePege() {
   const { slug } = useParams();
   const masina = sveMasine.find((m) => m.slug === slug);
 
-  // State za promenu slike u galeriji
-  const [glavnaSlika, setGlavnaSlika] = useState(masina?.coverSlika);
+  const [glavnaSlika, setGlavnaSlika] = useState(null);
 
-  // Scroll na vrh kada se otvori stranica
+  useEffect(() => {
+    if (masina) {
+      setGlavnaSlika(masina.coverSlika);
+    }
+  }, [masina]);
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+    if (masina) setGlavnaSlika(masina.coverSlika);
+  }, [slug, masina]);
 
   if (!masina) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
-        <div className="text-6xl mb-4">🚜</div>
+        <div className="text-6xl mb-4 text-slate-300">🚜</div>
         <h1 className="text-4xl font-black text-slate-800 mb-4">Mašina nije pronađena</h1>
         <Link to="/katalog" className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">
           Vrati se na katalog
@@ -28,9 +43,9 @@ function SinglePege() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-32 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-200 pt-32 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* BREADCRUMBS */}
         <nav className="mb-8 flex items-center gap-2 text-sm font-bold tracking-wide">
           <Link to="/katalog" className="text-slate-400 hover:text-blue-600 transition-colors">Katalog</Link>
@@ -41,45 +56,52 @@ function SinglePege() {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
-          {/* LEVA STRANA: PREMIUM GALERIJA */}
-          <motion.div 
+
+          {/* LEVA STRANA: GALERIJA */}
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col gap-6"
           >
-            {/* Glavni prikaz slike */}
             <div className="relative aspect-square bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <img 
-                src={glavnaSlika} 
-                alt={masina.naziv} 
+              <img
+                src={glavnaSlika}
+                alt={masina.naziv}
                 className="relative z-10 w-full h-full object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:scale-105"
               />
             </div>
 
-            {/* Thumbnail-ovi */}
             <div className="grid grid-cols-4 gap-4">
-              {masina.galerija.map((slika, index) => (
-                <button 
-                  key={index}
-                  onClick={() => setGlavnaSlika(slika)}
-                  className={`aspect-square bg-white rounded-2xl p-2 border-2 transition-all duration-300 overflow-hidden
-                    ${glavnaSlika === slika ? 'border-blue-600 scale-95 shadow-inner' : 'border-transparent opacity-60 hover:opacity-100'}`}
-                >
-                  <img src={slika} alt={`${masina.naziv} ${index}`} className="w-full h-full object-contain" />
-                </button>
-              ))}
+              {masina.galerija?.length > 0 ? (
+                masina.galerija.map((slika, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setGlavnaSlika(slika)}
+                    className={`aspect-square bg-white rounded-2xl p-2 border-2 transition-all duration-300 overflow-hidden
+        ${glavnaSlika === slika ? 'border-blue-600 scale-95 shadow-inner' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                  >
+                    <img
+                      src={slika || "/placeholder.webp"}
+                      alt={`${masina.naziv} ${index}`}
+                      className="w-full h-full object-contain"
+                    />
+                  </button>
+                ))
+              ) : (
+                <div className="text-slate-400 text-sm col-span-4">
+                  Nema dodatnih slika.
+                </div>
+              )}
             </div>
           </motion.div>
 
-          {/* DESNA STRANA: PODACI I PRODAJA */}
-          <motion.div 
+          {/* DESNA STRANA: PODACI */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col"
           >
-            {/* Glavni Info */}
             <div className="mb-8">
               <span className="inline-block px-4 py-1 bg-blue-50 text-blue-600 font-black text-[10px] uppercase tracking-[0.2em] rounded-full mb-4 border border-blue-100">
                 Novo u ponudi • 2026
@@ -91,25 +113,34 @@ function SinglePege() {
               </div>
             </div>
 
-            <p className="text-lg text-slate-500 leading-relaxed mb-10 font-medium">
+            <p className="text-lg text-slate-500 leading-relaxed mb-10 font-medium italic border-l-4 border-blue-100 pl-4">
               {masina.opis}
             </p>
 
-            {/* TEHNIČKE SPECIFIKACIJE - SADA SA SVIM NOVIM POLJIMA */}
+            {/* DINAMIČKE TEHNIČKE SPECIFIKACIJE */}
             <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm mb-10">
-              <h3 className="text-xl font-black text-slate-900 mb-6 flex items-center gap-3">
+              <h3 className="text-xl font-black text-slate-900 mb-8 flex items-center gap-3">
                 <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
                 Tehnički detalji
               </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
-                <SpecItem label="Visina dizanja" value={`${masina.specifikacije.visinaDizanja} m`} />
-                <SpecItem label="Nosivost" value={`${masina.specifikacije.nosivost} kg`} />
-                <SpecItem label="Motor" value={masina.specifikacije.motor} />
-                <SpecItem label="Snaga" value={masina.specifikacije.snaga} />
-                <SpecItem label="Pogon" value={masina.specifikacije.pogon} />
-                <SpecItem label="Upravljanje" value={masina.specifikacije.upravljanje} />
-                <SpecItem label="Transmisija" value={masina.specifikacije.tipTransmisije} />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+                {/* MAGIJA: Prolazimo kroz sve ključeve specifikacija iz baze */}
+                {Object.entries(masina.specifikacije || {}).map(([key, value]) => {
+                  // Ako vrednost ne postoji, ne crtamo ništa
+                  if (value == null) return null;
+
+                  return (
+                    <SpecItem
+                      key={key}
+                      label={formatKey(key)}
+                      value={value}
+                      // Dodajemo merne jedinice za specifične ključeve
+                      unit={key === 'visinaDizanja' ? 'm' : key === 'nosivost' ? 'kg' : ''}
+                    />
+                  );
+                })}
+                {/* Fiksno polje koje nije u specifikacijama ali želiš da ga prikažeš */}
                 <SpecItem label="Stanje" value="Novo (Garancija)" />
               </div>
             </div>
@@ -122,24 +153,29 @@ function SinglePege() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
-              <a href="tel:+38160000000" className="flex-1 bg-white border-2 border-slate-100 hover:border-blue-600 text-slate-900 font-black py-5 px-8 rounded-2xl transition-all duration-300 text-center">
+              <a href="tel:+381640000000" className="flex-1 bg-white border-2 border-slate-100 hover:border-blue-600 text-slate-900 font-black py-5 px-8 rounded-2xl transition-all duration-300 text-center flex items-center justify-center">
                 Pozovi prodaju
               </a>
             </div>
           </motion.div>
 
         </div>
+        <MachineMarquee currentSlug={masina.slug} />
       </div>
     </div>
   );
 }
 
-// Mala pomoćna komponenta za redove u tabeli specifikacija
-function SpecItem({ label, value }) {
+// Poboljšana pomoćna komponenta za specifikacije
+function SpecItem({ label, value, unit }) {
   return (
-    <div className="flex flex-col border-b border-slate-50 pb-2">
-      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">{label}</span>
-      <span className="text-slate-800 font-extrabold">{value || "/"}</span>
+    <div className="flex flex-col border-b border-slate-50 pb-2 group/spec transition-colors hover:border-blue-100">
+      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1 group-hover/spec:text-blue-400 transition-colors">
+        {label}
+      </span>
+      <span className="text-slate-800 font-extrabold flex gap-1">
+        {value} <span className="text-blue-600/50">{unit}</span>
+      </span>
     </div>
   );
 }

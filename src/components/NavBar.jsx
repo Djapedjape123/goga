@@ -54,6 +54,9 @@ function NavBar() {
             <Link to="/katalog" className="text-sm font-extrabold uppercase tracking-widest text-white hover:text-orange-600 transition-colors">
               {t('nav.catalog')}
             </Link>
+            <Link to="/favorite" className="text-sm font-extrabold uppercase tracking-widest text-white hover:text-orange-600 transition-colors">
+              Favoriti
+            </Link>
             
             {/* Call to Action Dugme */}
             <Link 
@@ -93,6 +96,7 @@ function NavBar() {
       <div className={`md:hidden absolute w-full transition-all duration-300 ease-in-out origin-top ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}>
         <div className="bg-slate-950/95 backdrop-blur-xl border-b border-white/10 px-4 pt-2 pb-6 space-y-2 shadow-2xl">
           <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.home')}</Link>
+          <Link to="/favorite" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">Favoriti</Link>
           <Link to="/katalog" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.catalog')}</Link>
           <Link to="/konsultacije" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.consulting')}</Link>
           <div className="flex space-x-6 px-3 py-4 justify-center">
