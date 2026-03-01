@@ -10,27 +10,34 @@ function CatalogPage() {
     minVisina: '',
     maxVisina: '',
     minNosivost: '',
-    maxNosivost: ''
+    maxNosivost: '',
+    minKapacitet: '',
+    maxKapacitet: '',
   });
 
   const categories = ['sve', ...new Set(sveMasine.map(m => m.kategorija))];
 
   const filteredMasine = sveMasine.filter(masina => {
+    // 1. Provera kategorije
     if (filters.kategorija !== 'sve' && masina.kategorija !== filters.kategorija) {
       return false;
     }
+    
+    // 2. Provera filtera za Telehendere
     if (filters.minVisina && masina.specifikacije.visinaDizanja < Number(filters.minVisina)) return false;
     if (filters.maxVisina && masina.specifikacije.visinaDizanja > Number(filters.maxVisina)) return false;
     if (filters.minNosivost && masina.specifikacije.nosivost < Number(filters.minNosivost)) return false;
     if (filters.maxNosivost && masina.specifikacije.nosivost > Number(filters.maxNosivost)) return false;
+    
+    // 3. Provera filtera za Mini miksere (ISPRAVLJENO)
+    if (filters.minKapacitet && masina.specifikacije.kapacitetMesanja < Number(filters.minKapacitet)) return false;
+    if (filters.maxKapacitet && masina.specifikacije.kapacitetMesanja > Number(filters.maxKapacitet)) return false;
+    
     return true;
   });
 
   return (
     <>
-      
-        
-     
       {/* OBRISAN overflow-x-hidden! Vraćen tvoj originalni div! */}
       <div className="min-h-screen bg-gradient-to-br from-sky-200 via-blue-300 to-sky-400 pt-32 py-12 px-4 sm:px-6 lg:px-8">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40"></div>
@@ -103,7 +110,8 @@ function CatalogPage() {
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">Ne postoji takva mašina</h3>
                   <p className="text-slate-500 mb-6">Pokušajte da proširite parametre pretrage ili poništite filtere.</p>
                   <button
-                    onClick={() => setFilters({ kategorija: 'sve', minVisina: '', maxVisina: '', minNosivost: '', maxNosivost: '' })}
+                    // ISPRAVLJENO: Dodato resetovanje i za kapacitet kako bi radilo i za miksere
+                    onClick={() => setFilters({ kategorija: 'sve', minVisina: '', maxVisina: '', minNosivost: '', maxNosivost: '', minKapacitet: '', maxKapacitet: '' })}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >
                     Poništi sve filtere

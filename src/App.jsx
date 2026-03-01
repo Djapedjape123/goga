@@ -2,6 +2,8 @@ import { useState, useEffect, Suspense } from 'react'
 import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom'
 
+import WhatsAppButton from './components/WhatsAppButton';
+
 // Ovde unesi tačno ime svog logo fajla iz assets foldera
 import logo from './assets/gogaPoz.webp' 
 
@@ -47,6 +49,8 @@ function App() {
           <Outlet />
         </Suspense>
       </main>
+
+      <WhatsAppButton />
       
     </>
   )

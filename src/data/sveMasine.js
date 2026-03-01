@@ -1,11 +1,12 @@
 export const sveMasine = [
+  // --- TELEHENDERI ---
   {
     id: "te3007-A",
     slug: "te3007-telehender",
     naziv: "TE3007-A",
     kategorija: "telehenderi",
-    cena: "53 000€ ",
-    opis: "TE3007 | 2026 | 7m | 3000Kg |",
+    cena: "53 000€",
+    opis: "TE3007-A | 2026 | 7m | 3000Kg |",
     specifikacije: {
       visinaDizanja: 7, 
       nosivost: 3000,   
@@ -24,12 +25,12 @@ export const sveMasine = [
     ],
     model3D: null
   },
-   {
+  {
     id: "te3007",
-    slug: "te3007-telehender",
+    slug: "te3007-telehender-torque",
     naziv: "TE3007",
     kategorija: "telehenderi",
-    cena: "42 000€ ",
+    cena: "42 000€",
     opis: "TE3007 | 2026 | 7m | 3000Kg |",
     specifikacije: {
       visinaDizanja: 7, 
@@ -152,7 +153,7 @@ export const sveMasine = [
   {
     id: "te4014",
     slug: "te4014-telehender",
-    naziv: "TE4014€",
+    naziv: "TE4014",
     kategorija: "telehenderi",
     cena: "66 000€",
     opis: "TE4014 | 2026 | 14m | 4000kg | Novo sa garancijom",
@@ -257,7 +258,6 @@ export const sveMasine = [
     cena: "80 000€",
     opis: "TE5018 | 2026 | 18m | 5000Kg | Novo sa garancijom",
     specifikacije: {
-
       visinaDizanja: 18,
       nosivost: 5000,
       motor: "YCD4J22T-125",
@@ -305,7 +305,7 @@ export const sveMasine = [
     slug: "te7018-telehender",
     naziv: "TE7018",
     kategorija: "telehenderi",
-    cena: "Na upit",
+    cena: "135 000€",
     opis: "TE7018 | 2026 | 18m | 7000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 18,
@@ -325,6 +325,337 @@ export const sveMasine = [
     ],
     model3D: null
   },
-  
-  
+
+  // --- NOVO: MINI MIKSERI ---
+  {
+    id: "szj07-mikser",
+    slug: "szj07-mini-mikser",
+    naziv: "SZJ07",
+    kategorija: "mini-mikseri",
+    cena: "27 000€",
+    opis: "Kompaktni samoutovarni mini mikser. Idealno za građevinske firme, investitore, komunalne službe i poljoprivredna gazdinstva.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 0.7, 
+      rezervoarVode: "300L",
+      motor: "Dizel",
+      snaga: "55kW",
+      pogon: "4x4",
+      brzinaKretanja: "35km/h"
+    },
+    coverSlika: "/images/mixer/mixi11.webp", // OVO ZAMENI KAD UBASIŠ SLIKE
+    galerija: [
+      "/images/mixer/mixi11.webp",
+      "/images/mixer/mixi12.webp",
+      "/images/mixer/mixi13.webp",
+      "/images/mixer/mixi14.webp",
+      "/images/mixer/mixi15.webp",
+      "/images/mixer/mixi16.webp",
+      "/images/mixer/mixi16.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "szj10-mikser",
+    slug: "szj10-mini-mikser",
+    naziv: "SZJ10",
+    kategorija: "mini-mikseri",
+    cena: "29 000€",
+    opis: "Samoutovarni mini mikser SZJ10. Pouzdan i brz za rad na terenu.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 1.0, 
+      rezervoarVode: "300L",
+      motor: "Dizel",
+      snaga: "55kW",
+      pogon: "4x4",
+      brzinaKretanja: "35km/h"
+    },
+    coverSlika: "/images/mixer/szj10.1.webp",
+    galerija: [
+      "/images/mixer/szj10.webp",
+      "/images/mixer/szj10.2.webp",
+      "/images/mixer/szj10.3.webp",
+      "/images/mixer/szj10.4.webp",
+      "/images/mixer/szj10.5.webp",
+      "/images/mixer/szj10.6.webp",
+      
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj15-mikser",
+    slug: "szj15-mini-mikser",
+    naziv: "SZJ15",
+    kategorija: "mini-mikseri",
+    cena: "32 000€",
+    opis: "Samoutovarni mini mikser SZJ15. Kapacitet 1.5 kubika.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 1.5,
+      rezervoarVode: "500L",
+      motor: "Dizel",
+      snaga: "77kW",
+      pogon: "4x4",
+      brzinaKretanja: "35km/h"
+    },
+    coverSlika: "/images/mixer/szj15.1.webp",
+    galerija: [
+      "/images/mixer/szj15.1.webp",
+      "/images/mixer/szj15.2.webp",
+      "/images/mixer/szj15.3.webp",
+      "/images/mixer/szj15.4.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj16-mikser",
+    slug: "szj16-mini-mikser",
+    naziv: "SZJ16",
+    kategorija: "mini-mikseri",
+    cena: "33 000€",
+    opis: "Samoutovarni mini mikser SZJ16. Ekonomičan dizel motor.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 1.6,
+      rezervoarVode: "450L",
+      motor: "Dizel",
+      snaga: "55kW",
+      pogon: "4x4",
+      brzinaKretanja: "35km/h"
+    },
+    coverSlika: "/images/mixer/szj10.1.webp",
+    galerija: [
+      "/images/mixer/szj10.webp",
+      "/images/mixer/szj10.2.webp",
+      "/images/mixer/szj10.3.webp",
+      "/images/mixer/szj10.4.webp",
+      "/images/mixer/szj10.5.webp",
+      "/images/mixer/szj10.6.webp",
+      
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj18-mikser",
+    slug: "szj18-mini-mikser",
+    naziv: "SZJ18",
+    kategorija: "mini-mikseri",
+    cena: "34 000€",
+    opis: "Samoutovarni mini mikser SZJ18 sa kapacitetom od 1.8 kubika.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 1.8,
+      rezervoarVode: "400L",
+      motor: "Dizel",
+      snaga: "65kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/szj10.1.webp",
+    galerija: [
+      "/images/mixer/szj10.webp",
+      "/images/mixer/szj10.2.webp",
+      "/images/mixer/szj10.3.webp",
+      "/images/mixer/szj10.4.webp",
+      "/images/mixer/szj10.5.webp",
+      "/images/mixer/szj10.6.webp",
+      
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj20-mikser",
+    slug: "szj20-mini-mikser",
+    naziv: "SZJ20",
+    kategorija: "mini-mikseri",
+    cena: "37 000€",
+    opis: "Samoutovarni mini mikser SZJ20. Idealan balans snage i kapaciteta.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 2.0,
+      rezervoarVode: "620L",
+      motor: "Dizel",
+      snaga: "77kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/szj15.2.webp",
+    galerija: [
+      "/images/mixer/szj15.1.webp",
+      "/images/mixer/szj15.2.webp",
+      "/images/mixer/szj15.3.webp",
+      "/images/mixer/szj15.4.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj26-mikser",
+    slug: "szj26-mini-mikser",
+    naziv: "SZJ26",
+    kategorija: "mini-mikseri",
+    cena: "38 000€",
+    opis: "Srednji samoutovarni mikser SZJ26 sa 2.6 kubika kapaciteta.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 2.6,
+      rezervoarVode: "600L",
+      motor: "Dizel",
+      snaga: "77kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/szj15.1.webp",
+    galerija: [
+      "/images/mixer/szj15.1.webp",
+      "/images/mixer/szj15.2.webp",
+      "/images/mixer/szj15.3.webp",
+      "/images/mixer/szj15.4.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj30-mikser",
+    slug: "szj30-mini-mikser",
+    naziv: "SZJ30",
+    kategorija: "mini-mikseri",
+    cena: "40 000€",
+    opis: "Samoutovarni mini mikser SZJ30, 3 kubika, izuzetna snaga.",
+    specifikacije: {
+        maksimalniNagib:"40%",
+      kapacitetMesanja: 3.0,
+      rezervoarVode: "640L",
+      motor: "Dizel",
+      snaga: "85kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/szj15.4.webp",
+    galerija: [
+      "/images/mixer/szj15.1.webp",
+      "/images/mixer/szj15.2.webp",
+      "/images/mixer/szj15.3.webp",
+      "/images/mixer/szj15.4.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj35-mikser",
+    slug: "szj35-mini-mikser",
+    naziv: "SZJ35",
+    kategorija: "mini-mikseri",
+    cena: "43 000€",
+    opis: "Veliki samoutovarni mikser SZJ35, kapacitet 3.5 kubika.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 3.5,
+      rezervoarVode: "800L",
+      motor: "Dizel",
+      snaga: "85kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/posl1.webp",
+    galerija: [
+      "/images/mixer/posl2.webp",
+      "/images/mixer/posl3.webp",
+      "/images/mixer/posl4.webp",
+      "/images/mixer/posl5.webp",
+      "/images/mixer/posl6.webp",
+      "/images/mixer/posl7.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj40a-mikser",
+    slug: "szj40a-mini-mikser",
+    naziv: "SZJ40A",
+    kategorija: "mini-mikseri",
+    cena: "50 000€",
+    opis: "Teški samoutovarni mikser SZJ40A. 4 kubika betona po mešanju.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 4.0,
+      rezervoarVode: "800L",
+      motor: "Dizel",
+      snaga: "91kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/posl3.webp",
+    galerija: [
+      "/images/mixer/posl2.webp",
+      "/images/mixer/posl3.webp",
+      "/images/mixer/posl4.webp",
+      "/images/mixer/posl5.webp",
+      "/images/mixer/posl6.webp",
+      "/images/mixer/posl7.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "szj40b-mikser",
+    slug: "szj40b-mini-mikser",
+    naziv: "SZJ40B",
+    kategorija: "mini-mikseri",
+    cena: "56 000€",
+    opis: "Premium samoutovarni mikser SZJ40B. Povećan rezervoar za vodu.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 4.0,
+      rezervoarVode: "1200L",
+      motor: "Dizel",
+      snaga: "92kW",
+      pogon: "4x4",
+      brzinaKretanja: "40km/h"
+    },
+    coverSlika: "/images/mixer/posl2.webp",
+    galerija: [
+      "/images/mixer/posl2.webp",
+      "/images/mixer/posl3.webp",
+      "/images/mixer/posl4.webp",
+      "/images/mixer/posl5.webp",
+      "/images/mixer/posl6.webp",
+      "/images/mixer/posl7.webp",
+      
+    ],
+    model3D: null
+  },
+  {
+    id: "szj45-mikser",
+    slug: "szj45-mini-mikser",
+    naziv: "SZJ45",
+    kategorija: "mini-mikseri",
+    cena: "60 000€",
+    opis: "Najveći u klasi - SZJ45. Kapacitet od 4.5 kubika sa duplim rezervoarom.",
+    specifikacije: {
+      maksimalniNagib:"40%",
+      kapacitetMesanja: 4.5,
+      rezervoarVode: "380L x 2",
+      motor: "Dizel",
+      snaga: "91kW",
+      pogon: "4x3", // Ovde u CSV piše 4x3, nadam se da nije greška, preneo sam kako piše
+      brzinaKretanja: "50km/h"
+    },
+   coverSlika: "/images/mixer/posl5.webp",
+    galerija: [
+      "/images/mixer/posl2.webp",
+      "/images/mixer/posl3.webp",
+      "/images/mixer/posl4.webp",
+      "/images/mixer/posl5.webp",
+      "/images/mixer/posl6.webp",
+      
+      
+    ],
+    model3D: null
+  }
 ];
