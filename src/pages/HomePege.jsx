@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
 
+
 function HomePage() {
   // Varijante za kontejner - pokreće animacije dece jednu za drugom
   const containerVariants = {
@@ -101,7 +102,7 @@ function HomePage() {
 
       {/* --- 3. BLAGI PRELAZ KA SLEDEĆOJ SEKCIJI NA DNU --- */}
       {/* <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent z-10 pointer-events-none"></div> */}
-
+      
     </div>
   );
 }

@@ -570,7 +570,7 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      "/images/mixer/posl7.webp",
+      
       
     ],
     model3D: null
@@ -598,7 +598,7 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      "/images/mixer/posl7.webp",
+      
     ],
     model3D: null
   },
@@ -625,7 +625,6 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      "/images/mixer/posl7.webp",
       
     ],
     model3D: null
@@ -643,7 +642,7 @@ export const sveMasine = [
       rezervoarVode: "380L x 2",
       motor: "Dizel",
       snaga: "91kW",
-      pogon: "4x3", // Ovde u CSV piše 4x3, nadam se da nije greška, preneo sam kako piše
+      pogon: "4x4", // Ovde u CSV piše 4x3, nadam se da nije greška, preneo sam kako piše
       brzinaKretanja: "50km/h"
     },
    coverSlika: "/images/mixer/posl5.webp",
