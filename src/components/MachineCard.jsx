@@ -31,7 +31,31 @@ export default function MachineCard({ masina }) {
 
   const price = useMemo(() => formatPrice(masina?.cena), [masina?.cena]);
   const titleId = `machine-title-${masina?.slug || "unknown"}`;
+  
+  // PROVERA KATEGORIJE
   const isMikser = masina?.kategorija === "mini-mikseri";
+  const isBager = masina?.kategorija === "mini-bageri";
+
+  // DINAMIČKE SPECIFIKACIJE ZA KARTICU
+  let spec1Label = "Visina";
+  let spec1Value = `${masina?.specifikacije?.visinaDizanja ?? "-"} m`;
+  
+  let spec2Label = "Nosivost";
+  let spec2Value = `${masina?.specifikacije?.nosivost ?? "-"} kg`;
+
+  if (isMikser) {
+    spec1Label = "Kapacitet";
+    spec1Value = `${masina?.specifikacije?.kapacitetMesanja ?? "-"} m³`;
+    spec2Label = "Rezervoar";
+    spec2Value = `${masina?.specifikacije?.rezervoarVode ?? "-"}`;
+  } else if (isBager) {
+    spec1Label = "Dubina kopanja";
+    // Podatak u bazi već sadrži "MM" pa ga ispisujemo direktno (npr. "1650MM")
+    // Možemo dodati .toLowerCase() da bi izgledalo lepše ("1650mm")
+    spec1Value = masina?.specifikacije?.maxDubinaKopanja ? masina.specifikacije.maxDubinaKopanja.toLowerCase() : "-";
+    spec2Label = "Nosivost";
+    spec2Value = `${masina?.specifikacije?.nosivost ?? "-"} kg`;
+  }
 
   // inicijalno učitavanje favorita
   useEffect(() => {
@@ -143,27 +167,23 @@ export default function MachineCard({ masina }) {
           {masina.naziv}
         </h2>
 
-        {/* SPECIFIKACIJE */}
+        {/* DINAMIČNE SPECIFIKACIJE */}
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">
-              {isMikser ? "Kapacitet" : "Visina"}
+              {spec1Label}
             </span>
             <span className="text-base font-black text-slate-800">
-              {isMikser
-                ? `${masina.specifikacije?.kapacitetMesanja ?? "-"} m³`
-                : `${masina.specifikacije?.visinaDizanja ?? "-"} m`}
+              {spec1Value}
             </span>
           </div>
 
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">
-              {isMikser ? "Rezervoar" : "Nosivost"}
+              {spec2Label}
             </span>
             <span className="text-base font-black text-slate-800">
-              {isMikser
-                ? `${masina.specifikacije?.rezervoarVode ?? "-"}`
-                : `${masina.specifikacije?.nosivost ?? "-"} kg`}
+              {spec2Value}
             </span>
           </div>
         </div>

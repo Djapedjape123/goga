@@ -24,7 +24,7 @@ const WhatsAppButton = () => {
       <FaWhatsapp size={28} />
       
       {/* Efekt pulsiranja iza dugmeta */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 pointer-events-none"></span>
+      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30 pointer-events-none"></span>
     </a>
   );
 };

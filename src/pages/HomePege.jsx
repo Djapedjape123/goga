@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
 import Onama from '../components/Onama'; // 👈 IMPORTUJEMO O NAMA KOMPONENTU
+import KakoRadimo from '../components/KakoRadimo';
 
 function HomePage() {
   // Varijante za kontejner - pokreće animacije dece jednu za drugom
@@ -110,6 +111,8 @@ function HomePage() {
 
       {/* --- 2. SEKCIJA O NAMA --- */}
       <Onama />
+
+      <KakoRadimo />
 
     </>
   );

@@ -8,13 +8,13 @@ export const sveMasine = [
     cena: "53 000€",
     opis: "TE3007-A | 2026 | 7m | 3000Kg |",
     specifikacije: {
-      visinaDizanja: 7, 
-      nosivost: 3000,   
+      visinaDizanja: 7,
+      nosivost: 3000,
       motor: "YN38GBZ",
       snaga: "103Hp / 76kW",
-      tipTransmisije:'Hidraulična',
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Hidraulična',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
     },
     coverSlika: "/images/teleh11.webp",
     galerija: [
@@ -33,13 +33,13 @@ export const sveMasine = [
     cena: "42 000€",
     opis: "TE3007 | 2026 | 7m | 3000Kg |",
     specifikacije: {
-      visinaDizanja: 7, 
-      nosivost: 3000,   
+      visinaDizanja: 7,
+      nosivost: 3000,
       motor: "YN38GBZ",
       snaga: "103Hp / 76kW",
-      tipTransmisije:'Torque',
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
     },
     coverSlika: "/images/teleh11.webp",
     galerija: [
@@ -62,9 +62,9 @@ export const sveMasine = [
       nosivost: 3500,
       motor: "YN38GBZ",
       snaga: "103Hp / 76kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh15.webp",
     galerija: [
@@ -87,9 +87,9 @@ export const sveMasine = [
       nosivost: 3500,
       motor: "YCD4M22T-105",
       snaga: "103Hp / 77kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh24.webp",
     galerija: [
@@ -112,9 +112,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh29.webp",
     galerija: [
@@ -137,9 +137,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh14.webp",
     galerija: [
@@ -162,9 +162,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh23.webp",
     galerija: [
@@ -187,9 +187,9 @@ export const sveMasine = [
       nosivost: 4000,
       motor: "YCD4J22T-115",
       snaga: "114Hp / 85kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh28.webp",
     galerija: [
@@ -212,9 +212,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh13.webp",
     galerija: [
@@ -237,9 +237,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh13.webp",
     galerija: [
@@ -262,9 +262,9 @@ export const sveMasine = [
       nosivost: 5000,
       motor: "YCD4J22T-125",
       snaga: "122Hp / 91kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh27.webp",
     galerija: [
@@ -287,11 +287,11 @@ export const sveMasine = [
       nosivost: 6000,
       motor: "1PG60S",
       snaga: "150Hp / 110kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
-    coverSlika:"/images/teleh28.webp",
+    coverSlika: "/images/teleh28.webp",
     galerija: [
       "/images/teleh24.webp",
       "/images/teleh26.webp",
@@ -312,13 +312,13 @@ export const sveMasine = [
       nosivost: 7000,
       motor: "QSB4.5-C160-30",
       snaga: "160Hp / 119kW",
-      pogon:"Dizel",
-      upravljanje:"Prednje/Sva 4 točka/Bočno",
-      tipTransmisije:'Torque',
+      pogon: "Dizel",
+      upravljanje: "Prednje/Sva 4 točka/Bočno",
+      tipTransmisije: 'Torque',
     },
     coverSlika: "/images/teleh14.webp",
     galerija: [
-       "/images/teleh11.webp",
+      "/images/teleh11.webp",
       "/images/teleh12.webp",
       "/images/teleh13.webp",
       "/images/teleh14.webp"
@@ -335,8 +335,8 @@ export const sveMasine = [
     cena: "27 000€",
     opis: "Kompaktni samoutovarni mini mikser. Idealno za građevinske firme, investitore, komunalne službe i poljoprivredna gazdinstva.",
     specifikacije: {
-      maksimalniNagib:"40%",
-      kapacitetMesanja: 0.7, 
+      maksimalniNagib: "40%",
+      kapacitetMesanja: 0.7,
       rezervoarVode: "300L",
       motor: "Dizel",
       snaga: "55kW",
@@ -364,8 +364,8 @@ export const sveMasine = [
     cena: "29 000€",
     opis: "Samoutovarni mini mikser SZJ10. Pouzdan i brz za rad na terenu.",
     specifikacije: {
-      maksimalniNagib:"40%",
-      kapacitetMesanja: 1.0, 
+      maksimalniNagib: "40%",
+      kapacitetMesanja: 1.0,
       rezervoarVode: "300L",
       motor: "Dizel",
       snaga: "55kW",
@@ -380,8 +380,8 @@ export const sveMasine = [
       "/images/mixer/szj10.4.webp",
       "/images/mixer/szj10.5.webp",
       "/images/mixer/szj10.6.webp",
-      
-      
+
+
     ],
     model3D: null
   },
@@ -393,7 +393,7 @@ export const sveMasine = [
     cena: "32 000€",
     opis: "Samoutovarni mini mikser SZJ15. Kapacitet 1.5 kubika.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 1.5,
       rezervoarVode: "500L",
       motor: "Dizel",
@@ -407,7 +407,7 @@ export const sveMasine = [
       "/images/mixer/szj15.2.webp",
       "/images/mixer/szj15.3.webp",
       "/images/mixer/szj15.4.webp",
-      
+
     ],
     model3D: null
   },
@@ -419,7 +419,7 @@ export const sveMasine = [
     cena: "33 000€",
     opis: "Samoutovarni mini mikser SZJ16. Ekonomičan dizel motor.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 1.6,
       rezervoarVode: "450L",
       motor: "Dizel",
@@ -435,8 +435,8 @@ export const sveMasine = [
       "/images/mixer/szj10.4.webp",
       "/images/mixer/szj10.5.webp",
       "/images/mixer/szj10.6.webp",
-      
-      
+
+
     ],
     model3D: null
   },
@@ -448,7 +448,7 @@ export const sveMasine = [
     cena: "34 000€",
     opis: "Samoutovarni mini mikser SZJ18 sa kapacitetom od 1.8 kubika.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 1.8,
       rezervoarVode: "400L",
       motor: "Dizel",
@@ -464,8 +464,8 @@ export const sveMasine = [
       "/images/mixer/szj10.4.webp",
       "/images/mixer/szj10.5.webp",
       "/images/mixer/szj10.6.webp",
-      
-      
+
+
     ],
     model3D: null
   },
@@ -477,7 +477,7 @@ export const sveMasine = [
     cena: "37 000€",
     opis: "Samoutovarni mini mikser SZJ20. Idealan balans snage i kapaciteta.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 2.0,
       rezervoarVode: "620L",
       motor: "Dizel",
@@ -491,7 +491,7 @@ export const sveMasine = [
       "/images/mixer/szj15.2.webp",
       "/images/mixer/szj15.3.webp",
       "/images/mixer/szj15.4.webp",
-      
+
     ],
     model3D: null
   },
@@ -503,7 +503,7 @@ export const sveMasine = [
     cena: "38 000€",
     opis: "Srednji samoutovarni mikser SZJ26 sa 2.6 kubika kapaciteta.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 2.6,
       rezervoarVode: "600L",
       motor: "Dizel",
@@ -517,7 +517,7 @@ export const sveMasine = [
       "/images/mixer/szj15.2.webp",
       "/images/mixer/szj15.3.webp",
       "/images/mixer/szj15.4.webp",
-      
+
     ],
     model3D: null
   },
@@ -529,7 +529,7 @@ export const sveMasine = [
     cena: "40 000€",
     opis: "Samoutovarni mini mikser SZJ30, 3 kubika, izuzetna snaga.",
     specifikacije: {
-        maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 3.0,
       rezervoarVode: "640L",
       motor: "Dizel",
@@ -543,7 +543,7 @@ export const sveMasine = [
       "/images/mixer/szj15.2.webp",
       "/images/mixer/szj15.3.webp",
       "/images/mixer/szj15.4.webp",
-      
+
     ],
     model3D: null
   },
@@ -555,7 +555,7 @@ export const sveMasine = [
     cena: "43 000€",
     opis: "Veliki samoutovarni mikser SZJ35, kapacitet 3.5 kubika.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 3.5,
       rezervoarVode: "800L",
       motor: "Dizel",
@@ -570,8 +570,8 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      
-      
+
+
     ],
     model3D: null
   },
@@ -583,7 +583,7 @@ export const sveMasine = [
     cena: "50 000€",
     opis: "Teški samoutovarni mikser SZJ40A. 4 kubika betona po mešanju.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 4.0,
       rezervoarVode: "800L",
       motor: "Dizel",
@@ -598,7 +598,7 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      
+
     ],
     model3D: null
   },
@@ -610,7 +610,7 @@ export const sveMasine = [
     cena: "56 000€",
     opis: "Premium samoutovarni mikser SZJ40B. Povećan rezervoar za vodu.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 4.0,
       rezervoarVode: "1200L",
       motor: "Dizel",
@@ -625,7 +625,7 @@ export const sveMasine = [
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
-      
+
     ],
     model3D: null
   },
@@ -637,7 +637,7 @@ export const sveMasine = [
     cena: "60 000€",
     opis: "Najveći u klasi - SZJ45. Kapacitet od 4.5 kubika sa duplim rezervoarom.",
     specifikacije: {
-      maksimalniNagib:"40%",
+      maksimalniNagib: "40%",
       kapacitetMesanja: 4.5,
       rezervoarVode: "380L x 2",
       motor: "Dizel",
@@ -645,14 +645,245 @@ export const sveMasine = [
       pogon: "4x4", // Ovde u CSV piše 4x3, nadam se da nije greška, preneo sam kako piše
       brzinaKretanja: "50km/h"
     },
-   coverSlika: "/images/mixer/posl5.webp",
+    coverSlika: "/images/mixer/posl5.webp",
     galerija: [
       "/images/mixer/posl2.webp",
       "/images/mixer/posl3.webp",
       "/images/mixer/posl4.webp",
       "/images/mixer/posl5.webp",
       "/images/mixer/posl6.webp",
+
+
+    ],
+    model3D: null
+  },
+
+
+  // --- NOVO: MINI BAGERI ---
+  {
+    id: "se10-bager",
+    slug: "se10-mini-bager",
+    naziv: "SE10",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Kompaktni mini bager SE10. Nosivost 1000kg, idealan za rad u uskim prostorima i manja gradilišta.",
+    specifikacije: {
+      nosivost: 1000,
+      snagaMotora: "7.6kW",
+      zapreminaKasike: "0.025m³",
+      maxDubinaKopanja: "1650mm",
+      maxVisinaKopanja: "2450mm",
+      maxVisinaIstovara: "1750mm",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB2.webp",
+    galerija: [
+      "/images/miniBager/miniB1.webp",
+      "/images/miniBager/miniB2.webp",
+      "/images/miniBager/miniB3.webp",
+      "/images/miniBager/miniB4.webp",
+      "/images/miniBager/miniB5.webp",
+      "/images/miniBager/miniB6.webp",
+      "/images/miniBager/miniB7.webp",
+      ,
+      "/images/miniBager/miniB8.webp",
+      "/images/miniBager/miniB9.webp"
+
+    ],
+    model3D: null
+  },
+  {
+    id: "se12-bager",
+    slug: "se12-mini-bager",
+    naziv: "SE12",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Mini bager SE12. Nosivost 1200kg sa odličnim dohvatom i efikasnim motorom.",
+    specifikacije: {
+      nosivost: 1200,
+      snagaMotora: "7.6kW",
+      zapreminaKasike: "0.03m³",
+      maxDubinaKopanja: "1650MM",
+      maxVisinaKopanja: "2580MM",
+      maxVisinaIstovara: "1850MM",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB3.webp",
+    galerija: [
+      "/images/miniBager/miniB1.webp",
+      "/images/miniBager/miniB2.webp",
+      "/images/miniBager/miniB3.webp",
+      "/images/miniBager/miniB4.webp",
+      "/images/miniBager/miniB5.webp",
+      "/images/miniBager/miniB6.webp",
+      "/images/miniBager/miniB7.webp",
+      ,
+      "/images/miniBager/miniB8.webp",
+      "/images/miniBager/miniB9.webp"
+
+    ],
+    model3D: null
+  },
+  {
+    id: "se15-bager",
+    slug: "se15-mini-bager",
+    naziv: "SE15",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Mini bager SE15 kapaciteta 1500kg. Idealan balans snage (14.1kW) i kompaktnosti.",
+    specifikacije: {
+      nosivost: 1500,
+      snagaMotora: "14.1kW",
+      zapreminaKasike: "0.03m³",
+      maxDubinaKopanja: "1800MM",
+      maxVisinaKopanja: "2820MM",
+      maxVisinaIstovara: "2050mm",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB11.webp",
+    galerija: [
+      "/images/miniBager/miniB11.webp",
+      "/images/miniBager/miniB12.webp",
+      "/images/miniBager/miniB13.webp",
+      "/images/miniBager/miniB14.webp",
+      "/images/miniBager/miniB15.webp",
+      "/images/miniBager/miniB16.webp",
+      "/images/miniBager/miniB17.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "se20l-bager",
+    slug: "se20l-mini-bager",
+    naziv: "SE20L",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Snažan mini bager SE20L sa nosivošću od 2000kg. Motor od 22kW osigurava brzo obavljanje zadataka.",
+    specifikacije: {
+      nosivost: 2000,
+      snagaMotora: "22kW",
+      zapreminaKasike: "0.035m³",
+      maxDubinaKopanja: "2000MM",
+      maxVisinaKopanja: "2740MM",
+      maxVisinaIstovara: "2400MM",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB13.webp",
+    galerija: [
+      "/images/miniBager/miniB11.webp",
+      "/images/miniBager/miniB12.webp",
+      "/images/miniBager/miniB13.webp",
+      "/images/miniBager/miniB14.webp",
+      "/images/miniBager/miniB15.webp",
+      "/images/miniBager/miniB16.webp",
+      "/images/miniBager/miniB17.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "se25l-bager",
+    slug: "se25l-mini-bager",
+    naziv: "SE25L",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
+    specifikacije: {
+      nosivost: 2500,
+      snagaMotora: "22kW",
+      zapreminaKasike: "0.1m³",
+      maxDubinaKopanja: "2000MM",
+      maxVisinaKopanja: "3200MM",
+      maxVisinaIstovara: "2200MM",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB21.webp",
+    galerija: [
+      "/images/miniBager/miniB21.webp",
+      "/images/miniBager/miniB22.webp",
+      "/images/miniBager/miniB23.webp",
+      "/images/miniBager/miniB24.webp",
+      "/images/miniBager/miniB25.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "se30l-bager",
+    slug: "se30l-mini-bager",
+    naziv: "SE30L",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Bager SE30L nudi odlične performanse sa nosivošću od 3000kg i dubinom kopanja do 2000mm.",
+    specifikacije: {
+      nosivost: 3000,
+      snagaMotora: "22kW",
+      zapreminaKasike: "0.1m³",
+      maxDubinaKopanja: "2000MM",
+      maxVisinaKopanja: "3200MM",
+      maxVisinaIstovara: "2200MM",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB23.webp",
+    galerija: [
+      "/images/miniBager/miniB21.webp",
+      "/images/miniBager/miniB22.webp",
+      "/images/miniBager/miniB23.webp",
+      "/images/miniBager/miniB24.webp",
+      "/images/miniBager/miniB25.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "se35-bager",
+    slug: "se35-mini-bager",
+    naziv: "SE35",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Izuzetno snažan model SE35 sa motorom od 36.8kW. Nosivost od 3500kg savlađuje najteže prepreke.",
+    specifikacije: {
+      nosivost: 3500,
+      snagaMotora: "36.8kW",
+      zapreminaKasike: "0.1m³",
+      maxDubinaKopanja: "2500MM",
+      maxVisinaKopanja: "3900MM",
+      maxVisinaIstovara: "2600MM",
+      garancija: "2 godine"
+    },
+    coverSlika: "/images/miniBager/miniB25.webp",
+    galerija: [
+      "/images/miniBager/miniB21.webp",
+      "/images/miniBager/miniB22.webp",
+      "/images/miniBager/miniB23.webp",
+      "/images/miniBager/miniB24.webp",
+      "/images/miniBager/miniB25.webp",
       
+    ],
+    model3D: null
+  },
+  {
+    id: "se40-bager",
+    slug: "se40-mini-bager",
+    naziv: "SE40",
+    kategorija: "mini-bageri",
+    cena: "Na upit",
+    opis: "Najteži mini bager u ponudi - SE40. Nosivost 4000kg i kašika od 0.12m³ osiguravaju maksimalnu produktivnost.",
+    specifikacije: {
+      nosivost: 4000,
+      snagaMotora: "18.2kW",
+      zapreminaKasike: "0.12m³",
+      maxDubinaKopanja: "3200MM",
+      maxVisinaKopanja: "4800MM",
+      maxVisinaIstovara: "3400MM",
+      garancija: "2 godine"
+    },
+   coverSlika: "/images/miniBager/miniB24.webp",
+    galerija: [
+      "/images/miniBager/miniB21.webp",
+      "/images/miniBager/miniB22.webp",
+      "/images/miniBager/miniB23.webp",
+      "/images/miniBager/miniB24.webp",
+      "/images/miniBager/miniB25.webp",
       
     ],
     model3D: null

@@ -13,6 +13,13 @@ function CatalogPage() {
     maxNosivost: '',
     minKapacitet: '',
     maxKapacitet: '',
+    // Dodata stanja za mini bagere
+    minDubinaKopanja: '',
+    maxDubinaKopanja: '',
+    minVisinaKopanja: '',
+    maxVisinaKopanja: '',
+    minVisinaIstovara: '',
+    maxVisinaIstovara: '',
   });
 
   const categories = ['sve', ...new Set(sveMasine.map(m => m.kategorija))];
@@ -29,16 +36,36 @@ function CatalogPage() {
     if (filters.minNosivost && masina.specifikacije.nosivost < Number(filters.minNosivost)) return false;
     if (filters.maxNosivost && masina.specifikacije.nosivost > Number(filters.maxNosivost)) return false;
     
-    // 3. Provera filtera za Mini miksere (ISPRAVLJENO)
+    // 3. Provera filtera za Mini miksere
     if (filters.minKapacitet && masina.specifikacije.kapacitetMesanja < Number(filters.minKapacitet)) return false;
     if (filters.maxKapacitet && masina.specifikacije.kapacitetMesanja > Number(filters.maxKapacitet)) return false;
+
+    // 4. Provera filtera za Mini bagere (NOVO)
+    // parseInt odseca "MM" iz stringa i pretvara ga u broj (npr. "3200MM" postaje 3200)
+    if (filters.minDubinaKopanja || filters.maxDubinaKopanja || filters.minVisinaKopanja || filters.maxVisinaKopanja || filters.minVisinaIstovara || filters.maxVisinaIstovara) {
+      
+      // Ako mašina nema ovu specifikaciju (npr. ako je telehender, a neko ukuca filter za dubinu)
+      if (!masina.specifikacije.maxDubinaKopanja) return false;
+
+      const dubina = parseInt(masina.specifikacije.maxDubinaKopanja, 10);
+      const visinaK = parseInt(masina.specifikacije.maxVisinaKopanja, 10);
+      const visinaI = parseInt(masina.specifikacije.maxVisinaIstovara, 10);
+
+      if (filters.minDubinaKopanja && dubina < Number(filters.minDubinaKopanja)) return false;
+      if (filters.maxDubinaKopanja && dubina > Number(filters.maxDubinaKopanja)) return false;
+
+      if (filters.minVisinaKopanja && visinaK < Number(filters.minVisinaKopanja)) return false;
+      if (filters.maxVisinaKopanja && visinaK > Number(filters.maxVisinaKopanja)) return false;
+
+      if (filters.minVisinaIstovara && visinaI < Number(filters.minVisinaIstovara)) return false;
+      if (filters.maxVisinaIstovara && visinaI > Number(filters.maxVisinaIstovara)) return false;
+    }
     
     return true;
   });
 
   return (
     <>
-      {/* OBRISAN overflow-x-hidden! Vraćen tvoj originalni div! */}
       <div className="min-h-screen bg-gradient-to-br from-sky-200 via-blue-300 to-sky-400 pt-32 py-12 px-4 sm:px-6 lg:px-8">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30"></div>
@@ -55,7 +82,6 @@ function CatalogPage() {
 
           <div className="flex flex-col lg:flex-row gap-8 items-start">
 
-            {/* LEVA KOLONA: motion.div sa uletanjem + TVOJ sticky */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -69,17 +95,14 @@ function CatalogPage() {
               />
             </motion.div>
 
-            {/* DESNA KOLONA: motion.div sa uletanjem */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
               className="w-full lg:w-3/4"
             >
-              {/* ULTRA MODERNI BROJAČ REZULTATA */}
               <div className="mb-8 flex justify-between items-center bg-white/70 backdrop-blur-xl px-6 py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/60 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(37,99,235,0.08)] hover:-translate-y-0.5">
 
-                {/* Leva strana: Pulsirajuća "Live" tačka i naslov */}
                 <div className="flex items-center gap-4">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -88,7 +111,6 @@ function CatalogPage() {
                   <h2 className="text-lg font-extrabold text-slate-800 tracking-tight">Dostupne mašine</h2>
                 </div>
 
-                {/* Desna strana: Moderan bedž sa brojem */}
                 <div className="flex items-center gap-3">
                   <span className="text-slate-500 font-medium text-sm hidden sm:block">Pronađeno:</span>
                   <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-1.5 rounded-full text-sm font-black shadow-md shadow-blue-500/30">
@@ -110,8 +132,15 @@ function CatalogPage() {
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">Ne postoji takva mašina</h3>
                   <p className="text-slate-500 mb-6">Pokušajte da proširite parametre pretrage ili poništite filtere.</p>
                   <button
-                    // ISPRAVLJENO: Dodato resetovanje i za kapacitet kako bi radilo i za miksere
-                    onClick={() => setFilters({ kategorija: 'sve', minVisina: '', maxVisina: '', minNosivost: '', maxNosivost: '', minKapacitet: '', maxKapacitet: '' })}
+                    onClick={() => setFilters({ 
+                      kategorija: 'sve', 
+                      minVisina: '', maxVisina: '', 
+                      minNosivost: '', maxNosivost: '', 
+                      minKapacitet: '', maxKapacitet: '',
+                      minDubinaKopanja: '', maxDubinaKopanja: '',
+                      minVisinaKopanja: '', maxVisinaKopanja: '',
+                      minVisinaIstovara: '', maxVisinaIstovara: ''
+                    })}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >
                     Poništi sve filtere

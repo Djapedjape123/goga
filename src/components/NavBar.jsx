@@ -42,7 +42,7 @@ function NavBar() {
           {/* LOGO */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-2xl font-black tracking-tighter text-white">
-              GOGA<span className="text-orange-600">MACHINES</span>
+              MASINE<span className="text-orange-600">AI</span>
             </Link>
           </div>
 
