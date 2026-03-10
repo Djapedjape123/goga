@@ -58,7 +58,7 @@ function CatalogPage() {
       if (filters.maxVisinaKopanja && visinaK > Number(filters.maxVisinaKopanja)) return false;
 
       if (filters.minVisinaIstovara && visinaI < Number(filters.minVisinaIstovara)) return false;
-      if (filters.maxVisinaIstovara && visinaI > Number(filters.maxVisinaIstovara)) return false;
+      
     }
     
     return true;
@@ -66,14 +66,14 @@ function CatalogPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-sky-200 via-blue-300 to-sky-400 pt-32 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9]  to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30"></div>
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-              Naša <span className="text-blue-600">Mehanizacija</span>
+              Naša <span className="text-[#FEFFB9]">Mehanizacija</span>
             </h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Pronađite savršenu mašinu za vaš projekat. Koristite filtere za preciznu pretragu.

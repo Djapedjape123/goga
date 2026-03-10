@@ -53,8 +53,8 @@ export default function MachineCard({ masina }) {
     // Podatak u bazi već sadrži "MM" pa ga ispisujemo direktno (npr. "1650MM")
     // Možemo dodati .toLowerCase() da bi izgledalo lepše ("1650mm")
     spec1Value = masina?.specifikacije?.maxDubinaKopanja ? masina.specifikacije.maxDubinaKopanja.toLowerCase() : "-";
-    spec2Label = "Nosivost";
-    spec2Value = `${masina?.specifikacije?.nosivost ?? "-"} kg`;
+    spec2Label = "Visina kopanja";
+    spec2Value = `${masina?.specifikacije?.maxVisinaKopanja ?? ""} `;
   }
 
   // inicijalno učitavanje favorita

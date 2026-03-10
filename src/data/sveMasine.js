@@ -671,8 +671,8 @@ export const sveMasine = [
       nosivost: 1000,
       snagaMotora: "7.6kW",
       zapreminaKasike: "0.025m³",
-      maxDubinaKopanja: "1650mm",
-      maxVisinaKopanja: "2450mm",
+      maxDubinaKopanja: "1650MM",
+      maxVisinaKopanja: "2450MM",
       maxVisinaIstovara: "1750mm",
       garancija: "2 godine"
     },
@@ -717,7 +717,7 @@ export const sveMasine = [
       "/images/miniBager/miniB5.webp",
       "/images/miniBager/miniB6.webp",
       "/images/miniBager/miniB7.webp",
-      ,
+      
       "/images/miniBager/miniB8.webp",
       "/images/miniBager/miniB9.webp"
 
@@ -788,7 +788,7 @@ export const sveMasine = [
     opis: "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
     specifikacije: {
       nosivost: 2500,
-      snagaMotora: "18,2kW",
+      snagaMotora: "18.2kW",
       zapreminaKasike: "0.1m³",
       maxDubinaKopanja: "2350MM",
       maxVisinaKopanja: "3600MM",

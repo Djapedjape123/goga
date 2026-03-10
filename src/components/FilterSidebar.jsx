@@ -15,8 +15,7 @@ const DEFAULT_FILTERS = {
   maxDubinaKopanja: "",
   minVisinaKopanja: "",
   maxVisinaKopanja: "",
-  minVisinaIstovara: "",
-  maxVisinaIstovara: "",
+  
 };
 
 function FilterSidebar({
@@ -238,31 +237,8 @@ function FilterSidebar({
             </div>
           </div>
 
-          {/* Max Visina Istovara */}
-          <div className="mb-6">
-            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Visina istovara (mm)
-            </h3>
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                name="minVisinaIstovara"
-                value={safeFilters.minVisinaIstovara}
-                onChange={handleChange}
-                placeholder="Min"
-                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-              />
-              <span className="text-slate-400 font-bold">-</span>
-              <input
-                type="number"
-                name="maxVisinaIstovara"
-                value={safeFilters.maxVisinaIstovara}
-                onChange={handleChange}
-                placeholder="Max"
-                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-              />
-            </div>
-          </div>
+          
+          
         </>
       )}
     </div>

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEdit, FaFileInvoiceDollar, FaHandshake, FaTruckLoading } from 'react-icons/fa';
+import { FaEdit, FaFileInvoiceDollar, FaHandshake, FaTruckLoading, FaArrowRight, FaUndo } from 'react-icons/fa';
 
 const koraci = [
   {
     ikona: <FaEdit />,
     naslov: "Upit",
-    opis: "Pošaljite upit putem sajta ili nas pozovite direktno za željenu mašinu.",
+    opis: "Pošaljite nam upit za mašinu koja vam je potrebna i naš tim će vam u najkraćem roku odgovoriti sa svim informacijama. Na osnovu vašeg zahteva pripremamo ponudu i pomažemo vam da pronađete idealnu mašinu za vaš posao.",
     gradient: "from-blue-500 to-cyan-400",
     glow: "group-hover:shadow-blue-500/40 border-blue-100",
     textColor: "text-blue-500"
@@ -14,7 +14,7 @@ const koraci = [
   {
     ikona: <FaFileInvoiceDollar />,
     naslov: "Ponuda",
-    opis: "Dobijate zvaničnu ponudu sa detaljnim specifikacijama i rokom isporuke.",
+    opis: "Na osnovu vašeg upita pripremamo detaljnu i transparentnu ponudu sa svim informacijama o mašini, ceni i uslovima kupovine. Cilj nam je da jasno vidite šta dobijate i da budete sigurni u svaku odluku pre nego što pristupite ugovoru.",
     gradient: "from-sky-500 to-indigo-500",
     glow: "group-hover:shadow-indigo-500/40 border-indigo-100",
     textColor: "text-indigo-500"
@@ -22,7 +22,7 @@ const koraci = [
   {
     ikona: <FaHandshake />,
     naslov: "Ugovor",
-    opis: "Potpisujemo ugovor i definišemo precizne uslove plaćanja i logistike.",
+    opis: "Nakon što potvrdite ponudu, pripremamo jasan i siguran ugovor koji definiše sve uslove kupovine, uključujući garanciju na mašinu. Ovo vam garantuje potpunu transparentnost, sigurnost i pouzdanost tokom celog procesa",
     gradient: "from-violet-500 to-purple-500",
     glow: "group-hover:shadow-purple-500/40 border-purple-100",
     textColor: "text-purple-500"
@@ -30,12 +30,86 @@ const koraci = [
   {
     ikona: <FaTruckLoading />,
     naslov: "Isporuka",
-    opis: "Mašina stiže na vašu lokaciju uz obezbeđen servis i garanciju.",
+    opis: "Organizujemo bezbednu i brzu isporuku mašine direktno na vašu adresu, uz kompletnu logistiku i carinsku podršku. Naša pažljivo planirana dostava garantuje da vaša mašina stigne u savršenom stanju, spremna za rad",
     gradient: "from-slate-700 to-slate-900",
     glow: "group-hover:shadow-slate-900/40 border-slate-200",
     textColor: "text-slate-800"
   }
 ];
+
+// 👈 NOVA KOMPONENTA ZA 3D KARTICU
+const FlipCard = ({ korak, index }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div className="relative w-full h-[420px] [perspective:1000px] group z-10">
+      {/* POVEĆANA VISINA NA 420px DA BI SVE BILE ISTE I DA TEKST STANE */}
+      <motion.div
+        className="w-full h-full relative [transform-style:preserve-3d]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 60, damping: 15 }}
+      >
+        {/* --- PREDNJA STRANA --- */}
+        <div 
+          onClick={() => setIsFlipped(true)}
+          className={`absolute inset-0 [backface-visibility:hidden] bg-white/60 backdrop-blur-xl border border-white p-8 rounded-[2.5rem] shadow-2xl shadow-blue-500 flex flex-col justify-between transition-all duration-500 hover:-translate-y-3 hover:bg-white ${korak.glow} cursor-pointer`}
+        >
+          {/* Vodeni žig */}
+          
+
+          <div className="relative z-10">
+            {/* Ikona */}
+            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${korak.gradient} text-white text-3xl flex items-center justify-center mb-8 shadow-lg shadow-slate-200 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+              {korak.ikona}
+            </div>
+
+            {/* Naslov */}
+            <h3 className={`text-3xl font-black mb-2 tracking-tight transition-colors duration-300 ${korak.textColor}`}>
+              {korak.naslov}
+            </h3>
+            <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Korak 0{index + 1}</p>
+          </div>
+
+          {/* Dugme "Pogledaj" */}
+          <button 
+            className="relative z-10 flex items-center gap-2 text-sm font-black text-slate-400 hover:text-blue-600 transition-colors mt-auto pt-4 w-fit group/btn"
+          >
+            POGLEDAJ
+            <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        {/* --- ZADNJA STRANA (Okrenuta za 180 stepeni) --- */}
+        <div 
+          className={`absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br ${korak.gradient} p-8 rounded-[2.5rem] shadow-2xl flex flex-col justify-center items-center`}
+        >
+          {/* Suptilna ikona u pozadini na zadnjoj strani */}
+          <div className="absolute opacity-10 text-9xl pointer-events-none">
+            {korak.ikona}
+          </div>
+
+          <h3 className="text-white text-2xl font-black mb-4 relative z-10 text-center">
+            {korak.naslov}
+          </h3>
+          
+          {/* text-justify DA IVICE BUDU U RAVNI */}
+          <p className="text-white/90 font-medium leading-relaxed mb-8 relative z-10 text-justify text-sm sm:text-base">
+            {korak.opis}
+          </p>
+
+          <button 
+            onClick={() => setIsFlipped(false)}
+            className="relative z-10 flex items-center gap-2 px-6 py-3 bg-white/20 hover:bg-white/30 rounded-xl text-white font-bold backdrop-blur-sm transition-all hover:scale-105"
+          >
+            <FaUndo className="text-sm" />
+            Nazad
+          </button>
+        </div>
+
+      </motion.div>
+    </div>
+  );
+};
 
 function KakoRadimo() {
   return (
@@ -68,11 +142,11 @@ function KakoRadimo() {
           </motion.h2>
         </div>
 
-        {/* KORACI */}
+        {/* KORACI SA FLIP KARTICAMA */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
           
           {/* Suptilna isprekidana linija koja povezuje korake na velikim ekranima */}
-          <div className="hidden lg:block absolute top-12 left-[12%] w-[76%] h-[2px] bg-gradient-to-r from-blue-200 via-indigo-200 to-slate-200 z-0 border-dashed border-t-2 border-transparent" style={{ backgroundImage: "linear-gradient(to right, #cbd5e1 50%, transparent 50%)", backgroundSize: "16px 2px", backgroundRepeat: "repeat-x" }}></div>
+          <div className="hidden lg:block absolute top-1/2 left-[12%] w-[76%] h-[2px] z-0 opacity-50 border-dashed border-t-2 border-transparent pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #94a3b8 50%, transparent 50%)", backgroundSize: "16px 2px", backgroundRepeat: "repeat-x" }}></div>
 
           {koraci.map((korak, index) => (
             <motion.div
@@ -80,34 +154,11 @@ function KakoRadimo() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, type: "spring", bounce: 0.4 }}
-              className="relative z-10 h-full"
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="relative z-10"
             >
-              {/* KARTICA (Glassmorphism) */}
-              <div className={`group relative h-full bg-white/60 backdrop-blur-xl border border-white p-8 rounded-[2.5rem] shadow-lg transition-all duration-500 hover:-translate-y-2 hover:bg-white ${korak.glow}`}>
-                
-                {/* Vodeni žig broj u pozadini (01, 02...) */}
-                <div className="absolute -bottom-4 -right-2 text-8xl font-black text-slate-50 opacity-50 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 pointer-events-none select-none z-0">
-                  0{index + 1}
-                </div>
-
-                <div className="relative z-10">
-                  {/* Ikona kontejner sa Gradijentom */}
-                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${korak.gradient} text-white text-3xl flex items-center justify-center mb-8 shadow-lg shadow-slate-200 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-                    {korak.ikona}
-                  </div>
-
-                  {/* Tekst */}
-                  <h3 className={`text-2xl font-black mb-4 tracking-tight transition-colors duration-300 ${korak.textColor}`}>
-                    {korak.naslov}
-                  </h3>
-                  
-                  <p className="text-slate-500 font-medium leading-relaxed">
-                    {korak.opis}
-                  </p>
-                </div>
-                
-              </div>
+              {/* Pozivamo našu novu 3D FlipCard komponentu */}
+              <FlipCard korak={korak} index={index} />
             </motion.div>
           ))}
         </div>
