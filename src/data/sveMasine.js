@@ -665,7 +665,7 @@ export const sveMasine = [
     slug: "se10-mini-bager",
     naziv: "SE10",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "8000",
     opis: "Kompaktni mini bager SE10. Nosivost 1000kg, idealan za rad u uskim prostorima i manja gradilišta.",
     specifikacije: {
       nosivost: 1000,
@@ -693,19 +693,19 @@ export const sveMasine = [
     model3D: null
   },
   {
-    id: "se12-bager",
-    slug: "se12-mini-bager",
-    naziv: "SE12",
+    id: "se18-bager",
+    slug: "se18-mini-bager",
+    naziv: "SE18",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "13000",
     opis: "Mini bager SE12. Nosivost 1200kg sa odličnim dohvatom i efikasnim motorom.",
     specifikacije: {
-      nosivost: 1200,
-      snagaMotora: "7.6kW",
-      zapreminaKasike: "0.03m³",
-      maxDubinaKopanja: "1650MM",
-      maxVisinaKopanja: "2580MM",
-      maxVisinaIstovara: "1850MM",
+      nosivost: 1800,
+      snagaMotora: "29kW",
+      zapreminaKasike: "0.035m³",
+      maxDubinaKopanja: "2100MM",
+      maxVisinaKopanja: "2820MM",
+      maxVisinaIstovara: "2950MM",
       garancija: "2 godine"
     },
     coverSlika: "/images/miniBager/miniB3.webp",
@@ -729,7 +729,7 @@ export const sveMasine = [
     slug: "se15-mini-bager",
     naziv: "SE15",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "11000",
     opis: "Mini bager SE15 kapaciteta 1500kg. Idealan balans snage (14.1kW) i kompaktnosti.",
     specifikacije: {
       nosivost: 1500,
@@ -740,15 +740,14 @@ export const sveMasine = [
       maxVisinaIstovara: "2050mm",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB11.webp",
+    coverSlika: "/images/miniBager/miniBager11.webp",
     galerija: [
-      "/images/miniBager/miniB11.webp",
-      "/images/miniBager/miniB12.webp",
-      "/images/miniBager/miniB13.webp",
-      "/images/miniBager/miniB14.webp",
-      "/images/miniBager/miniB15.webp",
-      "/images/miniBager/miniB16.webp",
-      "/images/miniBager/miniB17.webp",
+      "/images/miniBager/miniBager12.webp",
+      "/images/miniBager/miniBager13.webp",
+      "/images/miniBager/miniBager14.webp",
+      "/images/miniBager/miniBager15.webp",
+      "/images/miniBager/miniBager16.webp",
+      
     ],
     model3D: null
   },
@@ -757,7 +756,7 @@ export const sveMasine = [
     slug: "se20l-mini-bager",
     naziv: "SE20L",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "18000",
     opis: "Snažan mini bager SE20L sa nosivošću od 2000kg. Motor od 22kW osigurava brzo obavljanje zadataka.",
     specifikacije: {
       nosivost: 2000,
@@ -781,29 +780,25 @@ export const sveMasine = [
     model3D: null
   },
   {
-    id: "se25l-bager",
-    slug: "se25l-mini-bager",
-    naziv: "SE25L",
+    id: "se25-bager",
+    slug: "se25-mini-bager",
+    naziv: "SE25",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "25000",
     opis: "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
     specifikacije: {
       nosivost: 2500,
-      snagaMotora: "22kW",
+      snagaMotora: "18,2kW",
       zapreminaKasike: "0.1m³",
-      maxDubinaKopanja: "2000MM",
-      maxVisinaKopanja: "3200MM",
+      maxDubinaKopanja: "2350MM",
+      maxVisinaKopanja: "3600MM",
       maxVisinaIstovara: "2200MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB21.webp",
+    coverSlika: "/images/miniBager/25.webp",
     galerija: [
-      "/images/miniBager/miniB21.webp",
-      "/images/miniBager/miniB22.webp",
-      "/images/miniBager/miniB23.webp",
-      "/images/miniBager/miniB24.webp",
-      "/images/miniBager/miniB25.webp",
-
+      "/images/miniBager/251.webp",
+      "/images/miniBager/252.webp",
     ],
     model3D: null
   },
@@ -812,7 +807,7 @@ export const sveMasine = [
     slug: "se30l-mini-bager",
     naziv: "SE30L",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "28000",
     opis: "Bager SE30L nudi odlične performanse sa nosivošću od 3000kg i dubinom kopanja do 2000mm.",
     specifikacije: {
       nosivost: 3000,
@@ -823,13 +818,13 @@ export const sveMasine = [
       maxVisinaIstovara: "2200MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB23.webp",
+    coverSlika: "/images/miniBager/30L.webp",
     galerija: [
-      "/images/miniBager/miniB21.webp",
-      "/images/miniBager/miniB22.webp",
-      "/images/miniBager/miniB23.webp",
-      "/images/miniBager/miniB24.webp",
-      "/images/miniBager/miniB25.webp",
+      "/images/miniBager/30L.webp",
+      "/images/miniBager/30L1.webp",
+      "/images/miniBager/30L2.webp",
+      "/images/miniBager/30L3.webp",
+      "/images/miniBager/30L5.webp",
 
     ],
     model3D: null
@@ -839,7 +834,7 @@ export const sveMasine = [
     slug: "se35-mini-bager",
     naziv: "SE35",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "30000",
     opis: "Izuzetno snažan model SE35 sa motorom od 36.8kW. Nosivost od 3500kg savlađuje najteže prepreke.",
     specifikacije: {
       nosivost: 3500,
@@ -850,13 +845,14 @@ export const sveMasine = [
       maxVisinaIstovara: "2600MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB25.webp",
+    coverSlika: "/images/miniBager/noviB.webp",
     galerija: [
-      "/images/miniBager/miniB21.webp",
-      "/images/miniBager/miniB22.webp",
-      "/images/miniBager/miniB23.webp",
-      "/images/miniBager/miniB24.webp",
-      "/images/miniBager/miniB25.webp",
+      "/images/miniBager/noviB1.webp",
+      "/images/miniBager/noviB2.webp",
+      "/images/miniBager/noviB3.webp",
+      "/images/miniBager/noviB4.webp",
+      "/images/miniBager/noviB5.webp",
+
       
     ],
     model3D: null
@@ -866,7 +862,7 @@ export const sveMasine = [
     slug: "se40-mini-bager",
     naziv: "SE40",
     kategorija: "mini-bageri",
-    cena: "Na upit",
+    cena: "35000",
     opis: "Najteži mini bager u ponudi - SE40. Nosivost 4000kg i kašika od 0.12m³ osiguravaju maksimalnu produktivnost.",
     specifikacije: {
       nosivost: 4000,
@@ -877,14 +873,13 @@ export const sveMasine = [
       maxVisinaIstovara: "3400MM",
       garancija: "2 godine"
     },
-   coverSlika: "/images/miniBager/miniB24.webp",
+   coverSlika: "/images/miniBager/noviB.webp",
     galerija: [
-      "/images/miniBager/miniB21.webp",
-      "/images/miniBager/miniB22.webp",
-      "/images/miniBager/miniB23.webp",
-      "/images/miniBager/miniB24.webp",
-      "/images/miniBager/miniB25.webp",
-      
+      "/images/miniBager/noviB1.webp",
+      "/images/miniBager/noviB2.webp",
+      "/images/miniBager/noviB3.webp",
+      "/images/miniBager/noviB4.webp",
+      "/images/miniBager/noviB5.webp",
     ],
     model3D: null
   }

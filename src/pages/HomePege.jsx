@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
-import Onama from '../components/Onama'; // 👈 IMPORTUJEMO O NAMA KOMPONENTU
-import KakoRadimo from '../components/KakoRadimo';
+
+// 👈 LAZY IMPORT KOMPONENTI (Učitavaju se tek kada zatrebaju)
+const Onama = lazy(() => import('../components/Onama'));
+const KakoRadimo = lazy(() => import('../components/KakoRadimo'));
 
 function HomePage() {
   // Varijante za kontejner - pokreće animacije dece jednu za drugom
@@ -104,15 +106,28 @@ function HomePage() {
         </motion.div>
 
         {/* --- BLAGI PRELAZ KA SLEDEĆOJ SEKCIJI NA DNU --- */}
-        {/* Promenio sam "from-slate-50" u "from-white" da se savršeno spoji sa Onama sekcijom! */}
         <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
         
       </div>
 
-      {/* --- 2. SEKCIJA O NAMA --- */}
-      <Onama />
+      {/* --- 2. SEKCIJA O NAMA (Zamotana u Suspense) --- */}
+      <Suspense fallback={
+        <div className="py-32 flex justify-center items-center bg-white min-h-[400px]">
+          {/* Moderan spinner dok se učitava */}
+          <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin"></div>
+        </div>
+      }>
+        <Onama />
+      </Suspense>
 
-      <KakoRadimo />
+      {/* --- 3. SEKCIJA KAKO RADIMO (Zamotana u Suspense) --- */}
+      <Suspense fallback={
+        <div className="py-32 flex justify-center items-center bg-slate-50 min-h-[400px]">
+          <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin"></div>
+        </div>
+      }>
+        <KakoRadimo />
+      </Suspense>
 
     </>
   );
