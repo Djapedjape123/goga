@@ -16,15 +16,45 @@ function SinglePege() {
 
   const [glavnaSlika, setGlavnaSlika] = useState(null);
   
-  // --- STATE ZA MODAL I FORMU ---
+  // --- STATE ZA MODAL FORMU ---
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+
+  // --- STATE ZA MODAL SLIKE (SLAJDER) ---
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (masina) setGlavnaSlika(masina.coverSlika);
   }, [slug, masina]);
+
+  // --- LOGIKA ZA SLAJDER U MODALU ---
+  const openImageModal = () => {
+    // Nalazimo indeks trenutne slike kako bi slajder krenuo od nje
+    if (masina?.galerija) {
+      const index = masina.galerija.indexOf(glavnaSlika);
+      setCurrentImageIndex(index !== -1 ? index : 0);
+    }
+    setIsImageModalOpen(true);
+  };
+
+  const nextImage = (e) => {
+    e.stopPropagation(); // Sprečava zatvaranje modala kad se klikne na strelicu
+    if (!masina?.galerija) return;
+    setCurrentImageIndex((prev) => 
+      prev === masina.galerija.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    if (!masina?.galerija) return;
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? masina.galerija.length - 1 : prev - 1
+    );
+  };
 
   // --- LOGIKA ZA SLANJE FORME ---
   const handleSubmit = async (e) => {
@@ -33,12 +63,10 @@ function SinglePege() {
     setStatusMessage('');
 
     const formData = new FormData(e.target);
-    // Automatski dodajemo ime mašine u naslov mejla!
     formData.append('_subject', `Novi upit za mašinu: ${masina.naziv}`);
     formData.append('_captcha', 'false');
 
     try {
-      // Šaljemo na Goranov mail
       const response = await fetch("https://formsubmit.co/vidovicgoran@masine.ai", {
         method: "POST",
         headers: {
@@ -49,9 +77,8 @@ function SinglePege() {
 
       if (response.ok) {
         setStatusMessage('uspeh');
-        e.target.reset(); // Čistimo formu
+        e.target.reset(); 
         
-        // Zatvaramo modal automatski posle 3 sekunde
         setTimeout(() => {
           setIsModalOpen(false);
           setStatusMessage('');
@@ -64,7 +91,6 @@ function SinglePege() {
       setStatusMessage('greska');
     } finally {
       setIsSubmitting(false);
-      // Sklanjamo poruku o grešci posle 5 sekundi
       if (statusMessage === 'greska') {
         setTimeout(() => setStatusMessage(''), 5000);
       }
@@ -82,6 +108,10 @@ function SinglePege() {
       </div>
     );
   }
+
+  // Određivanje slike za prikaz u modalu
+  const modalSlika = masina?.galerija?.[currentImageIndex] || glavnaSlika;
+  const imaViseSlika = masina?.galerija?.length > 1;
 
   return (
     <div className="min-h-screen bg-slate-200 pt-32 py-12 px-4 sm:px-6 lg:px-8 relative">
@@ -104,8 +134,19 @@ function SinglePege() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col gap-6"
           >
-            <div className="relative aspect-square bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden group">
+            {/* KLIK ZA OTVARANJE SLAJDER MODALA */}
+            <div 
+              onClick={openImageModal}
+              className="relative aspect-square bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden group cursor-pointer"
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-3 rounded-2xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg z-20">
+                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+
               <img
                 src={glavnaSlika}
                 alt={masina.naziv}
@@ -158,7 +199,6 @@ function SinglePege() {
               {masina.opis}
             </p>
 
-            {/* DINAMIČKE TEHNIČKE SPECIFIKACIJE */}
             <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm mb-10">
               <h3 className="text-xl font-black text-slate-900 mb-8 flex items-center gap-3">
                 <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
@@ -181,9 +221,7 @@ function SinglePege() {
               </div>
             </div>
 
-            {/* CTA DUGMIĆI */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {/* OTVARA MODAL NA KLIK */}
               <button 
                 onClick={() => setIsModalOpen(true)}
                 className="flex-[2] bg-slate-900 hover:bg-blue-600 text-white font-black py-5 px-8 rounded-2xl transition-all duration-300 shadow-xl shadow-slate-900/10 flex items-center justify-center gap-3 group"
@@ -203,11 +241,83 @@ function SinglePege() {
         <MachineMarquee currentSlug={masina.slug} />
       </div>
 
+      {/* --- MODAL ZA PREGLED SLIKE (SLAJDER) --- */}
+      <AnimatePresence>
+        {isImageModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
+            {/* Zatamnjena pozadina */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute inset-0 bg-slate-900/95 backdrop-blur-md cursor-pointer"
+            />
+
+            {/* Dugme za zatvaranje (X) */}
+            <button 
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute top-6 right-6 z-[110] text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-md transition-all"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* STRELICA LEVO */}
+            {imaViseSlika && (
+              <button 
+                onClick={prevImage}
+                className="absolute left-4 sm:left-8 z-[110] text-white/50 hover:text-white bg-white/5 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all active:scale-95"
+              >
+                <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
+            {/* SLIKA U CENTRU */}
+            <motion.div 
+              key={currentImageIndex} // Key omogućava animaciju kad se slika promeni
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 w-full h-full flex flex-col items-center justify-center pointer-events-none"
+            >
+              <img
+                src={modalSlika}
+                alt={masina.naziv}
+                className="max-w-full max-h-[80vh] md:max-h-[85vh] object-contain drop-shadow-2xl pointer-events-auto"
+              />
+              {/* Indikator slika (npr. 1 / 5) na dnu */}
+              {imaViseSlika && (
+                <div className="mt-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white/80 text-sm font-bold tracking-widest pointer-events-auto">
+                  {currentImageIndex + 1} / {masina.galerija.length}
+                </div>
+              )}
+            </motion.div>
+
+            {/* STRELICA DESNO */}
+            {imaViseSlika && (
+              <button 
+                onClick={nextImage}
+                className="absolute right-4 sm:right-8 z-[110] text-white/50 hover:text-white bg-white/5 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all active:scale-95"
+              >
+                <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* --- MODAL ZA FORMU --- */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Zatamnjena pozadina */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -216,14 +326,12 @@ function SinglePege() {
               className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
             ></motion.div>
 
-            {/* Sadržaj Modala - POPRAVLJENO ZA MOBILNI */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative bg-white rounded-[2rem] p-6 sm:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10"
             >
-              {/* X dugme za zatvaranje */}
               <button 
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 transition-colors bg-slate-100 hover:bg-slate-200 p-2 rounded-full z-20"
@@ -238,7 +346,6 @@ function SinglePege() {
                 <p className="text-slate-500 font-medium mt-1">Za mašinu: <span className="text-blue-600 font-bold">{masina.naziv}</span></p>
               </div>
 
-              {/* Poruke o statusu */}
               {statusMessage === 'uspeh' && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center gap-3 font-bold">
                   <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -253,7 +360,6 @@ function SinglePege() {
                 </div>
               )}
 
-              {/* Sama Forma */}
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">Ime Firme / Osobe</label>

@@ -35,6 +35,7 @@ export default function MachineCard({ masina }) {
   // PROVERA KATEGORIJE
   const isMikser = masina?.kategorija === "mini-mikseri";
   const isBager = masina?.kategorija === "mini-bageri";
+  const isViljuskar = masina?.kategorija === "viljuskari"; // <-- DODATO
 
   // DINAMIČKE SPECIFIKACIJE ZA KARTICU
   let spec1Label = "Visina";
@@ -55,6 +56,11 @@ export default function MachineCard({ masina }) {
     spec1Value = masina?.specifikacije?.maxDubinaKopanja ? masina.specifikacije.maxDubinaKopanja.toLowerCase() : "-";
     spec2Label = "Visina kopanja";
     spec2Value = `${masina?.specifikacije?.maxVisinaKopanja ?? ""} `;
+  }else if (isViljuskar) { // <-- DODATO ZA VILJUŠKARE
+    spec1Label = "Max visina";
+    spec1Value = `${masina?.specifikacije?.maksVisinaDizanja ?? "-"}`;
+    spec2Label = "Nosivost";
+    spec2Value = `${masina?.specifikacije?.nosivost ?? "-"}kg`;
   }
 
   // inicijalno učitavanje favorita

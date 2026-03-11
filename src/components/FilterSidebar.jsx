@@ -46,6 +46,7 @@ function FilterSidebar({
   const showTelehenderFilters = safeFilters.kategorija === "telehenderi";
   const showMikserFilters = safeFilters.kategorija === "mini-mikseri";
   const showBagerFilters = safeFilters.kategorija === "mini-bageri"; // NOVO
+  const showViljuskarFilters = safeFilters.kategorija === "viljuskari";
 
   return (
     <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 sticky top-24">
@@ -240,6 +241,33 @@ function FilterSidebar({
           
           
         </>
+      )}
+      {/* VILJUŠKARI FILTERI (NOVO) */}
+      {showViljuskarFilters && (
+        <div className="mb-6">
+          <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
+            Nosivost (kg)
+          </h3>
+          <div className="flex items-center gap-2">
+            <input
+              type="number"
+              name="minNosivost"
+              value={safeFilters.minNosivost}
+              onChange={handleChange}
+              placeholder="Min"
+              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+            />
+            <span className="text-slate-400 font-bold">-</span>
+            <input
+              type="number"
+              name="maxNosivost"
+              value={safeFilters.maxNosivost}
+              onChange={handleChange}
+              placeholder="Max"
+              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+            />
+          </div>
+        </div>
       )}
     </div>
   );
