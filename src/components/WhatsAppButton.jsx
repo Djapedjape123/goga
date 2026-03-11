@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa'; // Instaliraj react-icons ako nema�
 const WhatsAppButton = () => {
   // Zameni sa tvojim brojem (mora biti u formatu 381...)
   const phoneNumber = "381601234567"; 
-  const message = "Zdravo, pišem vam sa sajta Goga Machines. Zanima me ponuda za mašine.";
+  const message = "Zdravo, pišem vam sa sajta Masine.ai. Zanima me ponuda za mašine.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -18,7 +18,7 @@ const WhatsAppButton = () => {
     >
       {/* Mali tool tip koji se pojavi na hover */}
       <span className="absolute right-16 bg-slate-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-        Pišite nam
+        Koje mašine vas zanimaju? Kliknite da nam pišete!
       </span>
       
       <FaWhatsapp size={28} />

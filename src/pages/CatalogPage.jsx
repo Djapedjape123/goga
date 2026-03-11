@@ -1,75 +1,117 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { sveMasine } from '../data/sveMasine';
 import MachineCard from '../components/MachineCard';
 import FilterSidebar from '../components/FilterSidebar';
 import { motion } from 'framer-motion';
 
+// --- POMOĆNA FUNKCIJA ZA SIGURNO PRETVARANJE U BROJ ---
+const parseToNumber = (value) => {
+  if (value === null || value === undefined || value === "") return 0;
+  if (typeof value === "number") return value;
+  const cleaned = String(value).replace(/[^0-9.]+/g, "");
+  const num = parseFloat(cleaned);
+  return isNaN(num) ? 0 : num;
+};
+
+const DEFAULT_FILTERS = {
+  kategorija: 'sve',
+  minVisina: '', maxVisina: '',
+  minNosivost: '', maxNosivost: '',
+  minKapacitet: '', maxKapacitet: '',
+  minDubinaKopanja: '', maxDubinaKopanja: '',
+  minVisinaKopanja: '', maxVisinaKopanja: '',
+  minVisinaIstovara: '', maxVisinaIstovara: '',
+};
+
+// --- BROJ MAŠINA PO STRANICI ---
+const MASINA_PO_STRANI = 6; // Za testiranje stavi na 6
+
 function CatalogPage() {
-  const [filters, setFilters] = useState({
-    kategorija: 'sve',
-    minVisina: '',
-    maxVisina: '',
-    minNosivost: '',
-    maxNosivost: '',
-    minKapacitet: '',
-    maxKapacitet: '',
-    // Dodata stanja za mini bagere
-    minDubinaKopanja: '',
-    maxDubinaKopanja: '',
-    minVisinaKopanja: '',
-    maxVisinaKopanja: '',
-    minVisinaIstovara: '',
-    maxVisinaIstovara: '',
-  });
+  const [filters, setFilters] = useState(DEFAULT_FILTERS);
 
-  const categories = ['sve', ...new Set(sveMasine.map(m => m.kategorija))];
+  // --- STATE ZA PAGINACIJU ---
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredMasine = sveMasine.filter(masina => {
-    // 1. Provera kategorije
-    if (filters.kategorija !== 'sve' && masina.kategorija !== filters.kategorija) {
-      return false;
-    }
-    
-    // 2. Provera filtera za Telehendere
-    if (filters.minVisina && masina.specifikacije.visinaDizanja < Number(filters.minVisina)) return false;
-    if (filters.maxVisina && masina.specifikacije.visinaDizanja > Number(filters.maxVisina)) return false;
-    if (filters.minNosivost && masina.specifikacije.nosivost < Number(filters.minNosivost)) return false;
-    if (filters.maxNosivost && masina.specifikacije.nosivost > Number(filters.maxNosivost)) return false;
-    
-    // 3. Provera filtera za Mini miksere
-    if (filters.minKapacitet && masina.specifikacije.kapacitetMesanja < Number(filters.minKapacitet)) return false;
-    if (filters.maxKapacitet && masina.specifikacije.kapacitetMesanja > Number(filters.maxKapacitet)) return false;
+  // --- MEGA TRIK: INTERCEPTOR ZA FILTERE ---
+  const handleSetFilters = (updater) => {
+    setFilters((prev) => {
+      const nextState = typeof updater === 'function' ? updater(prev) : updater;
 
-    // 4. Provera filtera za Mini bagere (NOVO)
-    // parseInt odseca "MM" iz stringa i pretvara ga u broj (npr. "3200MM" postaje 3200)
-    if (filters.minDubinaKopanja || filters.maxDubinaKopanja || filters.minVisinaKopanja || filters.maxVisinaKopanja || filters.minVisinaIstovara || filters.maxVisinaIstovara) {
-      
-      // Ako mašina nema ovu specifikaciju (npr. ako je telehender, a neko ukuca filter za dubinu)
-      if (!masina.specifikacije.maxDubinaKopanja) return false;
+      // Ako je korisnik promenio kategoriju, čistimo ostale filtere
+      if (nextState.kategorija !== prev.kategorija) {
+        setCurrentPage(1); // RESETUJEMO NA PRVU STRANU
+        return {
+          ...DEFAULT_FILTERS,
+          kategorija: nextState.kategorija
+        };
+      }
 
-      const dubina = parseInt(masina.specifikacije.maxDubinaKopanja, 10);
-      const visinaK = parseInt(masina.specifikacije.maxVisinaKopanja, 10);
-      const visinaI = parseInt(masina.specifikacije.maxVisinaIstovara, 10);
+      // Čak i ako promeni samo cenu/nosivost, vraćamo ga na prvu stranu
+      setCurrentPage(1);
+      return nextState;
+    });
+  };
 
-      if (filters.minDubinaKopanja && dubina < Number(filters.minDubinaKopanja)) return false;
-      if (filters.maxDubinaKopanja && dubina > Number(filters.maxDubinaKopanja)) return false;
+  const categories = useMemo(() => {
+    return ['sve', ...new Set(sveMasine.map(m => m.kategorija))];
+  }, []);
 
-      if (filters.minVisinaKopanja && visinaK < Number(filters.minVisinaKopanja)) return false;
-      if (filters.maxVisinaKopanja && visinaK > Number(filters.maxVisinaKopanja)) return false;
+  // --- GLAVNA LOGIKA FILTRIRANJA ---
+  const filteredMasine = useMemo(() => {
+    return sveMasine.filter(masina => {
+      if (filters.kategorija !== 'sve' && masina.kategorija !== filters.kategorija) return false;
 
-      if (filters.minVisinaIstovara && visinaI < Number(filters.minVisinaIstovara)) return false;
-      
-    }
-    
-    return true;
-  });
+      const s = masina.specifikacije || {};
+
+      if (['sve', 'telehenderi', 'viljuskari'].includes(filters.kategorija)) {
+        const mVisina = parseToNumber(s.visinaDizanja || s.maksVisinaDizanja);
+        const mNosivost = parseToNumber(s.nosivost);
+
+        if (filters.minVisina && mVisina < parseToNumber(filters.minVisina)) return false;
+        if (filters.maxVisina && mVisina > parseToNumber(filters.maxVisina)) return false;
+        if (filters.minNosivost && mNosivost < parseToNumber(filters.minNosivost)) return false;
+        if (filters.maxNosivost && mNosivost > parseToNumber(filters.maxNosivost)) return false;
+      }
+
+      if (['sve', 'mini-mikseri'].includes(filters.kategorija)) {
+        const mKapacitet = parseToNumber(s.kapacitetMesanja);
+        if (filters.minKapacitet && mKapacitet < parseToNumber(filters.minKapacitet)) return false;
+        if (filters.maxKapacitet && mKapacitet > parseToNumber(filters.maxKapacitet)) return false;
+      }
+
+      if (['sve', 'mini-bageri'].includes(filters.kategorija)) {
+        const mDubina = parseToNumber(s.maxDubinaKopanja);
+        const mVisinaK = parseToNumber(s.maxVisinaKopanja);
+        const mVisinaI = parseToNumber(s.maxVisinaIstovara);
+
+        if (filters.minDubinaKopanja && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
+        if (filters.maxDubinaKopanja && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
+        if (filters.minVisinaKopanja && mVisinaK < parseToNumber(filters.minVisinaKopanja)) return false;
+        if (filters.maxVisinaKopanja && mVisinaK > parseToNumber(filters.maxVisinaKopanja)) return false;
+        if (filters.minVisinaIstovara && mVisinaI < parseToNumber(filters.minVisinaIstovara)) return false;
+      }
+
+      return true;
+    });
+  }, [filters]);
+
+  // --- LOGIKA PAGINACIJE (SECANJE NIZA) ---
+  const totalPages = Math.ceil(filteredMasine.length / MASINA_PO_STRANI);
+  const startIndex = (currentPage - 1) * MASINA_PO_STRANI;
+  const currentMachines = filteredMasine.slice(startIndex, startIndex + MASINA_PO_STRANI);
+
+  // Funkcija za skrol na vrh kada se promeni stranica
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9]  to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30"></div>
-        <div className="max-w-7xl mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-x-clip">
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
 
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
@@ -90,7 +132,7 @@ function CatalogPage() {
             >
               <FilterSidebar
                 filters={filters}
-                setFilters={setFilters}
+                setFilters={handleSetFilters}
                 categories={categories}
               />
             </motion.div>
@@ -99,10 +141,9 @@ function CatalogPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="w-full lg:w-3/4"
+              className="w-full lg:w-3/4 flex flex-col min-h-[500px]"
             >
-              <div className="mb-8 flex justify-between items-center bg-white/70 backdrop-blur-xl px-6 py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/60 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(37,99,235,0.08)] hover:-translate-y-0.5">
-
+              <div className="mb-8 flex justify-between items-center bg-white/70 backdrop-blur-xl px-6 py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/60">
                 <div className="flex items-center gap-4">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -117,36 +158,91 @@ function CatalogPage() {
                     {filteredMasine.length}
                   </div>
                 </div>
-
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {filteredMasine.map((masina) => (
+              {/* GRID: Mapiramo currentMachines umesto filteredMasine */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 flex-grow">
+                {currentMachines.map((masina) => (
                   <MachineCard key={masina.id} masina={masina} />
                 ))}
               </div>
 
+              {/* EMPTY STATE */}
               {filteredMasine.length === 0 && (
                 <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 mt-8">
                   <div className="text-6xl mb-4">🚜</div>
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">Ne postoji takva mašina</h3>
                   <p className="text-slate-500 mb-6">Pokušajte da proširite parametre pretrage ili poništite filtere.</p>
                   <button
-                    onClick={() => setFilters({ 
-                      kategorija: 'sve', 
-                      minVisina: '', maxVisina: '', 
-                      minNosivost: '', maxNosivost: '', 
-                      minKapacitet: '', maxKapacitet: '',
-                      minDubinaKopanja: '', maxDubinaKopanja: '',
-                      minVisinaKopanja: '', maxVisinaKopanja: '',
-                      minVisinaIstovara: '', maxVisinaIstovara: ''
-                    })}
+                    onClick={() => handleSetFilters(DEFAULT_FILTERS)}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >
                     Poništi sve filtere
                   </button>
                 </div>
               )}
+
+              {/* KONTROLE ZA PAGINACIJU */}
+              {totalPages > 1 && (
+                <div className="mt-16 mb-8 flex justify-center items-center gap-2 sm:gap-4 w-full">
+
+                  {/* PRETHODNA STRANA */}
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="group flex items-center justify-center w-12 h-12 sm:w-auto sm:px-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 shadow-sm active:scale-95"
+                  >
+                    <svg className="w-5 h-5 sm:mr-2 transform transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span className="hidden sm:block font-bold">Nazad</span>
+                  </button>
+
+                  {/* BROJEVI STRANICA */}
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    {[...Array(totalPages)].map((_, i) => {
+                      const pageNum = i + 1;
+                      const isActive = currentPage === pageNum;
+
+                      // Pametno prikazivanje na mobilnom (sakriva srednje brojeve ako ih ima puno)
+                      const isNearCurrent = Math.abs(currentPage - pageNum) <= 1;
+                      const isEdge = pageNum === 1 || pageNum === totalPages;
+                      const showOnMobile = isNearCurrent || isEdge;
+
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => handlePageChange(pageNum)}
+                          className={`
+                            w-10 h-10 sm:w-12 sm:h-12 rounded-2xl font-black transition-all duration-300 flex items-center justify-center text-sm sm:text-base
+                            ${isActive
+                              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110 z-10'
+                              : 'bg-white/70 backdrop-blur-md border border-slate-200 text-slate-600 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200'
+                            }
+                            ${!showOnMobile ? 'hidden sm:flex' : 'flex'}
+                          `}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* SLEDEĆA STRANA */}
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="group flex items-center justify-center w-12 h-12 sm:w-auto sm:px-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 shadow-sm active:scale-95"
+                  >
+                    <span className="hidden sm:block font-bold">Dalje</span>
+                    <svg className="w-5 h-5 sm:ml-2 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                </div>
+              )}
+
             </motion.div>
 
           </div>

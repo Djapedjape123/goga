@@ -8,11 +8,7 @@ import './i18n';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
-// import FavoritePege from './pages/FavoritePege.jsx';
 
-// --- OBRISANI OBIČNI IMPORTI ---
-// import CatalogPage from './pages/CatalogPage.jsx';
-// import SinglePege from './pages/SinglePege.jsx';
 
 // --- SVE STRANICE SU SADA LAZY LOADED ---
 const HomePage = lazy(() => import('./pages/HomePege.jsx'));
