@@ -36,6 +36,9 @@ export default function MachineCard({ masina }) {
   const isMikser = masina?.kategorija === "mini-mikseri";
   const isBager = masina?.kategorija === "mini-bageri";
   const isViljuskar = masina?.kategorija === "viljuskari"; // <-- DODATO
+  const isBagerV = masina?.kategorija === "bageri";
+  const isDron = masina?.kategorija === "dronovi";
+  const isKosilica = masina?.kategorija === "kosilice";
 
   // DINAMIČKE SPECIFIKACIJE ZA KARTICU
   let spec1Label = "Visina";
@@ -61,6 +64,25 @@ export default function MachineCard({ masina }) {
     spec1Value = `${masina?.specifikacije?.maksVisinaDizanja ?? "-"}`;
     spec2Label = "Nosivost";
     spec2Value = `${masina?.specifikacije?.nosivost ?? "-"}kg`;
+  }else if (isBagerV) {
+    // --- NOVO PODEŠAVANJE ZA BAGERE (Kašike) ---
+    spec1Label = "Max dubina kopanja";
+    spec1Value = `${masina?.specifikacije?.maxDubinaKopanja ?? "-"}`;
+    spec2Label = "Max visina istovara";
+    spec2Value = `${masina?.specifikacije?.maxVisinaIstovara ?? "-"}`;
+  }else if (isDron) { // <-- DODATO ZA DRONOVE
+    spec1Label = "Rezervoar";
+    spec1Value = `${masina?.specifikacije?.kapacitetRezervoara ?? "-"}`;
+    spec2Label = "Baterija";
+    // Skraćujemo tekst za karticu (brišemo ono u zagradi da dizajn ostane čist)
+    let bat = masina?.specifikacije?.baterija ?? "-";
+    spec2Value = bat.split(" (")[0]; 
+  }else if (isKosilica) {
+    // --- NOVO PODEŠAVANJE ZA BAGERE (Kašike) ---
+    spec1Label = "Max površina košenja";
+    spec1Value = `${masina?.specifikacije?.maksimalnaPovrsina ?? "-"}`;
+    spec2Label = "Max širina košenja";
+    spec2Value = `${masina?.specifikacije?.sirinaKosenja ?? "-"}`;
   }
 
   // inicijalno učitavanje favorita
@@ -176,7 +198,7 @@ export default function MachineCard({ masina }) {
         {/* DINAMIČNE SPECIFIKACIJE */}
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">
               {spec1Label}
             </span>
             <span className="text-base font-black text-slate-800">
@@ -185,7 +207,7 @@ export default function MachineCard({ masina }) {
           </div>
 
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">
               {spec2Label}
             </span>
             <span className="text-base font-black text-slate-800">

@@ -23,30 +23,24 @@ const DEFAULT_FILTERS = {
   minVisinaIstovara: '', maxVisinaIstovara: '',
 };
 
-// --- BROJ MAŠINA PO STRANICI ---
-const MASINA_PO_STRANI = 6; // Za testiranje stavi na 6
+const MASINA_PO_STRANI = 6;
 
 function CatalogPage() {
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
-
-  // --- STATE ZA PAGINACIJU ---
   const [currentPage, setCurrentPage] = useState(1);
 
-  // --- MEGA TRIK: INTERCEPTOR ZA FILTERE ---
   const handleSetFilters = (updater) => {
     setFilters((prev) => {
       const nextState = typeof updater === 'function' ? updater(prev) : updater;
 
-      // Ako je korisnik promenio kategoriju, čistimo ostale filtere
       if (nextState.kategorija !== prev.kategorija) {
-        setCurrentPage(1); // RESETUJEMO NA PRVU STRANU
+        setCurrentPage(1); 
         return {
           ...DEFAULT_FILTERS,
           kategorija: nextState.kategorija
         };
       }
 
-      // Čak i ako promeni samo cenu/nosivost, vraćamo ga na prvu stranu
       setCurrentPage(1);
       return nextState;
     });
@@ -63,6 +57,7 @@ function CatalogPage() {
 
       const s = masina.specifikacije || {};
 
+      // 1. Telehenderi i Viljuškari
       if (['sve', 'telehenderi', 'viljuskari'].includes(filters.kategorija)) {
         const mVisina = parseToNumber(s.visinaDizanja || s.maksVisinaDizanja);
         const mNosivost = parseToNumber(s.nosivost);
@@ -73,34 +68,43 @@ function CatalogPage() {
         if (filters.maxNosivost && mNosivost > parseToNumber(filters.maxNosivost)) return false;
       }
 
+      // 2. Mikseri
       if (['sve', 'mini-mikseri'].includes(filters.kategorija)) {
         const mKapacitet = parseToNumber(s.kapacitetMesanja);
         if (filters.minKapacitet && mKapacitet < parseToNumber(filters.minKapacitet)) return false;
         if (filters.maxKapacitet && mKapacitet > parseToNumber(filters.maxKapacitet)) return false;
       }
 
+      // 3. MINI BAGERI (Kopanje + Visina Kopanja)
       if (['sve', 'mini-bageri'].includes(filters.kategorija)) {
         const mDubina = parseToNumber(s.maxDubinaKopanja);
         const mVisinaK = parseToNumber(s.maxVisinaKopanja);
-        const mVisinaI = parseToNumber(s.maxVisinaIstovara);
 
         if (filters.minDubinaKopanja && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
         if (filters.maxDubinaKopanja && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
         if (filters.minVisinaKopanja && mVisinaK < parseToNumber(filters.minVisinaKopanja)) return false;
         if (filters.maxVisinaKopanja && mVisinaK > parseToNumber(filters.maxVisinaKopanja)) return false;
+      }
+
+      // 4. VELIKI BAGERI (Kopanje + Visina Istovara)
+      if (['sve', 'bageri'].includes(filters.kategorija)) {
+        const mDubina = parseToNumber(s.maxDubinaKopanja);
+        const mVisinaI = parseToNumber(s.maxVisinaIstovara);
+
+        if (filters.minDubinaKopanja && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
+        if (filters.maxDubinaKopanja && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
         if (filters.minVisinaIstovara && mVisinaI < parseToNumber(filters.minVisinaIstovara)) return false;
+        if (filters.maxVisinaIstovara && mVisinaI > parseToNumber(filters.maxVisinaIstovara)) return false;
       }
 
       return true;
     });
   }, [filters]);
 
-  // --- LOGIKA PAGINACIJE (SECANJE NIZA) ---
   const totalPages = Math.ceil(filteredMasine.length / MASINA_PO_STRANI);
   const startIndex = (currentPage - 1) * MASINA_PO_STRANI;
   const currentMachines = filteredMasine.slice(startIndex, startIndex + MASINA_PO_STRANI);
 
-  // Funkcija za skrol na vrh kada se promeni stranica
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -160,14 +164,12 @@ function CatalogPage() {
                 </div>
               </div>
 
-              {/* GRID: Mapiramo currentMachines umesto filteredMasine */}
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 flex-grow">
                 {currentMachines.map((masina) => (
                   <MachineCard key={masina.id} masina={masina} />
                 ))}
               </div>
 
-              {/* EMPTY STATE */}
               {filteredMasine.length === 0 && (
                 <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 mt-8">
                   <div className="text-6xl mb-4">🚜</div>
@@ -182,11 +184,8 @@ function CatalogPage() {
                 </div>
               )}
 
-              {/* KONTROLE ZA PAGINACIJU */}
               {totalPages > 1 && (
                 <div className="mt-16 mb-8 flex justify-center items-center gap-2 sm:gap-4 w-full">
-
-                  {/* PRETHODNA STRANA */}
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
@@ -198,13 +197,10 @@ function CatalogPage() {
                     <span className="hidden sm:block font-bold">Nazad</span>
                   </button>
 
-                  {/* BROJEVI STRANICA */}
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     {[...Array(totalPages)].map((_, i) => {
                       const pageNum = i + 1;
                       const isActive = currentPage === pageNum;
-
-                      // Pametno prikazivanje na mobilnom (sakriva srednje brojeve ako ih ima puno)
                       const isNearCurrent = Math.abs(currentPage - pageNum) <= 1;
                       const isEdge = pageNum === 1 || pageNum === totalPages;
                       const showOnMobile = isNearCurrent || isEdge;
@@ -228,7 +224,6 @@ function CatalogPage() {
                     })}
                   </div>
 
-                  {/* SLEDEĆA STRANA */}
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
@@ -239,7 +234,6 @@ function CatalogPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
-
                 </div>
               )}
 

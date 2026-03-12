@@ -931,7 +931,7 @@ export const sveMasine = [
       radijusOkretanja: "2110mm",
       maksVisinaDizanja: "do 6m"
     },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    coverSlika: "/images/vilj/vilj1.webp", 
     galerija: [
       "/images/vilj/vilj1.webp",
       "/images/vilj/vilj2.webp",
@@ -1051,5 +1051,256 @@ export const sveMasine = [
       "/images/vilj/vilj4.webp",
     ],
     model3D: null
+  },
+  // --- NOVI BAGERI (Kombinirke / Rovokopači) ---
+  {
+    id: "wz06-10-bager",
+    slug: "wz06-10-bager",
+    naziv: "WZ06-10",
+    kategorija: "bageri",
+    cena: "17900", // +PDV (možeš dodati tekst "bez PDV" u komponenti gde se ispisuje cena)
+    opis: "Kompaktni bager WZ06-10 sa pouzdanim Kubota motorom. Operativna težina od 1800kg ga čini odličnim za uže prostore.",
+    specifikacije: {
+      motor: "Kubota",
+      operativnaTezina: "1800kg",
+      snagaMotora: "18.2kW",
+      kapacitetPrednjeKasike: "0.2m³",
+      kapacitetZadnjeKasike: "0.08m³",
+      maxDubinaKopanja: "2400MM",
+      maxVisinaIstovara: "2000MM",
+      brzinaKretanja: "20km/h"
+    },
+    coverSlika: "/images/vBager/Vbager1.webp", // Obavezno ažuriraj putanju
+    galerija: [
+      "/images/vBager/Vbager1.webp",
+      "/images/vBager/Vbager2.webp",
+      "/images/vBager/Vbager3.webp",
+      "/images/vBager/Vbager4.webp",
+      "/images/vBager/Vbager5.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "wz08-12-bager",
+    slug: "wz08-12-bager",
+    naziv: "WZ08-12",
+    kategorija: "bageri",
+    cena: "14900",
+    opis: "Snažan bager WZ08-12 sa Yunnei motorom (opciono Kubota). Odličan balans snage od 37kW i kapaciteta.",
+    specifikacije: {
+      motor: "YUNNEI (Opcija: Kubota +3000€)",
+      operativnaTezina: "2500kg",
+      snagaMotora: "37kW / 50HP",
+      kapacitetPrednjeKasike: "0.5m³",
+      kapacitetZadnjeKasike: "0.08m³",
+      maxDubinaKopanja: "1500MM",
+      maxVisinaIstovara: "2200MM",
+      brzinaKretanja: "20km/h"
+    },
+    coverSlika: "/images/vBager/Vbage21.webp", // Obavezno ažuriraj putanju
+    galerija: [
+      "/images/vBager/Vbage21.webp",
+      "/images/vBager/Vbager22.webp",
+      "/images/vBager/Vbager23.webp",
+      "/images/vBager/Vbager24.webp",
+      "/images/vBager/Vbager25.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "wz10-20-bager",
+    slug: "wz10-20-bager",
+    naziv: "WZ10-20",
+    kategorija: "bageri",
+    cena: "16900",
+    opis: "Srednji bager WZ10-20, operativna težina 3400kg uz veliku prednju kašiku od 0.75m³ za efikasan utovar.",
+    specifikacije: {
+      motor: "YUNNEI",
+      operativnaTezina: "3400kg",
+      snagaMotora: "37kW / 50HP",
+      kapacitetPrednjeKasike: "0.75m³",
+      kapacitetZadnjeKasike: "0.1m³",
+      maxDubinaKopanja: "2000MM",
+      maxVisinaIstovara: "2800MM",
+      brzinaKretanja: "25km/h"
+    },
+    coverSlika: "/images/vBager/Vbager31.webp", // Obavezno ažuriraj putanju
+    galerija: [
+      "/images/vBager/Vbager31.webp",
+      "/images/vBager/Vbager32.webp",
+      "/images/vBager/Vbager33.webp",
+      "/images/vBager/Vbager34.webp",
+      "/images/vBager/Vbager35.webp",
+
+    ],
+    model3D: null
+  },
+  {
+    id: "wz15-26-bager",
+    slug: "wz15-26-bager",
+    naziv: "WZ15-26",
+    kategorija: "bageri",
+    cena: "18900",
+    opis: "Najteži model WZ15-26. Sa težinom od skoro 5 tona i motorom od 79 konjskih snaga, dizajniran je za najveće izazove.",
+    specifikacije: {
+      motor: "YUNNEI",
+      operativnaTezina: "4800kg",
+      snagaMotora: "58kW / 79HP",
+      kapacitetPrednjeKasike: "1.0m³",
+      kapacitetZadnjeKasike: "0.15m³",
+      maxDubinaKopanja: "2700MM",
+      maxVisinaIstovara: "3300MM",
+      brzinaKretanja: "26km/h"
+    },
+    coverSlika: "/images/vBager/Vbager41.webp", // Obavezno ažuriraj putanju
+    galerija: [
+      "/images/vBager/Vbager41.webp",
+      "/images/vBager/Vbager42.webp",
+      "/images/vBager/Vbager43.webp",
+      "/images/vBager/Vbager44.webp",
+      "/images/vBager/Vbager45.webp",
+      "/images/vBager/Vbager46.webp",
+
+    ],
+    model3D: null
+  },
+  ///dronovi
+  // --- DRONOVI ---
+  {
+    id: "jt80-dron",
+    slug: "jt-80-poljoprivredni-dron",
+    naziv: "JT-80 Agri Drone",
+    kategorija: "dronovi", // <-- Nova kategorija
+    cena: "14900", // +PDV (Prikazaće se automatski zbog koda u kartici)
+    opis: "JT-80 Agri Drone je profesionalni poljoprivredni dron dizajniran za efikasno i precizno prskanje pesticida, herbicida i tečnih đubriva. Zahvaljujući velikom rezervoaru od 70L i naprednim navigacionim sistemima (GPS + RTK), omogućava brzo tretiranje velikih površina uz minimalan utrošak hemikalija i radne snage. Opremljen je centrifugalnim diznama za ravnomerno raspršivanje, radarskim senzorima za izbegavanje prepreka i FPV kamerom za nadzor leta. Integrisana aplikacija i daljinski upravljač omogućavaju precizno planiranje leta i potpuno automatsko prskanje, smanjujući troškove i povećavajući produktivnost.",
+    specifikacije: {
+      kapacitetRezervoara: "70 L",
+      sistemRasprsivanja: "Centrifugalne dizne (2 kom) + Impeler pumpa",
+      navigacija: "GPS + RTK navigacioni sistem",
+      senzori: "3 radarska senzora za prepreke + FPV kamera",
+      baterija: "68.4V / 30000 mAh (2 komada u setu)",
+      punjenje: "Pametni AC punjač (110V – 230V)",
+      upravljanje: "Daljinski kontroler + mobilna aplikacija",
+      osnovniPaket: "Dron, daljinski, FPV kamera, 3 radara, GPS+RTK, 2 baterije, AC punjač, 70L rezervoar, 2 dizne",
+      dodatnaOpremaOpciono: "RTK bazna stanica, Spreading tank 100L (za rasipanje), Generator (benzin/dizel), Rezervoar za mešanje 300L, dodatne baterije"
+    },
+    coverSlika: "/images/dron/dron1.webp", // <-- PRILAGODI PUTANJU
+    galerija: [
+      "/images/dron/dron1.webp",
+      "/images/dron/dron2.webp",
+      "/images/dron/dron3.webp",
+      "/images/dron/dron4.webp",
+      "/images/dron/dron5.webp",
+      "/images/dron/dron6.webp",
+      "/images/dron/dron7.webp",
+
+    ],
+    model3D: null
+  },
+  // --- ROBOTSKE KOSILICE ---
+  {
+    id: "mai-an1000v",
+    slug: "mai-an1000v-robotska-kosilica",
+    naziv: "MAI AN1000V",
+    kategorija: "kosilice", // <-- Nova kategorija
+    cena: "Na upit", // U fajlu je prazno, pa stavljamo "Na upit"
+    opis: "Pametna robotska kosilica MAI AN1000V idealna za dvorišta i travnjake do 1000 m². Koristi naprednu AI Vision kameru i IMU za izbegavanje prepreka i planiranje rute bez potrebe za graničnim žicama. Upravljanje je potpuno automatizovano putem mobilne aplikacije.",
+    specifikacije: {
+      maksimalnaPovrsina: "1000 m²",
+      kapacitetKosenja: "100-150 m²/h",
+      navigacija: "AI Vision + IMU",
+      izbegavanjePrepreka: "AI kamera",
+      planiranjeRute: "Da",
+      sirinaKosenja: "210 mm",
+      visinaKosenja: "30-60 mm",
+      brojNozeva: "3",
+      brzina: "0-0.5 m/s",
+      maksNagib: "50%", // 0.5 pretvoreno u procente za lakše čitanje
+      baterija: "Li-Ion 4Ah",
+      vremePunjenja: "2h",
+      automatskoPunjenje: "Da",
+      kontrola: "Mobilna aplikacija",
+      povezivanje: "Bluetooth",
+      zastitaOdKradje: "Alarm + PIN",
+      tezina: "13.5 kg"
+    },
+    coverSlika: "/images/kosilice/an1000v-main.webp", // <-- PRILAGODI PUTANJU
+    galerija: [
+      "/images/kosilice/an1000v-main.webp",
+      "/images/kosilice/an1000v-1.webp",
+      "/images/kosilice/an1000v-2.webp"
+    ],
+    model3D: null
+  },
+  {
+    id: "mai-an3000v",
+    slug: "mai-an3000v-robotska-kosilica",
+    naziv: "MAI AN3000V",
+    kategorija: "kosilice",
+    cena: "Na upit",
+    opis: "Unapređeni model MAI AN3000V namenjen srednjim i većim površinama do 3000 m². Uz AI Vision kameru, ovaj model koristi i RTK satelitsku navigaciju za centimetarsku preciznost, kao i ugrađen GPS praćenje (Anti-theft).",
+    specifikacije: {
+      maksimalnaPovrsina: "3000 m²",
+      kapacitetKosenja: "100-150 m²/h",
+      navigacija: "RTK + AI vision + IMU",
+      izbegavanjePrepreka: "AI kamera",
+      planiranjeRute: "Da",
+      sirinaKosenja: "210 mm",
+      visinaKosenja: "30-60 mm",
+      brojNozeva: "3",
+      brzina: "0-0.5 m/s",
+      maksNagib: "50%", 
+      baterija: "Li-Ion 4Ah",
+      vremePunjenja: "2h",
+      automatskoPunjenje: "Da",
+      kontrola: "Mobilna aplikacija",
+      povezivanje: "Bluetooth",
+      zastitaOdKradje: "GPS Tracking + Alarm",
+      tezina: "13.5 kg"
+    },
+    coverSlika: "/images/kosilice/an3000v-main.webp", // <-- PRILAGODI PUTANJU
+    galerija: [
+      "/images/kosilice/an3000v-main.webp",
+      "/images/kosilice/an3000v-1.webp",
+      "/images/kosilice/an3000v-2.webp"
+    ],
+    model3D: null
+  },
+  {
+    id: "mai-commercialpro",
+    slug: "mai-commercialpro-kosilica",
+    naziv: "MAI COMMERCIALPRO",
+    kategorija: "kosilice",
+    cena: "Na upit",
+    opis: "Zver za komercijalnu upotrebu – MAI COMMERCIALPRO. Dizajnirana za ogromne površine do neverovatnih 50.000 m² (sportski tereni, parkovi, golf tereni). Opremljena moćnom 48V LiFePO4 baterijom, industrijskim diskovima za košenje, 4G + RTK povezivanjem i ultrazvučnim senzorima.",
+    specifikacije: {
+      maksimalnaPovrsina: "50000 m²",
+      kapacitetKosenja: "1400 m²/h",
+      navigacija: "RTK + AI vision + IMU",
+      izbegavanjePrepreka: "AI + Ultrazvučni senzori",
+      planiranjeRute: "Da",
+      sirinaKosenja: "450 mm",
+      visinaKosenja: "20-120 mm",
+      brojNozeva: "Industrijski disk",
+      brzina: "0-6 km/h",
+      maksNagib: "40%", 
+      baterija: "48V 30Ah LiFePO4",
+      vremePunjenja: "2.5h",
+      automatskoPunjenje: "Da",
+      kontrola: "Mobilna aplikacija",
+      povezivanje: "4G + RTK",
+      zastitaOdKradje: "GPS",
+      tezina: "50-100 kg"
+    },
+    coverSlika: "/images/kosilice/commercial-main.webp", // <-- PRILAGODI PUTANJU
+    galerija: [
+      "/images/kosilice/commercial-main.webp",
+      "/images/kosilice/commercial-1.webp",
+      "/images/kosilice/commercial-2.webp"
+    ],
+    model3D: null
   }
+
 ];
