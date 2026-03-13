@@ -191,7 +191,7 @@ function SinglePege() {
               <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">{masina.naziv}</h1>
               <div className="flex items-baseline gap-3">
                 <span className="text-3xl font-black text-blue-600">{masina.cena}</span>
-                {masina.cena !== "Na upit" && <span className="text-slate-400 font-bold text-sm">bez PDV-a</span>}
+                {masina.cena !== "Na upit" && <span className="text-slate-400 font-bold text-lg">+ PDV</span>}
               </div>
             </div>
 

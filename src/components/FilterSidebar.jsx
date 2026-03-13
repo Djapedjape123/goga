@@ -1,7 +1,10 @@
 import React from "react";
+import PriceSlider from "./PriceSlider";
 
 const DEFAULT_FILTERS = {
   kategorija: "sve",
+  minCena: "", // <-- cene
+  maxCena: "",
   // Telehenderi & Viljuškari
   minVisina: "",
   maxVisina: "",
@@ -61,6 +64,21 @@ function FilterSidebar({
           Poništi sve
         </button>
       </div>
+      <div className="mb-8 pb-8 border-b border-slate-100">
+      <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">
+        Opseg cene (€)
+      </h3>
+      <PriceSlider 
+        min={0} 
+        max={150000} // Možeš staviti i više ako ima skupljih mašina
+        step={500}
+        initialMin={safeFilters.minCena}
+        initialMax={safeFilters.maxCena}
+        onChange={(min, max) => {
+          setFilters(prev => ({ ...prev, minCena: min, maxCena: max }));
+        }}
+      />
+    </div>
 
       {/* KATEGORIJA */}
       <div className="mb-8">

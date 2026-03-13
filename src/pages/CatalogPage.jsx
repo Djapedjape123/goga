@@ -15,6 +15,8 @@ const parseToNumber = (value) => {
 
 const DEFAULT_FILTERS = {
   kategorija: 'sve',
+  minCena: '', // <-- NOVO
+  maxCena: '',
   minVisina: '', maxVisina: '',
   minNosivost: '', maxNosivost: '',
   minKapacitet: '', maxKapacitet: '',
@@ -34,7 +36,7 @@ function CatalogPage() {
       const nextState = typeof updater === 'function' ? updater(prev) : updater;
 
       if (nextState.kategorija !== prev.kategorija) {
-        setCurrentPage(1); 
+        setCurrentPage(1);
         return {
           ...DEFAULT_FILTERS,
           kategorija: nextState.kategorija
@@ -56,6 +58,11 @@ function CatalogPage() {
       if (filters.kategorija !== 'sve' && masina.kategorija !== filters.kategorija) return false;
 
       const s = masina.specifikacije || {};
+      const mCena = parseToNumber(masina.cena);
+      if (mCena > 0) { // Filtriramo samo mašine koje imaju cenu (one "Na upit" ostaju vidljive)
+        if (filters.minCena && mCena < parseToNumber(filters.minCena)) return false;
+        if (filters.maxCena && mCena > parseToNumber(filters.maxCena)) return false;
+      }
 
       // 1. Telehenderi i Viljuškari
       if (['sve', 'telehenderi', 'viljuskari'].includes(filters.kategorija)) {
@@ -112,7 +119,7 @@ function CatalogPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-x-clip">
+      <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto relative z-10">
