@@ -9,13 +9,25 @@ const masine3D = [
     id: 1,
     naziv: "Viljuškari",
     opis: "Robusni viljuškari koji omogućavaju sigurno i brzo rukovanje robom u skladištima, fabrikama i logističkim centrima. Pouzdana snaga i precizna kontrola za maksimalnu efikasnost u svakodnevnom radu.",
-    putanja: "/models/viliskar-v1.glb" // Tvoj model iz public/models/
+    putanja: "/models/viliskar-v1.glb"
   },
   {
     id: 2,
     naziv: "Mini Bageri",
-    opis: "Snažni bageri za najzahtevnije građevinske radove...",
+    opis: "Pouzdani mini bageri i bageri dizajnirani za maksimalnu snagu, preciznost i izdržljivost na svakom gradilištu. Idealni za iskope, pripremu terena i zahtevne građevinske radove.",
     putanja: "/models/miniBager-v1.glb"
+  },
+  {
+    id: 3,
+    naziv: "Veliki Bageri",
+    opis: "Pouzdani mini bageri i bageri dizajnirani za maksimalnu snagu, preciznost i izdržljivost na svakom gradilištu. Idealni za iskope, pripremu terena i zahtevne građevinske radove.",
+    putanja: "/models/bagerV-v1.glb"
+  },
+  {
+    id: 4,
+    naziv: "Mini Mixer",
+    opis: "Pouzdani mini bageri i bageri dizajnirani za maksimalnu snagu, preciznost i izdržljivost na svakom gradilištu. Idealni za iskope, pripremu terena i zahtevne građevinske radove.",
+    putanja: "/models/mixer-v1.glb"
   }
 ];
 
@@ -69,8 +81,8 @@ function D3modelPage() {
                   key={masina.id}
                   onClick={() => setAktivnaMasina(masina)}
                   className={`text-left p-6 rounded-3xl transition-all duration-300 border backdrop-blur-md ${isSelected
-                      ? "bg-white/90 border-blue-400 shadow-[0_8px_30px_rgb(0,0,0,0.12)] scale-[1.02]"
-                      : "bg-white/40 border-white/20 hover:bg-white/60 text-slate-100 hover:text-slate-900"
+                    ? "bg-white/90 border-blue-400 shadow-[0_8px_30px_rgb(0,0,0,0.12)] scale-[1.02]"
+                    : "bg-white/40 border-white/20 hover:bg-white/60 text-slate-100 hover:text-slate-900"
                     }`}
                 >
                   <h2 className={`text-xl font-black mb-2 ${isSelected ? "text-blue-700" : ""}`}>
@@ -112,11 +124,13 @@ function D3modelPage() {
                 {/* Kontrole za miša/prst */}
                 <OrbitControls
                   autoRotate
-                  autoRotateSpeed={1.5}
+                  autoRotateSpeed={2}
                   enableZoom={true}
                   makeDefault
                   minPolarAngle={Math.PI / 4}
-                  maxPolarAngle={Math.PI / 2} // Sprečava da kamera ode "ispod zemlje"
+                  maxPolarAngle={Math.PI / 2}
+                  // Ne da korisniku da uđe UNUTAR mašine
+                   // Sprečava da kamera ode "ispod zemlje"
                 />
               </Canvas>
 
