@@ -1,8 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, lazy, Suspense } from 'react';
 import { sveMasine } from '../data/sveMasine';
 import MachineCard from '../components/MachineCard';
 import FilterSidebar from '../components/FilterSidebar';
 import { motion } from 'framer-motion';
+
+// --- LAZY LOAD ZA 3D PREGLEDAČ (Da ne uspori katalog!) ---
+const Mini3DViewer = lazy(() => import('../components/Mini3DViewer'));
 
 // --- POMOĆNA FUNKCIJA ZA SIGURNO PRETVARANJE U BROJ ---
 const parseToNumber = (value) => {
@@ -15,7 +18,7 @@ const parseToNumber = (value) => {
 
 const DEFAULT_FILTERS = {
   kategorija: 'sve',
-  minCena: '', // <-- NOVO
+  minCena: '', 
   maxCena: '',
   minVisina: '', maxVisina: '',
   minNosivost: '', maxNosivost: '',
@@ -59,12 +62,16 @@ function CatalogPage() {
 
       const s = masina.specifikacije || {};
       const mCena = parseToNumber(masina.cena);
-      if (mCena > 0) { // Filtriramo samo mašine koje imaju cenu (one "Na upit" ostaju vidljive)
+      
+      const isPriceFiltered = (filters.minCena !== "" && filters.minCena > 0) || 
+                              (filters.maxCena !== "" && filters.maxCena < 150000);
+
+      if (isPriceFiltered) {
+        if (mCena === 0) return false; 
         if (filters.minCena && mCena < parseToNumber(filters.minCena)) return false;
         if (filters.maxCena && mCena > parseToNumber(filters.maxCena)) return false;
       }
 
-      // 1. Telehenderi i Viljuškari
       if (['sve', 'telehenderi', 'viljuskari'].includes(filters.kategorija)) {
         const mVisina = parseToNumber(s.visinaDizanja || s.maksVisinaDizanja);
         const mNosivost = parseToNumber(s.nosivost);
@@ -75,14 +82,12 @@ function CatalogPage() {
         if (filters.maxNosivost && mNosivost > parseToNumber(filters.maxNosivost)) return false;
       }
 
-      // 2. Mikseri
       if (['sve', 'mini-mikseri'].includes(filters.kategorija)) {
         const mKapacitet = parseToNumber(s.kapacitetMesanja);
         if (filters.minKapacitet && mKapacitet < parseToNumber(filters.minKapacitet)) return false;
         if (filters.maxKapacitet && mKapacitet > parseToNumber(filters.maxKapacitet)) return false;
       }
 
-      // 3. MINI BAGERI (Kopanje + Visina Kopanja)
       if (['sve', 'mini-bageri'].includes(filters.kategorija)) {
         const mDubina = parseToNumber(s.maxDubinaKopanja);
         const mVisinaK = parseToNumber(s.maxVisinaKopanja);
@@ -93,7 +98,6 @@ function CatalogPage() {
         if (filters.maxVisinaKopanja && mVisinaK > parseToNumber(filters.maxVisinaKopanja)) return false;
       }
 
-      // 4. VELIKI BAGERI (Kopanje + Visina Istovara)
       if (['sve', 'bageri'].includes(filters.kategorija)) {
         const mDubina = parseToNumber(s.maxDubinaKopanja);
         const mVisinaI = parseToNumber(s.maxVisinaIstovara);
@@ -170,6 +174,13 @@ function CatalogPage() {
                   </div>
                 </div>
               </div>
+
+              {/* === NOVO: DINAMIČKI 3D BANER === */}
+              {filters.kategorija !== 'sve' && (
+                <Suspense fallback={<div className="h-48 mb-8 bg-white/40 animate-pulse rounded-3xl"></div>}>
+                  <Mini3DViewer kategorija={filters.kategorija} />
+                </Suspense>
+              )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 flex-grow">
                 {currentMachines.map((masina) => (

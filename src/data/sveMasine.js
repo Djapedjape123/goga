@@ -1205,7 +1205,7 @@ export const sveMasine = [
     slug: "mai-an1000v-robotska-kosilica",
     naziv: "MAI AN1000V",
     kategorija: "kosilice", // <-- Nova kategorija
-    cena: "Na upit", // U fajlu je prazno, pa stavljamo "Na upit"
+    cena: "1490", // U fajlu je prazno, pa stavljamo "Na upit"
     opis: "Pametna robotska kosilica MAI AN1000V idealna za dvorišta i travnjake do 1000 m². Koristi naprednu AI Vision kameru i IMU za izbegavanje prepreka i planiranje rute bez potrebe za graničnim žicama. Upravljanje je potpuno automatizovano putem mobilne aplikacije.",
     specifikacije: {
       maksimalnaPovrsina: "1000 m²",
@@ -1226,11 +1226,11 @@ export const sveMasine = [
       zastitaOdKradje: "Alarm + PIN",
       tezina: "13.5 kg"
     },
-    coverSlika: "/images/kosilice/an1000v-main.webp", // <-- PRILAGODI PUTANJU
+    coverSlika: "/images/kosilice/kisilica1.webp", // <-- PRILAGODI PUTANJU
     galerija: [
-      "/images/kosilice/an1000v-main.webp",
-      "/images/kosilice/an1000v-1.webp",
-      "/images/kosilice/an1000v-2.webp"
+      "/images/kosilice/kisilica1.webp",
+      "/images/kosilice/kosilica2.webp",
+      "/images/kosilice/kosilica3.webp",
     ],
     model3D: null
   },
@@ -1239,7 +1239,7 @@ export const sveMasine = [
     slug: "mai-an3000v-robotska-kosilica",
     naziv: "MAI AN3000V",
     kategorija: "kosilice",
-    cena: "Na upit",
+    cena: "1990",
     opis: "Unapređeni model MAI AN3000V namenjen srednjim i većim površinama do 3000 m². Uz AI Vision kameru, ovaj model koristi i RTK satelitsku navigaciju za centimetarsku preciznost, kao i ugrađen GPS praćenje (Anti-theft).",
     specifikacije: {
       maksimalnaPovrsina: "3000 m²",
@@ -1260,11 +1260,11 @@ export const sveMasine = [
       zastitaOdKradje: "GPS Tracking + Alarm",
       tezina: "13.5 kg"
     },
-    coverSlika: "/images/kosilice/an3000v-main.webp", // <-- PRILAGODI PUTANJU
+    coverSlika: "/images/kosilice/kisilica1.webp", // <-- PRILAGODI PUTANJU
     galerija: [
-      "/images/kosilice/an3000v-main.webp",
-      "/images/kosilice/an3000v-1.webp",
-      "/images/kosilice/an3000v-2.webp"
+      "/images/kosilice/kisilica1.webp",
+      "/images/kosilice/kosilica2.webp",
+      "/images/kosilice/kosilica3.webp",
     ],
     model3D: null
   },
@@ -1273,7 +1273,7 @@ export const sveMasine = [
     slug: "mai-commercialpro-kosilica",
     naziv: "MAI COMMERCIALPRO",
     kategorija: "kosilice",
-    cena: "Na upit",
+    cena: "2690",
     opis: "Zver za komercijalnu upotrebu – MAI COMMERCIALPRO. Dizajnirana za ogromne površine do neverovatnih 50.000 m² (sportski tereni, parkovi, golf tereni). Opremljena moćnom 48V LiFePO4 baterijom, industrijskim diskovima za košenje, 4G + RTK povezivanjem i ultrazvučnim senzorima.",
     specifikacije: {
       maksimalnaPovrsina: "50000 m²",
@@ -1294,11 +1294,11 @@ export const sveMasine = [
       zastitaOdKradje: "GPS",
       tezina: "50-100 kg"
     },
-    coverSlika: "/images/kosilice/commercial-main.webp", // <-- PRILAGODI PUTANJU
+     coverSlika: "/images/kosilice/kisilica1.webp", // <-- PRILAGODI PUTANJU
     galerija: [
-      "/images/kosilice/commercial-main.webp",
-      "/images/kosilice/commercial-1.webp",
-      "/images/kosilice/commercial-2.webp"
+      "/images/kosilice/kisilica1.webp",
+      "/images/kosilice/kosilica2.webp",
+      "/images/kosilice/kosilica3.webp",
     ],
     model3D: null
   }

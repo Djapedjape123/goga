@@ -16,7 +16,7 @@ const HomePage = lazy(() => import('./pages/HomePege.jsx'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage.jsx'));
 const SinglePege = lazy(() => import('./pages/SinglePege.jsx'));
 const FavoritePege = lazy(() => import('./pages/FavoritePege.jsx'));
-const D3modelPage = lazy(() => import('./pages/D3modelPage.jsx'));
+
 
 // Zajednička komponenta za učitavanje (da kod bude uredniji)
 const Loader = ({ tekst }) => (
@@ -61,15 +61,6 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader tekst="Omiljene mašine" />}>
             <FavoritePege />
-          </Suspense>
-        )
-      },
-
-      {
-        path: "/model",
-        element: (
-          <Suspense fallback={<Loader tekst="#3d modeli mašina" />}>
-            <D3modelPage />
           </Suspense>
         )
       },
