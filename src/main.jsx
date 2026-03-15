@@ -8,6 +8,7 @@ import './i18n';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+// import Contact from './pages/Contact.jsx';
 // import D3modelPage from './pages/D3modelPage.jsx';
 
 
@@ -16,6 +17,7 @@ const HomePage = lazy(() => import('./pages/HomePege.jsx'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage.jsx'));
 const SinglePege = lazy(() => import('./pages/SinglePege.jsx'));
 const FavoritePege = lazy(() => import('./pages/FavoritePege.jsx'));
+const Contact = lazy(() => import('./pages/Contact.jsx'));
 
 
 // Zajednička komponenta za učitavanje (da kod bude uredniji)
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader tekst="Omiljene mašine" />}>
             <FavoritePege />
+          </Suspense>
+        )
+      },
+      {
+        path: "/contact",
+        element: (
+          <Suspense fallback={<Loader tekst="Omiljene mašine" />}>
+            <Contact />
           </Suspense>
         )
       },

@@ -60,10 +60,10 @@ function NavBar() {
             
             {/* Call to Action Dugme */}
             <Link 
-              to="/konsultacije" 
+              to="/contact" 
               className="bg-gradient-to-r from-blue-800 to-blue-300 hover:text-black text-white px-6 py-2.5 rounded-full text-sm font-extrabold uppercase tracking-wider  transition-all shadow-lg shadow-orange-600/30"
             >
-              {t('nav.consulting')}
+              {t('nav.contact')}
             </Link>
 
             {/* Language Switcher */}
@@ -98,7 +98,7 @@ function NavBar() {
           <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.home')}</Link>
           <Link to="/favorite" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">Favoriti</Link>
           <Link to="/katalog" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.catalog')}</Link>
-          <Link to="/konsultacije" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.consulting')}</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.consulting')}</Link>
           <div className="flex space-x-6 px-3 py-4 justify-center">
             <button onClick={() => changeLanguage('sr')} className="text-sm font-extrabold text-white hover:text-orange-600">SRB</button>
             <span className="text-white/30">|</span>

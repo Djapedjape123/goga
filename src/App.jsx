@@ -17,9 +17,9 @@ function App() {
 
   useEffect(() => {
     // Posle 1.5 sekundi (1500ms) kreće animacija gašenja
-    const fadeTimer = setTimeout(() => setFadeOut(true), 1500);
+    const fadeTimer = setTimeout(() => setFadeOut(true), 2000);
     // Posle tačno 2 sekunde (2000ms) potpuno brišemo beli ekran
-    const hideTimer = setTimeout(() => setLoading(false), 2000);
+    const hideTimer = setTimeout(() => setLoading(false), 2500);
 
     return () => {
       clearTimeout(fadeTimer);
