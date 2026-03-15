@@ -138,6 +138,7 @@ export default function MachineCard({ masina }) {
 
   return (
     <article
+      onClick={() => navigate(`/masina/${masina.slug}`)}
       aria-labelledby={titleId}
       className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col focus:outline-none focus:ring-4 focus:ring-blue-200"
       tabIndex={0}

@@ -10,7 +10,8 @@ const Footer = () => {
   const navigacija = [
     { ime: 'Početna', putanja: '/' },
     { ime: 'Katalog', putanja: '/katalog' },
-    { ime: 'Omiljene mašine', putanja: '/favorite' }
+    { ime: 'Omiljene mašine', putanja: '/favorite' },
+    { ime: 'Kontact', putanja: '/contact' }
   ];
 
   return (
