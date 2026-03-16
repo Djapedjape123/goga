@@ -46,7 +46,7 @@ function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/videos/hero-video2.mp4" type="video/mp4" />
+            <source src="/videos/video2.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -96,11 +96,11 @@ function HomePage() {
             </Link>
 
             <Link 
-              to="/konsultacije" 
+              to="/contact" 
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all hover:scale-105"
             >
               <FaPhoneAlt className="text-sm" />
-              Zakaži Konsultacije
+              Kontakt
             </Link>
           </motion.div>
         </motion.div>

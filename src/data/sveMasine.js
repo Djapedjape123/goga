@@ -16,8 +16,9 @@ export const sveMasine = [
       pogon: "Dizel",
       upravljanje: "Prednje/Sva 4 točka/Bočno",
     },
-    coverSlika: "/images/teleh11.webp",
+    coverSlika: "/images/teleCovek.webp",
     galerija: [
+      "/images/teleCovek.webp",
       "/images/teleh11.webp",
       "/images/teleh12.webp",
       "/images/teleh13.webp",
@@ -41,8 +42,9 @@ export const sveMasine = [
       pogon: "Dizel",
       upravljanje: "Prednje/Sva 4 točka/Bočno",
     },
-    coverSlika: "/images/teleh11.webp",
+    coverSlika: "/images/teleCovek.webp",
     galerija: [
+      "/images/teleCovek.webp",
       "/images/teleh11.webp",
       "/images/teleh12.webp",
       "/images/teleh13.webp",
@@ -66,8 +68,9 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh15.webp",
+    coverSlika: "/images/telehCover4.webp",
     galerija: [
+      
       "/images/teleh15.webp",
       "/images/teleh21.webp",
       "/images/teleh22.webp",
@@ -91,8 +94,9 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh24.webp",
+    coverSlika: "/images/telehCover2.webp",
     galerija: [
+      "/images/telehCover2.webp",
       "/images/teleh24.webp",
       "/images/teleh26.webp",
       "/images/teleh27.webp",
@@ -116,8 +120,9 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh29.webp",
+    coverSlika: "/images/telehCover3.webp",
     galerija: [
+      "/images/telehCover3.webp",
       "/images/teleh29.webp",
       "/images/teleh11.webp",
       "/images/teleh12.webp",
@@ -141,7 +146,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh14.webp",
+    coverSlika: "/images/telehCover3.webp",
     galerija: [
       "/images/teleh14.webp",
       "/images/teleh15.webp",
@@ -166,7 +171,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh23.webp",
+    coverSlika: "/images/telehCover3.webp",
     galerija: [
       "/images/teleh23.webp",
       "/images/teleh24.webp",
@@ -191,7 +196,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh28.webp",
+    coverSlika: "/images/telehCover3.webp",
     galerija: [
       "/images/teleh28.webp",
       "/images/teleh29.webp",
@@ -216,7 +221,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh13.webp",
+    coverSlika: "/images/telehCover4.webp",
     galerija: [
       "/images/teleh13.webp",
       "/images/teleh14.webp",
@@ -241,7 +246,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh13.webp",
+    coverSlika: "/images/telehCover4.webp",
     galerija: [
       "/images/teleh29.webp",
       "/images/teleh11.webp",
@@ -266,7 +271,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh27.webp",
+    coverSlika: "/images/telehCover5.webp",
     galerija: [
       "/images/teleh24.webp",
       "/images/teleh26.webp",
@@ -291,7 +296,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh28.webp",
+    coverSlika: "/images/telehCover5.webp",
     galerija: [
       "/images/teleh24.webp",
       "/images/teleh26.webp",
@@ -316,7 +321,7 @@ export const sveMasine = [
       upravljanje: "Prednje/Sva 4 točka/Bočno",
       tipTransmisije: 'Torque',
     },
-    coverSlika: "/images/teleh14.webp",
+    coverSlika: "/images/telehCover5.webp",
     galerija: [
       "/images/teleh11.webp",
       "/images/teleh12.webp",
@@ -343,7 +348,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "35km/h"
     },
-    coverSlika: "/images/mixer/mixi11.webp", // OVO ZAMENI KAD UBASIŠ SLIKE
+    coverSlika: "/images/mixer/mixiCover.webp", // OVO ZAMENI KAD UBASIŠ SLIKE
     galerija: [
       "/images/mixer/mixi11.webp",
       "/images/mixer/mixi12.webp",
@@ -372,7 +377,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "35km/h"
     },
-    coverSlika: "/images/mixer/szj10.1.webp",
+    coverSlika: "/images/mixer/mixiCover2.webp",
     galerija: [
       "/images/mixer/szj10.webp",
       "/images/mixer/szj10.2.webp",
@@ -401,7 +406,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "35km/h"
     },
-    coverSlika: "/images/mixer/szj15.1.webp",
+    coverSlika: "/images/mixer/mixiCover3.webp",
     galerija: [
       "/images/mixer/szj15.1.webp",
       "/images/mixer/szj15.2.webp",
@@ -427,7 +432,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "35km/h"
     },
-    coverSlika: "/images/mixer/szj10.1.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/szj10.webp",
       "/images/mixer/szj10.2.webp",
@@ -456,7 +461,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/szj10.1.webp",
+   coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/szj10.webp",
       "/images/mixer/szj10.2.webp",
@@ -485,7 +490,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/szj15.2.webp",
+    coverSlika: "/images/mixer/mixiCover3.webp",
     galerija: [
       "/images/mixer/szj15.1.webp",
       "/images/mixer/szj15.2.webp",
@@ -511,7 +516,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/szj15.1.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/szj15.1.webp",
       "/images/mixer/szj15.2.webp",
@@ -537,7 +542,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/szj15.4.webp",
+    coverSlika: "/images/mixer/mixiCover3.webp",
     galerija: [
       "/images/mixer/szj15.1.webp",
       "/images/mixer/szj15.2.webp",
@@ -563,7 +568,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/posl1.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/posl2.webp",
       "/images/mixer/posl3.webp",
@@ -591,7 +596,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/posl3.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/posl2.webp",
       "/images/mixer/posl3.webp",
@@ -618,7 +623,7 @@ export const sveMasine = [
       pogon: "4x4",
       brzinaKretanja: "40km/h"
     },
-    coverSlika: "/images/mixer/posl2.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/posl2.webp",
       "/images/mixer/posl3.webp",
@@ -645,7 +650,7 @@ export const sveMasine = [
       pogon: "4x4", // Ovde u CSV piše 4x3, nadam se da nije greška, preneo sam kako piše
       brzinaKretanja: "50km/h"
     },
-    coverSlika: "/images/mixer/posl5.webp",
+    coverSlika: "/images/mixer/mixii.webp",
     galerija: [
       "/images/mixer/posl2.webp",
       "/images/mixer/posl3.webp",
@@ -676,7 +681,7 @@ export const sveMasine = [
       maxVisinaIstovara: "1750mm",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB2.webp",
+    coverSlika: "/images/miniBager/pozz.webp",
     galerija: [
       "/images/miniBager/miniB1.webp",
       "/images/miniBager/miniB2.webp",
@@ -708,7 +713,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2950MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB3.webp",
+   coverSlika: "/images/miniBager/pozzz.webp",
     galerija: [
       "/images/miniBager/miniB1.webp",
       "/images/miniBager/miniB2.webp",
@@ -740,7 +745,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2050mm",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniBager11.webp",
+     coverSlika: "/images/miniBager/miniB.webp",
     galerija: [
       "/images/miniBager/miniBager12.webp",
       "/images/miniBager/miniBager13.webp",
@@ -767,7 +772,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2400MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/miniB13.webp",
+    coverSlika: "/images/miniBager/pozz.webp",
     galerija: [
       "/images/miniBager/miniB11.webp",
       "/images/miniBager/miniB12.webp",
@@ -795,7 +800,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2200MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/25.webp",
+     coverSlika: "/images/miniBager/miniBCov.webp",
     galerija: [
       "/images/miniBager/251.webp",
       "/images/miniBager/252.webp",
@@ -818,7 +823,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2200MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/30L.webp",
+    coverSlika: "/images/miniBager/pozB.webp",
     galerija: [
       "/images/miniBager/30L.webp",
       "/images/miniBager/30L1.webp",
@@ -845,7 +850,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2600MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/noviB.webp",
+    coverSlika: "/images/miniBager/pozB2.webp",
     galerija: [
       "/images/miniBager/noviB1.webp",
       "/images/miniBager/noviB2.webp",
@@ -873,7 +878,7 @@ export const sveMasine = [
       maxVisinaIstovara: "3400MM",
       garancija: "2 godine"
     },
-    coverSlika: "/images/miniBager/noviB.webp",
+    coverSlika: "/images/miniBager/pozB2.webp",
     galerija: [
       "/images/miniBager/noviB1.webp",
       "/images/miniBager/noviB2.webp",
@@ -1070,7 +1075,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2000MM",
       brzinaKretanja: "20km/h"
     },
-    coverSlika: "/images/vBager/Vbager1.webp", // Obavezno ažuriraj putanju
+    coverSlika: "/images/vBager/bagerCov.webp", // Obavezno ažuriraj putanju
     galerija: [
       "/images/vBager/Vbager1.webp",
       "/images/vBager/Vbager2.webp",
@@ -1098,7 +1103,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2200MM",
       brzinaKretanja: "20km/h"
     },
-    coverSlika: "/images/vBager/Vbage21.webp", // Obavezno ažuriraj putanju
+    coverSlika: "/images/vBager/bagerCov1.webp", // Obavezno ažuriraj putanju
     galerija: [
       "/images/vBager/Vbage21.webp",
       "/images/vBager/Vbager22.webp",
@@ -1126,7 +1131,7 @@ export const sveMasine = [
       maxVisinaIstovara: "2800MM",
       brzinaKretanja: "25km/h"
     },
-    coverSlika: "/images/vBager/Vbager31.webp", // Obavezno ažuriraj putanju
+    coverSlika: "/images/vBager/bagerCov2.webp", // Obavezno ažuriraj putanju
     galerija: [
       "/images/vBager/Vbager31.webp",
       "/images/vBager/Vbager32.webp",
@@ -1154,7 +1159,7 @@ export const sveMasine = [
       maxVisinaIstovara: "3300MM",
       brzinaKretanja: "26km/h"
     },
-    coverSlika: "/images/vBager/Vbager41.webp", // Obavezno ažuriraj putanju
+    coverSlika: "/images/vBager/bagerCov3.webp", // Obavezno ažuriraj putanju
     galerija: [
       "/images/vBager/Vbager41.webp",
       "/images/vBager/Vbager42.webp",

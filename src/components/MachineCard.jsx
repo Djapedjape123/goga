@@ -144,7 +144,7 @@ export default function MachineCard({ masina }) {
       tabIndex={0}
     >
       {/* IMAGE */}
-      <div className="relative w-full aspect-[4/3] bg-slate-100 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center overflow-hidden">
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black text-slate-800 uppercase tracking-widest z-10 shadow-sm">
           {masina.kategorija?.replace("-", " ")}
         </div>
@@ -161,7 +161,7 @@ export default function MachineCard({ masina }) {
             alt={masina.naziv}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-110"
+            className="w-full h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-150"
           />
         </picture>
 
