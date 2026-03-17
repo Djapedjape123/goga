@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom'
 
 import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTop from './components/ScrollToTop';
 // import Footer from './components/Footer';
 
 const Footer = lazy(() => import('./components/Footer'));
@@ -44,6 +45,7 @@ function App() {
       )}
 
       {/* 2. TVOJ SAJT KAKAV JESTE (Bez ikakvih promena) */}
+      <ScrollToTop />
       <NavBar />
 
       <main>

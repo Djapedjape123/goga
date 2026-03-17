@@ -1,6 +1,174 @@
 export const sveMasine = [
   // --- TELEHENDERI ---
+   {
+    id: "el-20pro-viljuskar",
+    slug: "el-20pro-elektricni-viljuskar",
+    naziv: "EL-20PRO",
+    kategorija: "viljuskari",
+    cena: "23000",
+    opis: "Električni viljuškar BYD EL-20PRO sa litijumskom baterijom. Nosivost 2000kg, maksimalna visina dizanja do 6m.",
+    specifikacije: {
+      nosivost: "2000",
+      ukupnaMasa: "3550kg",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "210Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2110mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  },
   {
+    id: "el-25pro-viljuskar",
+    slug: "el-25pro-elektricni-viljuskar",
+    naziv: "EL-25PRO",
+    kategorija: "viljuskari",
+    cena: "24000",
+    opis: "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
+    specifikacije: {
+      nosivost: "2500",
+      ukupnaMasa: "3800",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "210Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2110mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", 
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "el-30pro-viljuskar",
+    slug: "el-30pro-elektricni-viljuskar",
+    naziv: "EL-30PRO",
+    kategorija: "viljuskari",
+    cena: "26000",
+    opis: "Pouzdan električni viljuškar BYD EL-30PRO. Nosivost 3000kg i snažan AC motor garantuju visoku efikasnost.",
+    specifikacije: {
+      nosivost: "3000",
+      ukupnaMasa: "4500kg",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "210Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2440mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "el-35pro-viljuskar",
+    slug: "el-35pro-elektricni-viljuskar",
+    naziv: "EL-35PRO",
+    kategorija: "viljuskari",
+    cena: "28000",
+    opis: "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
+    specifikacije: {
+      nosivost: "3500",
+      ukupnaMasa: "4820kg",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "210Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2440mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "el-40pro-viljuskar",
+    slug: "el-40pro-elektricni-viljuskar",
+    naziv: "EL-40PRO",
+    kategorija: "viljuskari",
+    cena: "43000",
+    opis: "Teški električni viljuškar BYD EL-40PRO sa nosivošću od 4000kg i pojačanim kapacitetom baterije od 420Ah.",
+    specifikacije: {
+      nosivost: "4000",
+      ukupnaMasa: "6750kg",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "420Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2600mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  },
+  {
+    id: "el-50pro-viljuskar",
+    slug: "el-50pro-elektricni-viljuskar",
+    naziv: "EL-50PRO",
+    kategorija: "viljuskari",
+    cena: "45000",
+    opis: "Najteži i najsnažniji model u seriji - BYD EL-50PRO. Nosivost od neverovatnih 5000kg, idealan za najzahtevnije terete.",
+    specifikacije: {
+      nosivost: "5000",
+      ukupnaMasa: "7350kg",
+      tipPogona: "Električni AC motor",
+      baterija: "Litijum (LiFePO4)",
+      napon: "80V",
+      kapacitetBaterije: "420Ah",
+      maksBrzina: "do 16km/h",
+      brzinaDizanja: "400mm/s",
+      radijusOkretanja: "2600mm",
+      maksVisinaDizanja: "do 6m"
+    },
+    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
+    galerija: [
+      "/images/vilj/vilj1.webp",
+      "/images/vilj/vilj2.webp",
+      "/images/vilj/vilj3.webp",
+      "/images/vilj/vilj4.webp",
+    ],
+    model3D: null
+  }
+  ,{
     id: "te3007-A",
     slug: "te3007-telehender",
     naziv: "TE3007-A",
@@ -889,174 +1057,7 @@ export const sveMasine = [
     model3D: null
   },
   // --- VILJUŠKARI ---
-  {
-    id: "el-20pro-viljuskar",
-    slug: "el-20pro-elektricni-viljuskar",
-    naziv: "EL-20PRO",
-    kategorija: "viljuskari",
-    cena: "23000",
-    opis: "Električni viljuškar BYD EL-20PRO sa litijumskom baterijom. Nosivost 2000kg, maksimalna visina dizanja do 6m.",
-    specifikacije: {
-      nosivost: "2000",
-      ukupnaMasa: "3550kg",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "210Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2110mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
-  {
-    id: "el-25pro-viljuskar",
-    slug: "el-25pro-elektricni-viljuskar",
-    naziv: "EL-25PRO",
-    kategorija: "viljuskari",
-    cena: "24000",
-    opis: "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
-    specifikacije: {
-      nosivost: "2500",
-      ukupnaMasa: "3800",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "210Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2110mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", 
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
-  {
-    id: "el-30pro-viljuskar",
-    slug: "el-30pro-elektricni-viljuskar",
-    naziv: "EL-30PRO",
-    kategorija: "viljuskari",
-    cena: "26000",
-    opis: "Pouzdan električni viljuškar BYD EL-30PRO. Nosivost 3000kg i snažan AC motor garantuju visoku efikasnost.",
-    specifikacije: {
-      nosivost: "3000",
-      ukupnaMasa: "4500kg",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "210Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2440mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
-  {
-    id: "el-35pro-viljuskar",
-    slug: "el-35pro-elektricni-viljuskar",
-    naziv: "EL-35PRO",
-    kategorija: "viljuskari",
-    cena: "28000",
-    opis: "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
-    specifikacije: {
-      nosivost: "3500",
-      ukupnaMasa: "4820kg",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "210Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2440mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
-  {
-    id: "el-40pro-viljuskar",
-    slug: "el-40pro-elektricni-viljuskar",
-    naziv: "EL-40PRO",
-    kategorija: "viljuskari",
-    cena: "43000",
-    opis: "Teški električni viljuškar BYD EL-40PRO sa nosivošću od 4000kg i pojačanim kapacitetom baterije od 420Ah.",
-    specifikacije: {
-      nosivost: "4000",
-      ukupnaMasa: "6750kg",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "420Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2600mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
-  {
-    id: "el-50pro-viljuskar",
-    slug: "el-50pro-elektricni-viljuskar",
-    naziv: "EL-50PRO",
-    kategorija: "viljuskari",
-    cena: "45000",
-    opis: "Najteži i najsnažniji model u seriji - BYD EL-50PRO. Nosivost od neverovatnih 5000kg, idealan za najzahtevnije terete.",
-    specifikacije: {
-      nosivost: "5000",
-      ukupnaMasa: "7350kg",
-      tipPogona: "Električni AC motor",
-      baterija: "Litijum (LiFePO4)",
-      napon: "80V",
-      kapacitetBaterije: "420Ah",
-      maksBrzina: "do 16km/h",
-      brzinaDizanja: "400mm/s",
-      radijusOkretanja: "2600mm",
-      maksVisinaDizanja: "do 6m"
-    },
-    coverSlika: "/images/vilj/vilj1.webp", // ZAMENI KAD UBACIŠ SLIKE
-    galerija: [
-      "/images/vilj/vilj1.webp",
-      "/images/vilj/vilj2.webp",
-      "/images/vilj/vilj3.webp",
-      "/images/vilj/vilj4.webp",
-    ],
-    model3D: null
-  },
+  
   // --- NOVI BAGERI (Kombinirke / Rovokopači) ---
   {
     id: "wz06-10-bager",

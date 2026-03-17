@@ -116,8 +116,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-slate-900">Direktan poziv</p>
-                  <a href="tel:+381601234567" className="text-slate-600 group-hover:text-blue-600 transition-colors">
-                    +381 60 123 4567
+                  <a href="tel:+381 62 970 1426" className="text-slate-600 group-hover:text-blue-600 transition-colors">
+                    +381 62 970 1426
                   </a>
                 </div>
               </div>
