@@ -173,7 +173,7 @@ export const sveMasine = [
     slug: "te3007-telehender",
     naziv: "TE3007-A",
     kategorija: "telehenderi",
-    cena: "53 000€",
+    cena: "52 900€",
     opis: "TE3007-A | 2026 | 7m | 3000Kg |",
     specifikacije: {
       visinaDizanja: 7,
@@ -199,7 +199,7 @@ export const sveMasine = [
     slug: "te3007-telehender-torque",
     naziv: "TE3007",
     kategorija: "telehenderi",
-    cena: "42 000€",
+    cena: "41 900€",
     opis: "TE3007 | 2026 | 7m | 3000Kg |",
     specifikacije: {
       visinaDizanja: 7,
@@ -225,7 +225,7 @@ export const sveMasine = [
     slug: "te3507-telehender",
     naziv: "TE3507",
     kategorija: "telehenderi",
-    cena: "45 999€",
+    cena: "44 900€",
     opis: "TE3507 | 2026 | 7m | 3500Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 7,
@@ -251,7 +251,7 @@ export const sveMasine = [
     slug: "te3510-telehender",
     naziv: "TE3510",
     kategorija: "telehenderi",
-    cena: "53 000€",
+    cena: "52 900€",
     opis: "TE3510 | 2026 | 10m | 3500Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 10,
@@ -277,7 +277,7 @@ export const sveMasine = [
     slug: "te4007-telehender",
     naziv: "TE4007",
     kategorija: "telehenderi",
-    cena: "49 000€",
+    cena: "49 900€",
     opis: "TE4007 | 2026 | 7m | 4000kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 7,
@@ -303,7 +303,7 @@ export const sveMasine = [
     slug: "te4010-telehender",
     naziv: "TE4010",
     kategorija: "telehenderi",
-    cena: "57 000€",
+    cena: "55 900€",
     opis: "TE4010 | 2026 | 10m | 4000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 10,
@@ -328,7 +328,7 @@ export const sveMasine = [
     slug: "te4014-telehender",
     naziv: "TE4014",
     kategorija: "telehenderi",
-    cena: "66 000€",
+    cena: "63 900€",
     opis: "TE4014 | 2026 | 14m | 4000kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 14,
@@ -353,7 +353,7 @@ export const sveMasine = [
     slug: "te4018-telehender",
     naziv: "TE4018",
     kategorija: "telehenderi",
-    cena: "71 000€",
+    cena: "69 900€",
     opis: "TE4018 | 2026 | 18m | 4000kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 18,
@@ -378,7 +378,7 @@ export const sveMasine = [
     slug: "te5010-telehender",
     naziv: "TE5010",
     kategorija: "telehenderi",
-    cena: "60 000€",
+    cena: "59 900€",
     opis: "TE5010 | 2026 | 10m | 5000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 10,
@@ -403,7 +403,7 @@ export const sveMasine = [
     slug: "te5014-telehender",
     naziv: "TE5014",
     kategorija: "telehenderi",
-    cena: "72 000€",
+    cena: "67 900€",
     opis: "TE5014 | 2026 | 14m | 5000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 14,
@@ -428,7 +428,7 @@ export const sveMasine = [
     slug: "te5018-telehender",
     naziv: "TE5018",
     kategorija: "telehenderi",
-    cena: "80 000€",
+    cena: "71 900€",
     opis: "TE5018 | 2026 | 18m | 5000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 18,
@@ -453,7 +453,7 @@ export const sveMasine = [
     slug: "te6018-telehender",
     naziv: "TE6018",
     kategorija: "telehenderi",
-    cena: "113 000€",
+    cena: "99 900€",
     opis: "TE6018 | 2026 | 18m | 6000Kg | Novo sa garancijom",
     specifikacije: {
       visinaDizanja: 18,
@@ -505,7 +505,7 @@ export const sveMasine = [
     slug: "szj07-mini-mikser",
     naziv: "SZJ07",
     kategorija: "mini-mikseri",
-    cena: "27 000€",
+    cena: "22 900€",
     opis: "Kompaktni samoutovarni mini mikser. Idealno za građevinske firme, investitore, komunalne službe i poljoprivredna gazdinstva.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -534,7 +534,7 @@ export const sveMasine = [
     slug: "szj10-mini-mikser",
     naziv: "SZJ10",
     kategorija: "mini-mikseri",
-    cena: "29 000€",
+    cena: "24 900€",
     opis: "Samoutovarni mini mikser SZJ10. Pouzdan i brz za rad na terenu.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -563,7 +563,7 @@ export const sveMasine = [
     slug: "szj15-mini-mikser",
     naziv: "SZJ15",
     kategorija: "mini-mikseri",
-    cena: "32 000€",
+    cena: "27 900€",
     opis: "Samoutovarni mini mikser SZJ15. Kapacitet 1.5 kubika.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -589,7 +589,7 @@ export const sveMasine = [
     slug: "szj16-mini-mikser",
     naziv: "SZJ16",
     kategorija: "mini-mikseri",
-    cena: "33 000€",
+    cena: "28 900€",
     opis: "Samoutovarni mini mikser SZJ16. Ekonomičan dizel motor.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -618,7 +618,7 @@ export const sveMasine = [
     slug: "szj18-mini-mikser",
     naziv: "SZJ18",
     kategorija: "mini-mikseri",
-    cena: "34 000€",
+    cena: "29 900€",
     opis: "Samoutovarni mini mikser SZJ18 sa kapacitetom od 1.8 kubika.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -647,7 +647,7 @@ export const sveMasine = [
     slug: "szj20-mini-mikser",
     naziv: "SZJ20",
     kategorija: "mini-mikseri",
-    cena: "37 000€",
+    cena: "32 900€",
     opis: "Samoutovarni mini mikser SZJ20. Idealan balans snage i kapaciteta.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -673,7 +673,7 @@ export const sveMasine = [
     slug: "szj26-mini-mikser",
     naziv: "SZJ26",
     kategorija: "mini-mikseri",
-    cena: "38 000€",
+    cena: "34 900€",
     opis: "Srednji samoutovarni mikser SZJ26 sa 2.6 kubika kapaciteta.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -699,7 +699,7 @@ export const sveMasine = [
     slug: "szj30-mini-mikser",
     naziv: "SZJ30",
     kategorija: "mini-mikseri",
-    cena: "40 000€",
+    cena: "35 900€",
     opis: "Samoutovarni mini mikser SZJ30, 3 kubika, izuzetna snaga.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -725,7 +725,7 @@ export const sveMasine = [
     slug: "szj35-mini-mikser",
     naziv: "SZJ35",
     kategorija: "mini-mikseri",
-    cena: "43 000€",
+    cena: "37 900€",
     opis: "Veliki samoutovarni mikser SZJ35, kapacitet 3.5 kubika.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -753,7 +753,7 @@ export const sveMasine = [
     slug: "szj40a-mini-mikser",
     naziv: "SZJ40A",
     kategorija: "mini-mikseri",
-    cena: "50 000€",
+    cena: "39 900€",
     opis: "Teški samoutovarni mikser SZJ40A. 4 kubika betona po mešanju.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -780,7 +780,7 @@ export const sveMasine = [
     slug: "szj40b-mini-mikser",
     naziv: "SZJ40B",
     kategorija: "mini-mikseri",
-    cena: "56 000€",
+    cena: "39 900€",
     opis: "Premium samoutovarni mikser SZJ40B. Povećan rezervoar za vodu.",
     specifikacije: {
       maksimalniNagib: "40%",
@@ -807,7 +807,7 @@ export const sveMasine = [
     slug: "szj45-mini-mikser",
     naziv: "SZJ45",
     kategorija: "mini-mikseri",
-    cena: "60 000€",
+    cena: "47 900€",
     opis: "Najveći u klasi - SZJ45. Kapacitet od 4.5 kubika sa duplim rezervoarom.",
     specifikacije: {
       maksimalniNagib: "40%",
