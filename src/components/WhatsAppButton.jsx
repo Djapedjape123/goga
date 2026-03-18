@@ -3,7 +3,7 @@ import { FaWhatsapp } from 'react-icons/fa'; // Instaliraj react-icons ako nema�
 
 const WhatsAppButton = () => {
   // Zameni sa tvojim brojem (mora biti u formatu 381...)
-  const phoneNumber = "381601234567"; 
+  const phoneNumber = "381629701426"; 
   const message = "Zdravo, pišem vam sa sajta Masine.ai. Zanima me ponuda za mašine.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
