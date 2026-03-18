@@ -84,6 +84,77 @@ const MachineMarquee = ({ currentSlug }) => {
 
   const items = [...nasumicneMasine, ...nasumicneMasine];
 
+// POMOĆNA FUNKCIJA ZA DINAMIČKE SPECIFIKACIJE
+  const renderSpecifikacije = (masina) => {
+    const { kategorija, specifikacije: s } = masina;
+    if (!s) return null;
+
+    if (kategorija === "telehenderi") {
+      return (
+        <>
+          <span>Dizanje: {s.visinaDizanja || s.maksVisinaDizanja || "-"} m</span>
+          <span>Nosivost: {s.nosivost || "-"} kg</span>
+        </>
+      );
+    }
+    if (kategorija === "viljuskari") {
+      return (
+        <>
+          <span>Dizanje: {s.maksVisinaDizanja || "-"}</span>
+          <span>Nosivost: {s.nosivost || "-"} kg</span>
+        </>
+      );
+    }
+    if (kategorija === "mini-bageri") {
+      return (
+        <>
+          <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
+          <span>Nosivost: {s.nosivost || "-"} kg</span>
+        </>
+      );
+    }
+    if (kategorija === "bageri") {
+      return (
+        <>
+          <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
+          <span>Visina istovara: {s.maxVisinaKopanja || "-"}</span>
+        </>
+      );
+    }
+    if (kategorija === "mini-mikseri") {
+      return (
+        <>
+          <span>Kapacitet: {s.kapacitetMesanja || "-"} m³</span>
+          <span>Rezervoar: {s.rezervoarVode || "-"}</span>
+        </>
+      );
+    }
+    if (kategorija === "dronovi") {
+      return (
+        <>
+          <span>Kapacitet: {s.kapacitetRezervoara || "-"}</span>
+          <span>Navigacija: {s.navigacija ? s.navigacija.split('+')[0].trim() : "-"}</span>
+        </>
+      );
+    }
+    if (kategorija === "kosilice") {
+      return (
+        <>
+          <span>Površina: {s.maksimalnaPovrsina || "-"}</span>
+          <span>Broj noževa: {s.brojNozeva || "-"}</span>
+        </>
+      );
+    }
+    
+    // Default fallback za svaki slučaj
+    return (
+      <>
+        <span>Snaga: {s.snagaMotora || s.snaga || "-"}</span>
+        <span>Težina: {s.operativnaTezina || s.tezina || "-"}</span>
+      </>
+    );
+  };
+
   return (
     <div className="mt-20 pb-20 overflow-hidden">
       <style>{`
@@ -161,9 +232,9 @@ const MachineMarquee = ({ currentSlug }) => {
                       {m.naziv}
                     </h3>
 
-                    <div className="flex justify-between text-sm font-semibold text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
-                      <span>{m.specifikacije?.visinaDizanja ?? "-"} m</span>
-                      <span>{m.specifikacije?.nosivost ?? "-"} kg</span>
+                    {/* DINAMIČKE SPECIFIKACIJE */}
+                    <div className="flex justify-between text-xs sm:text-sm font-semibold text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                      {renderSpecifikacije(m)}
                     </div>
 
                     <div className="mt-auto flex items-center justify-between">

@@ -42,7 +42,7 @@ function NavBar() {
           {/* LOGO */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-2xl font-black tracking-tighter text-white">
-              MASINE<span className="text-orange-600">AI</span>
+              MASINE<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">.AI</span>
             </Link>
           </div>
 
@@ -98,7 +98,7 @@ function NavBar() {
           <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.home')}</Link>
           <Link to="/favorite" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">Favoriti</Link>
           <Link to="/katalog" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-white border-b border-white/5">{t('nav.catalog')}</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.consulting')}</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-extrabold uppercase tracking-widest text-blue-600 border-b border-white/5">{t('nav.contact')}</Link>
           <div className="flex space-x-6 px-3 py-4 justify-center">
             <button onClick={() => changeLanguage('sr')} className="text-sm font-extrabold text-white hover:text-orange-600">SRB</button>
             <span className="text-white/30">|</span>
