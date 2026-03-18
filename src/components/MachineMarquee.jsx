@@ -18,7 +18,6 @@ function formatPrice(value) {
 }
 
 const MachineMarquee = ({ currentSlug }) => {
-
   const navigate = useNavigate();
 
   const nasumicneMasine = useMemo(() => {
@@ -29,7 +28,6 @@ const MachineMarquee = ({ currentSlug }) => {
   }, [currentSlug]);
 
   const trackRef = useRef(null);
-  const [duration, setDuration] = useState(45);
   const [paused, setPaused] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
@@ -43,34 +41,38 @@ const MachineMarquee = ({ currentSlug }) => {
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false;
 
+  // --- NOVA MAGIJA ZA SKROLOVANJE (AUTO + PRST) ---
   useEffect(() => {
-    if (prefersReducedMotion) return setDuration(0);
+    if (prefersReducedMotion) return;
 
     const el = trackRef.current;
     if (!el) return;
 
-    const fullWidth = el.scrollWidth / 2 || 0;
-    const speedPxPerSec = 55;
-    const calc = Math.max(20, Math.min(90, Math.round(fullWidth / speedPxPerSec)));
-    setDuration(calc);
+    let animationFrameId;
 
-    const onResize = () => {
-      const w = el.scrollWidth / 2 || 0;
-      const newDur = Math.max(20, Math.min(120, Math.round(w / speedPxPerSec)));
-      setDuration(newDur);
+    const scroll = () => {
+      // Ako korisnik ne drži prst/miš na komponenti, skroluj automatski
+      if (!paused) {
+        el.scrollLeft += 1; // Brzina kretanja (možeš povećati na 1.5 ili 2 ako hoćeš brže)
+        
+        // Ako je došao do pola (kraj prvog seta mašina), neprimetno ga vrati na početak
+        if (el.scrollLeft >= el.scrollWidth / 2) {
+          el.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
     };
 
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    animationFrameId = requestAnimationFrame(scroll);
 
-  }, [nasumicneMasine, prefersReducedMotion]);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [paused, prefersReducedMotion]);
 
   const toggleFavorite = (slug, e) => {
     e.preventDefault();
     e.stopPropagation();
 
     let updated;
-
     if (!favorites.includes(slug)) {
       updated = [...favorites, slug];
       navigate("/favorite");
@@ -84,7 +86,7 @@ const MachineMarquee = ({ currentSlug }) => {
 
   const items = [...nasumicneMasine, ...nasumicneMasine];
 
-// POMOĆNA FUNKCIJA ZA DINAMIČKE SPECIFIKACIJE
+  // POMOĆNA FUNKCIJA ZA DINAMIČKE SPECIFIKACIJE
   const renderSpecifikacije = (masina) => {
     const { kategorija, specifikacije: s } = masina;
     if (!s) return null;
@@ -109,7 +111,7 @@ const MachineMarquee = ({ currentSlug }) => {
       return (
         <>
           <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
-          <span>Nosivost: {s.nosivost || "-"} kg</span>
+          <span>Težina: {s.nosivost || "-"} kg</span>
         </>
       );
     }
@@ -117,7 +119,7 @@ const MachineMarquee = ({ currentSlug }) => {
       return (
         <>
           <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
-          <span>Visina istovara: {s.maxVisinaKopanja || "-"}</span>
+          <span>Težina: {s.operativnaTezina || "-"}</span>
         </>
       );
     }
@@ -125,7 +127,7 @@ const MachineMarquee = ({ currentSlug }) => {
       return (
         <>
           <span>Kapacitet: {s.kapacitetMesanja || "-"} m³</span>
-          <span>Rezervoar: {s.rezervoarVode || "-"}</span>
+          <span>Snaga: {s.snaga || "-"}</span>
         </>
       );
     }
@@ -141,7 +143,7 @@ const MachineMarquee = ({ currentSlug }) => {
       return (
         <>
           <span>Površina: {s.maksimalnaPovrsina || "-"}</span>
-          <span>Broj noževa: {s.brojNozeva || "-"}</span>
+          <span>Nagib: {s.maksNagib || "-"}</span>
         </>
       );
     }
@@ -157,13 +159,6 @@ const MachineMarquee = ({ currentSlug }) => {
 
   return (
     <div className="mt-20 pb-20 overflow-hidden">
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
-
       <div className="max-w-7xl mx-auto px-4 mb-10">
         <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
           <span className="w-2 h-10 bg-orange-600 rounded-full" />
@@ -172,27 +167,28 @@ const MachineMarquee = ({ currentSlug }) => {
       </div>
 
       <div
-        className="relative flex overflow-hidden"
+        className="relative w-full"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
-        onFocusCapture={() => setPaused(true)}
-        onBlurCapture={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}   // Pauzira skrol kad korisnik pipne ekran
+        onTouchEnd={() => setPaused(false)}    // Nastavlja kad pusti prst
       >
         <div
           ref={trackRef}
-          className="flex gap-6 whitespace-nowrap will-change-transform"
-          style={
-            prefersReducedMotion || duration === 0
-              ? { transform: 'none' }
-              : {
-                animationName: 'marquee',
-                animationDuration: `${duration}s`,
-                animationTimingFunction: 'linear',
-                animationIterationCount: 'infinite',
-                animationPlayState: paused ? 'paused' : 'running',
-              }
-          }
+          // Dodali smo overflow-x-auto da bi radio prst, i sakrili scrollbar
+          className="flex gap-6 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
+          style={{
+            scrollbarWidth: 'none', /* Za Firefox */
+            msOverflowStyle: 'none', /* Za IE i Edge */
+          }}
         >
+          {/* Sakrivanje scrollbara za Chrome/Safari */}
+          <style>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          
           {items.map((m, index) => {
             const price = formatPrice(m.cena);
             const isFav = favorites.includes(m.slug);
@@ -210,7 +206,7 @@ const MachineMarquee = ({ currentSlug }) => {
                       src={m.coverSlika}
                       alt={m.naziv}
                       loading="lazy"
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 pointer-events-none"
                     />
 
                     <button
@@ -232,7 +228,6 @@ const MachineMarquee = ({ currentSlug }) => {
                       {m.naziv}
                     </h3>
 
-                    {/* DINAMIČKE SPECIFIKACIJE */}
                     <div className="flex justify-between text-xs sm:text-sm font-semibold text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
                       {renderSpecifikacije(m)}
                     </div>
