@@ -15,6 +15,55 @@ const resources = {
         do: "Do",
         od: "Od"
       },
+      contact_page: {
+        title_1: "Tu smo za vaš",
+        title_highlight: "sledeći projekat.",
+        subtitle: "Bilo da imate brzo pitanje o mašinama ili želite dugoročnu poslovnu saradnju, naš tim vam je na raspolaganju.",
+        email_label: "Email za upite",
+        phone_label: "Direktan poziv",
+        location_label: "Naša lokacija",
+        location_address: "Bulevar Oslobođenja 123, Novi Sad",
+        social_label: "Pratite nas",
+        tab_quick: "Brzo pitanje",
+        tab_b2b: "B2B Saradnja",
+        
+        // Forma Kontakt
+        label_name: "Ime i Prezime *",
+        ph_name: "Petar Petrović",
+        label_email: "Email adresa *",
+        ph_email: "petar@primer.com",
+        label_message: "Vaše pitanje *",
+        ph_message: "Kako vam možemo pomoći?",
+        
+        // Forma Saradnja
+        label_company: "Ime Firme *",
+        ph_company: "Naziv preduzeća",
+        label_pib: "PIB *",
+        label_sector: "Sektor / Delatnost",
+        sector_construction: "Građevinska industrija",
+        sector_agriculture: "Poljoprivredno gazdinstvo",
+        sector_logistics: "Magacini i Logistika",
+        sector_utility: "Komunalne usluge",
+        sector_other: "Drugo",
+        label_work_email: "Službeni Email *",
+        ph_work_email: "office@firma.com",
+        label_needs: "Opis potreba / Planirana kupovina *",
+        ph_needs: "Zainteresovani smo za nabavku 2 mini miksera...",
+        
+        // Status i Submit
+        btn_send: "Pošalji Upit",
+        msg_success: "Poruka je uspešno poslata! Kontaktiraćemo vas uskoro.",
+        msg_error: "Došlo je do greške pri slanju. Molimo pokušajte ponovo."
+      },
+      favorites_page: {
+        badge: "Tvoja kolekcija",
+        title_1: "Sačuvane ",
+        title_highlight: "Mašine",
+        subtitle: "Sve mašine koje si dodao u favorite nalaze se ovde. Spreman za sledeći korak?",
+        empty_title: "Tvoja lista je prazna",
+        empty_desc: "Još uvek nisi dodao nijednu mašinu u favorite. Istraži naš katalog i pronađi savršenu opremu za svoj projekat.",
+        btn_back: "Nazad u katalog"
+      },
       home: {
         badge: "Lideri u mehanizaciji",
         title_1: "SNAGA KOJA",
@@ -273,6 +322,55 @@ const resources = {
         favorites: "Favorite Machines",
         do: "To",
         od: "From"
+      },
+      favorites_page: {
+        badge: "Your collection",
+        title_1: "Saved ",
+        title_highlight: "Machines",
+        subtitle: "All the machines you added to your favorites are here. Ready for the next step?",
+        empty_title: "Your list is empty",
+        empty_desc: "You haven't added any machines to your favorites yet. Explore our catalog and find the perfect equipment for your project.",
+        btn_back: "Back to catalog"
+      },
+      contact_page: {
+        title_1: "We are here for your",
+        title_highlight: "next project.",
+        subtitle: "Whether you have a quick question about machines or want long-term business cooperation, our team is at your disposal.",
+        email_label: "Email for inquiries",
+        phone_label: "Direct call",
+        location_label: "Our location",
+        location_address: "Bulevar Oslobođenja 123, Novi Sad",
+        social_label: "Follow us",
+        tab_quick: "Quick question",
+        tab_b2b: "B2B Cooperation",
+        
+        // Forma Kontakt
+        label_name: "Full Name *",
+        ph_name: "John Doe",
+        label_email: "Email address *",
+        ph_email: "john@example.com",
+        label_message: "Your question *",
+        ph_message: "How can we help you?",
+        
+        // Forma Saradnja
+        label_company: "Company Name *",
+        ph_company: "Company name",
+        label_pib: "VAT Number *",
+        label_sector: "Sector / Industry",
+        sector_construction: "Construction Industry",
+        sector_agriculture: "Agricultural Farm",
+        sector_logistics: "Warehouses and Logistics",
+        sector_utility: "Utility Services",
+        sector_other: "Other",
+        label_work_email: "Work Email *",
+        ph_work_email: "office@company.com",
+        label_needs: "Description of needs / Planned purchase *",
+        ph_needs: "We are interested in purchasing 2 mini mixers...",
+        
+        // Status i Submit
+        btn_send: "Send Inquiry",
+        msg_success: "Message sent successfully! We will contact you soon.",
+        msg_error: "An error occurred while sending. Please try again."
       },
       home: {
         badge: "Leaders in machinery",

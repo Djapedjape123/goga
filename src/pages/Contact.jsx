@@ -4,12 +4,14 @@ import {
   Mail, Phone, MapPin, Facebook, Instagram, 
   Copy, CheckCircle, Briefcase, MessageSquare, Send
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
   // Stanja za formu
   const [activeForm, setActiveForm] = useState('kontakt'); // 'kontakt' ili 'saradnja'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const { t } = useTranslation();
   
   // Stanje za kopiranje maila
   const [copied, setCopied] = useState(false);
@@ -64,7 +66,7 @@ const Contact = () => {
     }
   };
 
-  return (
+ return (
     <div className="min-h-screen bg-slate-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         
@@ -76,13 +78,13 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
-              Tu smo za vaš <br/>
+              {t('contact_page.title_1')} <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                sledeći projekat.
+                {t('contact_page.title_highlight')}
               </span>
             </h1>
             <p className="text-slate-600 text-lg mb-10 max-w-md">
-              Bilo da imate brzo pitanje o mašinama ili želite dugoročnu poslovnu saradnju, naš tim vam je na raspolaganju.
+              {t('contact_page.subtitle')}
             </p>
 
             {/* Kontakt Kartice */}
@@ -94,7 +96,7 @@ const Contact = () => {
                     <Mail size={24} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">Email za upite</p>
+                    <p className="text-sm font-bold text-slate-900">{t('contact_page.email_label')}</p>
                     <a href={`mailto:${emailAdresa}`} className="text-slate-600 hover:text-blue-600 transition-colors">
                       {emailAdresa}
                     </a>
@@ -115,7 +117,7 @@ const Contact = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900">Direktan poziv</p>
+                  <p className="text-sm font-bold text-slate-900">{t('contact_page.phone_label')}</p>
                   <a href="tel:+381 62 970 1426" className="text-slate-600 group-hover:text-blue-600 transition-colors">
                     +381 62 970 1426
                   </a>
@@ -128,15 +130,15 @@ const Contact = () => {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900">Naša lokacija</p>
-                  <p className="text-slate-600">Bulevar Oslobođenja 123, Novi Sad</p>
+                  <p className="text-sm font-bold text-slate-900">{t('contact_page.location_label')}</p>
+                  <p className="text-slate-600">{t('contact_page.location_address')}</p>
                 </div>
               </div>
             </div>
 
             {/* Društvene mreže - Glow efekti */}
             <div>
-              <p className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wider">Pratite nas</p>
+              <p className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wider">{t('contact_page.social_label')}</p>
               <div className="flex gap-4">
                 <a href="#" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.3)] transition-all">
                   <Facebook size={24} />
@@ -163,13 +165,13 @@ const Contact = () => {
               onClick={() => setActiveForm('kontakt')}
               className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all z-10 ${activeForm === 'kontakt' ? 'text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
             >
-              <MessageSquare size={18} /> Brzo pitanje
+              <MessageSquare size={18} /> {t('contact_page.tab_quick')}
             </button>
             <button
               onClick={() => setActiveForm('saradnja')}
               className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all z-10 ${activeForm === 'saradnja' ? 'text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
             >
-              <Briefcase size={18} /> B2B Saradnja
+              <Briefcase size={18} /> {t('contact_page.tab_b2b')}
             </button>
             {/* Animirani pozadinski pill */}
             <div 
@@ -190,16 +192,16 @@ const Contact = () => {
                   className="space-y-5"
                 >
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Ime i Prezime *</label>
-                    <input type="text" name="Ime" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Petar Petrović" />
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_name')}</label>
+                    <input type="text" name="Ime" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder={t('contact_page.ph_name')} />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Email adresa *</label>
-                    <input type="email" name="Email" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="petar@primer.com" />
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_email')}</label>
+                    <input type="email" name="Email" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder={t('contact_page.ph_email')} />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Vaše pitanje *</label>
-                    <textarea name="Poruka" required rows="4" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none" placeholder="Kako vam možemo pomoći?"></textarea>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_message')}</label>
+                    <textarea name="Poruka" required rows="4" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none" placeholder={t('contact_page.ph_message')}></textarea>
                   </div>
                 </motion.div>
               )}
@@ -216,34 +218,34 @@ const Contact = () => {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">Ime Firme *</label>
-                      <input type="text" name="Ime/Firma" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Naziv preduzeća" />
+                      <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_company')}</label>
+                      <input type="text" name="Ime/Firma" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder={t('contact_page.ph_company')} />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">PIB *</label>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_pib')}</label>
                       <input type="text" name="PIB" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="10XXXXXXX" />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Sektor / Delatnost</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_sector')}</label>
                     <select name="Delatnost" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 cursor-pointer appearance-none">
-                      <option value="Građevina">Građevinska industrija</option>
-                      <option value="Poljoprivreda">Poljoprivredno gazdinstvo</option>
-                      <option value="Magacin/Logistika">Magacini i Logistika</option>
-                      <option value="Komunalno">Komunalne usluge</option>
-                      <option value="Drugo">Drugo</option>
+                      <option value="Građevina">{t('contact_page.sector_construction')}</option>
+                      <option value="Poljoprivreda">{t('contact_page.sector_agriculture')}</option>
+                      <option value="Magacin/Logistika">{t('contact_page.sector_logistics')}</option>
+                      <option value="Komunalno">{t('contact_page.sector_utility')}</option>
+                      <option value="Drugo">{t('contact_page.sector_other')}</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Službeni Email *</label>
-                    <input type="email" name="Email" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="office@firma.com" />
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_work_email')}</label>
+                    <input type="email" name="Email" required className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder={t('contact_page.ph_work_email')} />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Opis potreba / Planirana kupovina *</label>
-                    <textarea name="Poruka" required rows="4" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none" placeholder="Zainteresovani smo za nabavku 2 mini miksera..."></textarea>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('contact_page.label_needs')}</label>
+                    <textarea name="Poruka" required rows="4" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none" placeholder={t('contact_page.ph_needs')}></textarea>
                   </div>
                 </motion.div>
               )}
@@ -259,7 +261,7 @@ const Contact = () => {
                 {isSubmitting ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                  <>Pošalji Upit <Send size={18} /></>
+                  <>{t('contact_page.btn_send')} <Send size={18} /></>
                 )}
               </button>
 
@@ -271,7 +273,7 @@ const Contact = () => {
                     className="mt-4 p-4 bg-green-50 text-green-700 rounded-xl flex items-center gap-2 border border-green-200"
                   >
                     <CheckCircle size={20} />
-                    <span className="font-medium text-sm">Poruka je uspešno poslata! Kontaktiraćemo vas uskoro.</span>
+                    <span className="font-medium text-sm">{t('contact_page.msg_success')}</span>
                   </motion.div>
                 )}
                 {statusMessage === 'greska' && (
@@ -279,7 +281,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                     className="mt-4 p-4 bg-red-50 text-red-700 rounded-xl border border-red-200"
                   >
-                    <span className="font-medium text-sm">Došlo je do greške pri slanju. Molimo pokušajte ponovo.</span>
+                    <span className="font-medium text-sm">{t('contact_page.msg_error')}</span>
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { sveMasine } from '../data/sveMasine'; // Putanja do tvoje baze
 import MachineCard from '../components/MachineCard'; // Putanja do tvoje kartice
+import { useTranslation } from 'react-i18next';
 
 function FavoritePege() {
+  const { t } = useTranslation();
   const [omiljeneMasine, setOmiljeneMasine] = useState([]);
 
   useEffect(() => {
@@ -30,13 +32,13 @@ function FavoritePege() {
           className="text-center mb-16"
         >
           <span className="inline-block py-1.5 px-5 rounded-full bg-white/60 border border-red-100 text-red-500 text-xs font-black tracking-widest uppercase backdrop-blur-sm shadow-sm mb-4">
-            Tvoja kolekcija
+            {t('favorites_page.badge')}
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Sačuvane <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500">Mašine</span>
+            {t('favorites_page.title_1')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500">{t('favorites_page.title_highlight')}</span>
           </h1>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto font-light">
-            Sve mašine koje si dodao u favorite nalaze se ovde. Spreman za sledeći korak?
+            {t('favorites_page.subtitle')}
           </p>
         </motion.div>
 
@@ -73,9 +75,9 @@ function FavoritePege() {
             <div className="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-6 shadow-inner ring-4 ring-white">
               <span className="text-5xl drop-shadow-sm">💔</span>
             </div>
-            <h3 className="text-3xl font-extrabold text-slate-800 mb-3 tracking-tight">Tvoja lista je prazna</h3>
+            <h3 className="text-3xl font-extrabold text-slate-800 mb-3 tracking-tight">{t('favorites_page.empty_title')}</h3>
             <p className="text-slate-500 mb-8 max-w-md text-lg leading-relaxed">
-              Još uvek nisi dodao nijednu mašinu u favorite. Istraži naš katalog i pronađi savršenu opremu za svoj projekat.
+             {t('favorites_page.empty_desc')}
             </p>
             
             <Link 
@@ -83,7 +85,7 @@ function FavoritePege() {
               className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-300 bg-slate-900 rounded-xl hover:shadow-xl hover:shadow-slate-900/20 hover:-translate-y-1 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Nazad u katalog
+                {t('favorites_page.btn_back')}
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
