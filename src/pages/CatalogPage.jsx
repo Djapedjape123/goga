@@ -3,6 +3,7 @@ import { sveMasine } from '../data/sveMasine';
 import MachineCard from '../components/MachineCard';
 import FilterSidebar from '../components/FilterSidebar';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // 👈 DODATO ZA PREVOD
 
 // --- LAZY LOAD ZA 3D PREGLEDAČ (Da ne uspori katalog!) ---
 const Mini3DViewer = lazy(() => import('../components/Mini3DViewer'));
@@ -31,6 +32,7 @@ const DEFAULT_FILTERS = {
 const MASINA_PO_STRANI = 6;
 
 function CatalogPage() {
+  const { t } = useTranslation(); // 👈 INICIJALIZOVAN PREVOD
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -72,7 +74,7 @@ function CatalogPage() {
         if (filters.maxCena && mCena > parseToNumber(filters.maxCena)) return false;
       }
 
-      if (['sve', 'telehenderi', 'viljuskari'].includes(filters.kategorija)) {
+      if (['sve', 'telehendleri', 'viljuskari'].includes(filters.kategorija)) {
         const mVisina = parseToNumber(s.visinaDizanja || s.maksVisinaDizanja);
         const mNosivost = parseToNumber(s.nosivost);
 
@@ -130,10 +132,10 @@ function CatalogPage() {
 
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-              Naša <span className="text-[#FEFFB9]">Mehanizacija</span>
+              {t('catalog.title')} <span className="text-[#FEFFB9]">{t('catalog.title_highlight')}</span> {/* 👈 PREVEDENO */}
             </h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Pronađite savršenu mašinu za vaš projekat. Koristite filtere za preciznu pretragu.
+              {t('catalog.subtitle')} {/* 👈 PREVEDENO */}
             </p>
           </div>
 
@@ -164,11 +166,11 @@ function CatalogPage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
                   </span>
-                  <h2 className="text-lg font-extrabold text-slate-800 tracking-tight">Dostupne mašine</h2>
+                  <h2 className="text-lg font-extrabold text-slate-800 tracking-tight">{t('catalog.available')}</h2> {/* 👈 PREVEDENO */}
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-slate-500 font-medium text-sm hidden sm:block">Pronađeno:</span>
+                  <span className="text-slate-500 font-medium text-sm hidden sm:block">{t('catalog.found')}</span> {/* 👈 PREVEDENO */}
                   <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-1.5 rounded-full text-sm font-black shadow-md shadow-blue-500/30">
                     {filteredMasine.length}
                   </div>
@@ -191,13 +193,13 @@ function CatalogPage() {
               {filteredMasine.length === 0 && (
                 <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 mt-8">
                   <div className="text-6xl mb-4">🚜</div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-2">Ne postoji takva mašina</h3>
-                  <p className="text-slate-500 mb-6">Pokušajte da proširite parametre pretrage ili poništite filtere.</p>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-2">{t('catalog.no_results_title')}</h3> {/* 👈 PREVEDENO */}
+                  <p className="text-slate-500 mb-6">{t('catalog.no_results_desc')}</p> {/* 👈 PREVEDENO */}
                   <button
                     onClick={() => handleSetFilters(DEFAULT_FILTERS)}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >
-                    Poništi sve filtere
+                    {t('catalog.btn_reset')} {/* 👈 PREVEDENO */}
                   </button>
                 </div>
               )}
@@ -212,7 +214,7 @@ function CatalogPage() {
                     <svg className="w-5 h-5 sm:mr-2 transform transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
                     </svg>
-                    <span className="hidden sm:block font-bold">Nazad</span>
+                    <span className="hidden sm:block font-bold">{t('catalog.btn_prev')}</span> {/* 👈 PREVEDENO */}
                   </button>
 
                   <div className="flex items-center gap-1.5 sm:gap-2">
@@ -247,7 +249,7 @@ function CatalogPage() {
                     disabled={currentPage === totalPages}
                     className="group flex items-center justify-center w-12 h-12 sm:w-auto sm:px-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 shadow-sm active:scale-95"
                   >
-                    <span className="hidden sm:block font-bold">Dalje</span>
+                    <span className="hidden sm:block font-bold">{t('catalog.btn_next')}</span> {/* 👈 PREVEDENO */}
                     <svg className="w-5 h-5 sm:ml-2 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                     </svg>

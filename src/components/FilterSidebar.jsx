@@ -1,25 +1,21 @@
 import React from "react";
 import PriceSlider from "./PriceSlider";
+import { useTranslation } from "react-i18next"; // 👈 IMPORT ZA PREVOD
 
 const DEFAULT_FILTERS = {
   kategorija: "sve",
-  minCena: "", // <-- cene
+  minCena: "", 
   maxCena: "",
-  // Telehenderi & Viljuškari
   minVisina: "",
   maxVisina: "",
   minNosivost: "",
   maxNosivost: "",
-  // Mikseri
   minKapacitet: "",
   maxKapacitet: "",
-  // Bageri & Mini bageri zajedničko
   minDubinaKopanja: "",
   maxDubinaKopanja: "",
-  // Samo mini bageri
   minVisinaKopanja: "",
   maxVisinaKopanja: "",
-  // Samo veliki bageri
   minVisinaIstovara: "",
   maxVisinaIstovara: "",
 };
@@ -29,6 +25,7 @@ function FilterSidebar({
   setFilters = () => { },
   categories = [],
 }) {
+  const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
   const safeFilters = { ...DEFAULT_FILTERS, ...filters };
 
   const handleChange = (e) => {
@@ -44,46 +41,46 @@ function FilterSidebar({
     setFilters(DEFAULT_FILTERS);
   };
 
-  const showTelehenderFilters = safeFilters.kategorija === "telehenderi";
+  // 👇 VRAĆENO NA TVOJE: "telehendleri"
+  const showTelehenderFilters = safeFilters.kategorija === "telehendleri"; 
   const showMikserFilters = safeFilters.kategorija === "mini-mikseri";
   const showViljuskarFilters = safeFilters.kategorija === "viljuskari";
-  
-  // RAZDVOJENI BAGERI
   const showMiniBagerFilters = safeFilters.kategorija === "mini-bageri";
   const showVelikiBagerFilters = safeFilters.kategorija === "bageri";
 
   return (
     <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 sticky top-24">
       <div className="flex justify-between items-center mb-6 border-b pb-4">
-        <h2 className="text-xl font-black text-slate-900">Filteri</h2>
+        <h2 className="text-xl font-black text-slate-900">{t('filter_sidebar.title')}</h2>
         <button
           type="button"
           onClick={resetFilters}
           className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors"
         >
-          Poništi sve
+          {t('filter_sidebar.reset')}
         </button>
       </div>
+      
       <div className="mb-8 pb-8 border-b border-slate-100">
-      <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">
-        Opseg cene (€)
-      </h3>
-      <PriceSlider 
-        min={0} 
-        max={150000} // Možeš staviti i više ako ima skupljih mašina
-        step={500}
-        initialMin={safeFilters.minCena}
-        initialMax={safeFilters.maxCena}
-        onChange={(min, max) => {
-          setFilters(prev => ({ ...prev, minCena: min, maxCena: max }));
-        }}
-      />
-    </div>
+        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">
+          {t('filter_sidebar.price_range')}
+        </h3>
+        <PriceSlider 
+          min={0} 
+          max={150000} 
+          step={500}
+          initialMin={safeFilters.minCena}
+          initialMax={safeFilters.maxCena}
+          onChange={(min, max) => {
+            setFilters(prev => ({ ...prev, minCena: min, maxCena: max }));
+          }}
+        />
+      </div>
 
       {/* KATEGORIJA */}
       <div className="mb-8">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">
-          Kategorija
+          {t('filter_sidebar.category')}
         </h3>
         <div className="flex flex-col gap-2">
           {Array.isArray(categories) &&
@@ -107,8 +104,8 @@ function FilterSidebar({
                     }`}
                 >
                   {cat === "sve"
-                    ? "Sve mašine"
-                    : String(cat).replace("-", " ")}
+                    ? t('filter_sidebar.all_machines')
+                    : t(`filter_sidebar.categories.${cat}`, { defaultValue: String(cat).replace("-", " ") })}
                 </span>
               </label>
             ))}
@@ -120,22 +117,22 @@ function FilterSidebar({
         <>
           <div className="mb-8">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Visina dizanja (m)
+              {t('filter_sidebar.lifting_height')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minVisina" value={safeFilters.minVisina} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minVisina" value={safeFilters.minVisina} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxVisina" value={safeFilters.maxVisina} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxVisina" value={safeFilters.maxVisina} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
           <div className="mb-6">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Nosivost (kg)
+              {t('filter_sidebar.load_capacity')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minNosivost" value={safeFilters.minNosivost} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minNosivost" value={safeFilters.minNosivost} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxNosivost" value={safeFilters.maxNosivost} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxNosivost" value={safeFilters.maxNosivost} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
         </>
@@ -145,12 +142,12 @@ function FilterSidebar({
       {showMikserFilters && (
         <div className="mb-6">
           <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-            Kapacitet mešanja (m³)
+            {t('filter_sidebar.mixing_capacity')}
           </h3>
           <div className="flex items-center gap-2">
-            <input type="number" name="minKapacitet" value={safeFilters.minKapacitet} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+            <input type="number" name="minKapacitet" value={safeFilters.minKapacitet} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             <span className="text-slate-400 font-bold">-</span>
-            <input type="number" name="maxKapacitet" value={safeFilters.maxKapacitet} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+            <input type="number" name="maxKapacitet" value={safeFilters.maxKapacitet} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
           </div>
         </div>
       )}
@@ -160,22 +157,22 @@ function FilterSidebar({
         <>
           <div className="mb-6">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Dubina kopanja (mm)
+              {t('filter_sidebar.digging_depth')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minDubinaKopanja" value={safeFilters.minDubinaKopanja} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minDubinaKopanja" value={safeFilters.minDubinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxDubinaKopanja" value={safeFilters.maxDubinaKopanja} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxDubinaKopanja" value={safeFilters.maxDubinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
           <div className="mb-6">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Visina kopanja (mm)
+              {t('filter_sidebar.digging_height')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minVisinaKopanja" value={safeFilters.minVisinaKopanja} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minVisinaKopanja" value={safeFilters.minVisinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxVisinaKopanja" value={safeFilters.maxVisinaKopanja} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxVisinaKopanja" value={safeFilters.maxVisinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
         </>
@@ -186,22 +183,22 @@ function FilterSidebar({
         <>
           <div className="mb-6">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Dubina kopanja (mm)
+              {t('filter_sidebar.digging_depth')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minDubinaKopanja" value={safeFilters.minDubinaKopanja} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minDubinaKopanja" value={safeFilters.minDubinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxDubinaKopanja" value={safeFilters.maxDubinaKopanja} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxDubinaKopanja" value={safeFilters.maxDubinaKopanja} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
           <div className="mb-6">
             <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-              Visina istovara (mm)
+              {t('filter_sidebar.dumping_height')}
             </h3>
             <div className="flex items-center gap-2">
-              <input type="number" name="minVisinaIstovara" value={safeFilters.minVisinaIstovara} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="minVisinaIstovara" value={safeFilters.minVisinaIstovara} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
               <span className="text-slate-400 font-bold">-</span>
-              <input type="number" name="maxVisinaIstovara" value={safeFilters.maxVisinaIstovara} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+              <input type="number" name="maxVisinaIstovara" value={safeFilters.maxVisinaIstovara} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             </div>
           </div>
         </>
@@ -211,12 +208,12 @@ function FilterSidebar({
       {showViljuskarFilters && (
         <div className="mb-6">
           <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">
-            Nosivost (kg)
+            {t('filter_sidebar.load_capacity')}
           </h3>
           <div className="flex items-center gap-2">
-            <input type="number" name="minNosivost" value={safeFilters.minNosivost} onChange={handleChange} placeholder="Min" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+            <input type="number" name="minNosivost" value={safeFilters.minNosivost} onChange={handleChange} placeholder={t('filter_sidebar.min')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
             <span className="text-slate-400 font-bold">-</span>
-            <input type="number" name="maxNosivost" value={safeFilters.maxNosivost} onChange={handleChange} placeholder="Max" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
+            <input type="number" name="maxNosivost" value={safeFilters.maxNosivost} onChange={handleChange} placeholder={t('filter_sidebar.max')} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 transition-all" />
           </div>
         </div>
       )}

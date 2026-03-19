@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { useTranslation } from "react-i18next"; // 👈 IMPORT ZA PREVOD
 
-function formatPrice(value) {
+// Dodat parametar `fallbackText` da bismo iz React komponente prosledili prevod "Na upit"
+function formatPrice(value, fallbackText) {
   if (!value || value === 0 || value === "0" || value === "") {
-    return "Na upit";
+    return fallbackText;
   }
 
   const num =
@@ -12,7 +14,7 @@ function formatPrice(value) {
       ? value
       : Number(String(value).replace(/[^0-9.-]+/g, ""));
 
-  if (isNaN(num)) return "Na upit";
+  if (isNaN(num)) return fallbackText;
 
   try {
     return new Intl.NumberFormat("sr-RS", {
@@ -27,61 +29,58 @@ function formatPrice(value) {
 
 export default function MachineCard({ masina }) {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const price = useMemo(() => formatPrice(masina?.cena), [masina?.cena]);
+  // Šaljemo preveden tekst ("Na upit" / "On request")
+  const price = useMemo(() => formatPrice(masina?.cena, t('machine_card.price_on_request')), [masina?.cena, t]);
   const titleId = `machine-title-${masina?.slug || "unknown"}`;
   
   // PROVERA KATEGORIJE
   const isMikser = masina?.kategorija === "mini-mikseri";
   const isBager = masina?.kategorija === "mini-bageri";
-  const isViljuskar = masina?.kategorija === "viljuskari"; // <-- DODATO
+  const isViljuskar = masina?.kategorija === "viljuskari";
   const isBagerV = masina?.kategorija === "bageri";
   const isDron = masina?.kategorija === "dronovi";
   const isKosilica = masina?.kategorija === "kosilice";
 
-  // DINAMIČKE SPECIFIKACIJE ZA KARTICU
-  let spec1Label = "Visina";
+  // DINAMIČKE SPECIFIKACIJE ZA KARTICU (Prevedene)
+  let spec1Label = t('machine_card.specs.height');
   let spec1Value = `${masina?.specifikacije?.visinaDizanja ?? "-"} m`;
   
-  let spec2Label = "Nosivost";
+  let spec2Label = t('machine_card.specs.load_capacity');
   let spec2Value = `${masina?.specifikacije?.nosivost ?? "-"} kg`;
 
   if (isMikser) {
-    spec1Label = "Kapacitet";
+    spec1Label = t('machine_card.specs.capacity');
     spec1Value = `${masina?.specifikacije?.kapacitetMesanja ?? "-"} m³`;
-    spec2Label = "Rezervoar";
+    spec2Label = t('machine_card.specs.tank');
     spec2Value = `${masina?.specifikacije?.rezervoarVode ?? "-"}`;
   } else if (isBager) {
-    spec1Label = "Dubina kopanja";
-    // Podatak u bazi već sadrži "MM" pa ga ispisujemo direktno (npr. "1650MM")
-    // Možemo dodati .toLowerCase() da bi izgledalo lepše ("1650mm")
+    spec1Label = t('machine_card.specs.dig_depth');
     spec1Value = masina?.specifikacije?.maxDubinaKopanja ? masina.specifikacije.maxDubinaKopanja.toLowerCase() : "-";
-    spec2Label = "Visina kopanja";
+    spec2Label = t('machine_card.specs.dig_height');
     spec2Value = `${masina?.specifikacije?.maxVisinaKopanja ?? ""} `;
-  }else if (isViljuskar) { // <-- DODATO ZA VILJUŠKARE
-    spec1Label = "Max visina";
+  } else if (isViljuskar) {
+    spec1Label = t('machine_card.specs.max_height');
     spec1Value = `${masina?.specifikacije?.maksVisinaDizanja ?? "-"}`;
-    spec2Label = "Nosivost";
+    spec2Label = t('machine_card.specs.load_capacity');
     spec2Value = `${masina?.specifikacije?.nosivost ?? "-"}kg`;
-  }else if (isBagerV) {
-    // --- NOVO PODEŠAVANJE ZA BAGERE (Kašike) ---
-    spec1Label = "Max dubina kopanja";
+  } else if (isBagerV) {
+    spec1Label = t('machine_card.specs.max_dig_depth');
     spec1Value = `${masina?.specifikacije?.maxDubinaKopanja ?? "-"}`;
-    spec2Label = "Max visina istovara";
+    spec2Label = t('machine_card.specs.max_dump_height');
     spec2Value = `${masina?.specifikacije?.maxVisinaIstovara ?? "-"}`;
-  }else if (isDron) { // <-- DODATO ZA DRONOVE
-    spec1Label = "Rezervoar";
+  } else if (isDron) {
+    spec1Label = t('machine_card.specs.tank');
     spec1Value = `${masina?.specifikacije?.kapacitetRezervoara ?? "-"}`;
-    spec2Label = "Baterija";
-    // Skraćujemo tekst za karticu (brišemo ono u zagradi da dizajn ostane čist)
+    spec2Label = t('machine_card.specs.battery');
     let bat = masina?.specifikacije?.baterija ?? "-";
     spec2Value = bat.split(" (")[0]; 
-  }else if (isKosilica) {
-    // --- NOVO PODEŠAVANJE ZA BAGERE (Kašike) ---
-    spec1Label = "Max površina košenja";
+  } else if (isKosilica) {
+    spec1Label = t('machine_card.specs.max_mow_area');
     spec1Value = `${masina?.specifikacije?.maksimalnaPovrsina ?? "-"}`;
-    spec2Label = "Max širina košenja";
+    spec2Label = t('machine_card.specs.max_mow_width');
     spec2Value = `${masina?.specifikacije?.sirinaKosenja ?? "-"}`;
   }
 
@@ -146,7 +145,8 @@ export default function MachineCard({ masina }) {
       {/* IMAGE */}
       <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center overflow-hidden">
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black text-slate-800 uppercase tracking-widest z-10 shadow-sm">
-          {masina.kategorija?.replace("-", " ")}
+          {/* 👈 PREVOD KATEGORIJE ZA BEDŽ */}
+          {t(`filter_sidebar.categories.${masina.kategorija}`, { defaultValue: masina.kategorija?.replace("-", " ") })}
         </div>
 
         <picture className="z-0 w-full h-full">
@@ -173,8 +173,8 @@ export default function MachineCard({ masina }) {
             aria-pressed={isFavorited}
             aria-label={
               isFavorited
-                ? `Ukloni ${masina.naziv} iz favorita`
-                : `Dodaj ${masina.naziv} u favorite`
+                ? `${t('machine_card.remove_fav')} ${masina.naziv} ${t('machine_card.from_fav')}`
+                : `${t('machine_card.add_fav')} ${masina.naziv} ${t('machine_card.in_fav')}`
             }
             className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-white flex items-center justify-center transition-all duration-300 hover:bg-white active:scale-90"
           >
@@ -227,7 +227,7 @@ export default function MachineCard({ masina }) {
         <div className="mt-auto pt-5 border-t border-slate-100 flex items-center justify-between">
           <div className="flex flex-col">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-              Cena
+              {t('machine_card.price_label')} {/* 👈 PREVEDENO */}
             </span>
             <span className="text-xl font-black text-slate-900 tracking-tight">
               {price}
@@ -236,10 +236,10 @@ export default function MachineCard({ masina }) {
 
           <Link
             to={`/masina/${masina.slug}`}
-            aria-label={`Pogledaj detalje za ${masina.naziv}`}
+            aria-label={`${t('machine_card.btn_details')} za ${masina.naziv}`}
             className="group/btn relative inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-bold overflow-hidden transition-all duration-300 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30"
           >
-            <span className="relative z-10 text-sm">Detalji</span>
+            <span className="relative z-10 text-sm">{t('machine_card.btn_details')}</span> {/* 👈 PREVEDENO */}
             <svg
               className="w-4 h-4 relative z-10 transform transition-transform duration-300 group-hover/btn:translate-x-1"
               fill="none"

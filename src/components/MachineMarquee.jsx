@@ -2,13 +2,15 @@ import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { sveMasine } from '../data/sveMasine';
+import { useTranslation } from "react-i18next"; // 👈 IMPORT ZA PREVOD
 
-function formatPrice(value) {
-  if (!value || value === 0 || value === "0" || value === "") return "Na upit";
+// Dodat fallbackText argument za prevod "Na upit"
+function formatPrice(value, fallbackText) {
+  if (!value || value === 0 || value === "0" || value === "") return fallbackText;
   const num = typeof value === "number"
     ? value
     : Number(String(value).replace(/[^0-9.-]+/g, ""));
-  if (isNaN(num)) return "Na upit";
+  if (isNaN(num)) return fallbackText;
 
   return new Intl.NumberFormat("sr-RS", {
     style: "currency",
@@ -19,6 +21,7 @@ function formatPrice(value) {
 
 const MachineMarquee = ({ currentSlug }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
 
   const nasumicneMasine = useMemo(() => {
     return [...sveMasine]
@@ -51,11 +54,9 @@ const MachineMarquee = ({ currentSlug }) => {
     let animationFrameId;
 
     const scroll = () => {
-      // Ako korisnik ne drži prst/miš na komponenti, skroluj automatski
       if (!paused) {
-        el.scrollLeft += 1; // Brzina kretanja (možeš povećati na 1.5 ili 2 ako hoćeš brže)
+        el.scrollLeft += 1; 
         
-        // Ako je došao do pola (kraj prvog seta mašina), neprimetno ga vrati na početak
         if (el.scrollLeft >= el.scrollWidth / 2) {
           el.scrollLeft = 0;
         }
@@ -86,64 +87,64 @@ const MachineMarquee = ({ currentSlug }) => {
 
   const items = [...nasumicneMasine, ...nasumicneMasine];
 
-  // POMOĆNA FUNKCIJA ZA DINAMIČKE SPECIFIKACIJE
+  // POMOĆNA FUNKCIJA ZA DINAMIČKE SPECIFIKACIJE (Sada sa prevodom)
   const renderSpecifikacije = (masina) => {
     const { kategorija, specifikacije: s } = masina;
     if (!s) return null;
 
-    if (kategorija === "telehenderi") {
+    if (kategorija === "telehenderi" || kategorija === "telehendleri") {
       return (
         <>
-          <span>Dizanje: {s.visinaDizanja || s.maksVisinaDizanja || "-"} m</span>
-          <span>Nosivost: {s.nosivost || "-"} kg</span>
+          <span>{t('machine_marquee.specs.lifting')} {s.visinaDizanja || s.maksVisinaDizanja || "-"} m</span>
+          <span>{t('machine_marquee.specs.load')} {s.nosivost || "-"} kg</span>
         </>
       );
     }
     if (kategorija === "viljuskari") {
       return (
         <>
-          <span>Dizanje: {s.maksVisinaDizanja || "-"}</span>
-          <span>Nosivost: {s.nosivost || "-"} kg</span>
+          <span>{t('machine_marquee.specs.lifting')} {s.maksVisinaDizanja || "-"}</span>
+          <span>{t('machine_marquee.specs.load')} {s.nosivost || "-"} kg</span>
         </>
       );
     }
     if (kategorija === "mini-bageri") {
       return (
         <>
-          <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
-          <span>Težina: {s.nosivost || "-"} kg</span>
+          <span>{t('machine_marquee.specs.digging')} {s.maxDubinaKopanja || "-"}</span>
+          <span>{t('machine_marquee.specs.weight')} {s.nosivost || "-"} kg</span>
         </>
       );
     }
     if (kategorija === "bageri") {
       return (
         <>
-          <span>Kopanje: {s.maxDubinaKopanja || "-"}</span>
-          <span>Težina: {s.operativnaTezina || "-"}</span>
+          <span>{t('machine_marquee.specs.digging')} {s.maxDubinaKopanja || "-"}</span>
+          <span>{t('machine_marquee.specs.weight')} {s.operativnaTezina || "-"}</span>
         </>
       );
     }
     if (kategorija === "mini-mikseri") {
       return (
         <>
-          <span>Kapacitet: {s.kapacitetMesanja || "-"} m³</span>
-          <span>Snaga: {s.snaga || "-"}</span>
+          <span>{t('machine_marquee.specs.capacity')} {s.kapacitetMesanja || "-"} m³</span>
+          <span>{t('machine_marquee.specs.power')} {s.snaga || "-"}</span>
         </>
       );
     }
     if (kategorija === "dronovi") {
       return (
         <>
-          <span>Kapacitet: {s.kapacitetRezervoara || "-"}</span>
-          <span>Navigacija: {s.navigacija ? s.navigacija.split('+')[0].trim() : "-"}</span>
+          <span>{t('machine_marquee.specs.capacity')} {s.kapacitetRezervoara || "-"}</span>
+          <span>{t('machine_marquee.specs.navigation')} {s.navigacija ? s.navigacija.split('+')[0].trim() : "-"}</span>
         </>
       );
     }
     if (kategorija === "kosilice") {
       return (
         <>
-          <span>Površina: {s.maksimalnaPovrsina || "-"}</span>
-          <span>Nagib: {s.maksNagib || "-"}</span>
+          <span>{t('machine_marquee.specs.area')} {s.maksimalnaPovrsina || "-"}</span>
+          <span>{t('machine_marquee.specs.tilt')} {s.maksNagib || "-"}</span>
         </>
       );
     }
@@ -151,8 +152,8 @@ const MachineMarquee = ({ currentSlug }) => {
     // Default fallback za svaki slučaj
     return (
       <>
-        <span>Snaga: {s.snagaMotora || s.snaga || "-"}</span>
-        <span>Težina: {s.operativnaTezina || s.tezina || "-"}</span>
+        <span>{t('machine_marquee.specs.power')} {s.snagaMotora || s.snaga || "-"}</span>
+        <span>{t('machine_marquee.specs.weight')} {s.operativnaTezina || s.tezina || "-"}</span>
       </>
     );
   };
@@ -162,7 +163,7 @@ const MachineMarquee = ({ currentSlug }) => {
       <div className="max-w-7xl mx-auto px-4 mb-10">
         <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
           <span className="w-2 h-10 bg-orange-600 rounded-full" />
-          Još mašina
+          {t('machine_marquee.title')} {/* 👈 PREVEDENO */}
         </h2>
       </div>
 
@@ -170,19 +171,17 @@ const MachineMarquee = ({ currentSlug }) => {
         className="relative w-full"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
-        onTouchStart={() => setPaused(true)}   // Pauzira skrol kad korisnik pipne ekran
-        onTouchEnd={() => setPaused(false)}    // Nastavlja kad pusti prst
+        onTouchStart={() => setPaused(true)} 
+        onTouchEnd={() => setPaused(false)} 
       >
         <div
           ref={trackRef}
-          // Dodali smo overflow-x-auto da bi radio prst, i sakrili scrollbar
           className="flex gap-6 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
           style={{
-            scrollbarWidth: 'none', /* Za Firefox */
-            msOverflowStyle: 'none', /* Za IE i Edge */
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none', 
           }}
         >
-          {/* Sakrivanje scrollbara za Chrome/Safari */}
           <style>{`
             div::-webkit-scrollbar {
               display: none;
@@ -190,7 +189,7 @@ const MachineMarquee = ({ currentSlug }) => {
           `}</style>
           
           {items.map((m, index) => {
-            const price = formatPrice(m.cena);
+            const price = formatPrice(m.cena, t('machine_marquee.price_on_request')); // 👈 PREVEDENO
             const isFav = favorites.includes(m.slug);
 
             return (
@@ -241,7 +240,7 @@ const MachineMarquee = ({ currentSlug }) => {
                         to={`/masina/${m.slug}`}
                         className="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
                       >
-                        Detalji
+                        {t('machine_marquee.btn_details')} {/* 👈 PREVEDENO */}
                       </Link>
                     </div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 
 const PriceSlider = ({ min, max, step, initialMin, initialMax, onChange }) => {
     // 1. KORISTIMO ?? UMESTO || (dozvoljava da 0 bude validna vrednost)
@@ -7,6 +8,7 @@ const PriceSlider = ({ min, max, step, initialMin, initialMax, onChange }) => {
     const minValRef = useRef(initialMin ?? min);
     const maxValRef = useRef(initialMax ?? max);
     const range = useRef(null);
+    const { t, i18n } = useTranslation();
 
     // 2. ŠTITIMO SE OD DELJENJA NULOM
     const getPercent = (value) => {
@@ -71,7 +73,7 @@ const PriceSlider = ({ min, max, step, initialMin, initialMax, onChange }) => {
             {/* 1. PRIKAZ CENA (Moderni bedževi iznad klizača) */}
             <div className="flex items-center justify-between mb-8">
                 <div className="flex flex-col">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Od</span>
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{t('nav.od')}</span>
                     <div className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl shadow-sm text-sm font-black text-slate-700 w-24 text-center">
                         {minVal.toLocaleString()} €
                     </div>
@@ -81,7 +83,7 @@ const PriceSlider = ({ min, max, step, initialMin, initialMax, onChange }) => {
                 <div className="w-4 h-[2px] bg-slate-200 mt-4 rounded-full"></div>
 
                 <div className="flex flex-col items-end">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Do</span>
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{t('nav.do')}</span>
                     <div className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl shadow-sm text-sm font-black text-blue-700 w-24 text-center ring-1 ring-blue-500/20">
                         {maxVal.toLocaleString()} €
                     </div>

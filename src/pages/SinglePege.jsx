@@ -3,8 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sveMasine } from '../data/sveMasine';
 import MachineMarquee from '../components/MachineMarquee';
+import { useTranslation } from 'react-i18next'; // 👈 IMPORT ZA PREVOD
 
-// Pomoćna funkcija za formatiranje ključeva iz baze
+// Pomoćna funkcija za formatiranje ključeva iz baze (čuvamo kao "plan B")
 const formatKey = (key) => {
   const result = key.replace(/([A-Z])/g, " $1");
   return result.charAt(0).toUpperCase() + result.slice(1);
@@ -13,6 +14,7 @@ const formatKey = (key) => {
 function SinglePege() {
   const { slug } = useParams();
   const masina = sveMasine.find((m) => m.slug === slug);
+  const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
 
   const [glavnaSlika, setGlavnaSlika] = useState(null);
   
@@ -32,7 +34,6 @@ function SinglePege() {
 
   // --- LOGIKA ZA SLAJDER U MODALU ---
   const openImageModal = () => {
-    // Nalazimo indeks trenutne slike kako bi slajder krenuo od nje
     if (masina?.galerija) {
       const index = masina.galerija.indexOf(glavnaSlika);
       setCurrentImageIndex(index !== -1 ? index : 0);
@@ -41,7 +42,7 @@ function SinglePege() {
   };
 
   const nextImage = (e) => {
-    e.stopPropagation(); // Sprečava zatvaranje modala kad se klikne na strelicu
+    e.stopPropagation(); 
     if (!masina?.galerija) return;
     setCurrentImageIndex((prev) => 
       prev === masina.galerija.length - 1 ? 0 : prev + 1
@@ -63,7 +64,8 @@ function SinglePege() {
     setStatusMessage('');
 
     const formData = new FormData(e.target);
-    formData.append('_subject', `Novi upit za mašinu: ${masina.naziv}`);
+    // 👈 PREVEDEN SUBJEKAT EMAILA
+    formData.append('_subject', `${t('single_page.email_subject')} ${masina.naziv}`);
     formData.append('_captcha', 'false');
 
     try {
@@ -101,15 +103,14 @@ function SinglePege() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
         <div className="text-6xl mb-4 text-slate-300">🚜</div>
-        <h1 className="text-4xl font-black text-slate-800 mb-4">Mašina nije pronađena</h1>
+        <h1 className="text-4xl font-black text-slate-800 mb-4">{t('single_page.not_found')}</h1>
         <Link to="/katalog" className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">
-          Vrati se na katalog
+          {t('single_page.back_to_catalog')}
         </Link>
       </div>
     );
   }
 
-  // Određivanje slike za prikaz u modalu
   const modalSlika = masina?.galerija?.[currentImageIndex] || glavnaSlika;
   const imaViseSlika = masina?.galerija?.length > 1;
 
@@ -119,9 +120,10 @@ function SinglePege() {
 
         {/* BREADCRUMBS */}
         <nav className="mb-8 flex items-center gap-2 text-sm font-bold tracking-wide">
-          <Link to="/katalog" className="text-slate-400 hover:text-blue-600 transition-colors">Katalog</Link>
+          <Link to="/katalog" className="text-slate-400 hover:text-blue-600 transition-colors">{t('single_page.breadcrumb_catalog')}</Link>
           <span className="text-slate-300">/</span>
-          <span className="text-slate-400 capitalize">{masina.kategorija.replace("-", " ")}</span>
+          {/* 👈 PAMETNO KORISTI PREVOD KATEGORIJA IZ FILTERA KOJI VEĆ IMAMO */}
+          <span className="text-slate-400 capitalize">{t(`filter_sidebar.categories.${masina.kategorija}`, { defaultValue: masina.kategorija.replace("-", " ") })}</span>
           <span className="text-slate-300">/</span>
           <span className="text-blue-600">{masina.naziv}</span>
         </nav>
@@ -134,7 +136,6 @@ function SinglePege() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col gap-6"
           >
-            {/* KLIK ZA OTVARANJE SLAJDER MODALA */}
             <div 
               onClick={openImageModal}
               className="relative aspect-square bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden group cursor-pointer"
@@ -172,7 +173,7 @@ function SinglePege() {
                 ))
               ) : (
                 <div className="text-slate-400 text-sm col-span-4">
-                  Nema dodatnih slika.
+                  {t('single_page.no_images')} {/* 👈 PREVEDENO */}
                 </div>
               )}
             </div>
@@ -186,12 +187,12 @@ function SinglePege() {
           >
             <div className="mb-8">
               <span className="inline-block px-4 py-1 bg-blue-50 text-blue-600 font-black text-[10px] uppercase tracking-[0.2em] rounded-full mb-4 border border-blue-100">
-                Novo u ponudi • 2026
+                {t('single_page.new_badge')} • 2026 {/* 👈 PREVEDENO */}
               </span>
               <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">{masina.naziv}</h1>
               <div className="flex items-baseline gap-3">
                 <span className="text-3xl font-black text-blue-600">{masina.cena}</span>
-                {masina.cena !== "Na upit" && <span className="text-slate-400 font-bold text-lg">+ PDV</span>}
+                {masina.cena !== "Na upit" && <span className="text-slate-400 font-bold text-lg">{t('single_page.plus_vat')}</span>}
               </div>
             </div>
 
@@ -202,7 +203,7 @@ function SinglePege() {
             <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm mb-10">
               <h3 className="text-xl font-black text-slate-900 mb-8 flex items-center gap-3">
                 <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
-                Tehnički detalji
+                {t('single_page.tech_details')} {/* 👈 PREVEDENO */}
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
@@ -211,13 +212,14 @@ function SinglePege() {
                   return (
                     <SpecItem
                       key={key}
-                      label={formatKey(key)}
+                      // 👇 PAMETAN PREVOD: Prvo traži prevod ključa iz baze, a ako ga nema koristi formatKey funkciju! 👇
+                      label={t(`single_page.specs.${key}`, { defaultValue: formatKey(key) })}
                       value={value}
                       unit={key === 'visinaDizanja' ? 'm' : key === 'nosivost' ? 'kg' : key === 'kapacitetMesanja' ? 'm³' : ''}
                     />
                   );
                 })}
-                <SpecItem label="Stanje" value="Novo (Garancija)" />
+                <SpecItem label={t('single_page.condition')} value={t('single_page.condition_new')} /> {/* 👈 PREVEDENO */}
               </div>
             </div>
 
@@ -226,13 +228,13 @@ function SinglePege() {
                 onClick={() => setIsModalOpen(true)}
                 className="flex-[2] bg-slate-900 hover:bg-blue-600 text-white font-black py-5 px-8 rounded-2xl transition-all duration-300 shadow-xl shadow-slate-900/10 flex items-center justify-center gap-3 group"
               >
-                Zatraži ponudu
+                {t('single_page.btn_quote')} {/* 👈 PREVEDENO */}
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
               <a href="tel:+381640000000" className="flex-1 bg-white border-2 border-slate-100 hover:border-blue-600 text-slate-900 font-black py-5 px-8 rounded-2xl transition-all duration-300 text-center flex items-center justify-center">
-                Pozovi prodaju
+                {t('single_page.btn_call')} {/* 👈 PREVEDENO */}
               </a>
             </div>
           </motion.div>
@@ -245,7 +247,6 @@ function SinglePege() {
       <AnimatePresence>
         {isImageModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
-            {/* Zatamnjena pozadina */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -254,7 +255,6 @@ function SinglePege() {
               className="absolute inset-0 bg-slate-900/95 backdrop-blur-md cursor-pointer"
             />
 
-            {/* Dugme za zatvaranje (X) */}
             <button 
               onClick={() => setIsImageModalOpen(false)}
               className="absolute top-6 right-6 z-[110] text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-md transition-all"
@@ -264,7 +264,6 @@ function SinglePege() {
               </svg>
             </button>
 
-            {/* STRELICA LEVO */}
             {imaViseSlika && (
               <button 
                 onClick={prevImage}
@@ -276,9 +275,8 @@ function SinglePege() {
               </button>
             )}
 
-            {/* SLIKA U CENTRU */}
             <motion.div 
-              key={currentImageIndex} // Key omogućava animaciju kad se slika promeni
+              key={currentImageIndex}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -290,7 +288,6 @@ function SinglePege() {
                 alt={masina.naziv}
                 className="max-w-full max-h-[80vh] md:max-h-[85vh] object-contain drop-shadow-2xl pointer-events-auto"
               />
-              {/* Indikator slika (npr. 1 / 5) na dnu */}
               {imaViseSlika && (
                 <div className="mt-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white/80 text-sm font-bold tracking-widest pointer-events-auto">
                   {currentImageIndex + 1} / {masina.galerija.length}
@@ -298,7 +295,6 @@ function SinglePege() {
               )}
             </motion.div>
 
-            {/* STRELICA DESNO */}
             {imaViseSlika && (
               <button 
                 onClick={nextImage}
@@ -342,8 +338,8 @@ function SinglePege() {
               </button>
 
               <div className="mb-8">
-                <h3 className="text-2xl font-black text-slate-900">Zatraži ponudu</h3>
-                <p className="text-slate-500 font-medium mt-1">Za mašinu: <span className="text-blue-600 font-bold">{masina.naziv}</span></p>
+                <h3 className="text-2xl font-black text-slate-900">{t('single_page.modal_title')}</h3> {/* 👈 PREVEDENO */}
+                <p className="text-slate-500 font-medium mt-1">{t('single_page.modal_for')} <span className="text-blue-600 font-bold">{masina.naziv}</span></p> {/* 👈 PREVEDENO */}
               </div>
 
               {statusMessage === 'uspeh' && (
@@ -351,57 +347,57 @@ function SinglePege() {
                   <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  Upit je uspešno poslat!
+                  {t('single_page.success_msg')} {/* 👈 PREVEDENO */}
                 </div>
               )}
               {statusMessage === 'greska' && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl font-bold">
-                  Došlo je do greške. Pokušajte ponovo kasnije.
+                  {t('single_page.error_msg')} {/* 👈 PREVEDENO */}
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">Ime Firme / Osobe</label>
+                  <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_name')}</label> {/* 👈 PREVEDENO */}
                   <input 
                     type="text" 
                     name="Ime" 
                     required
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    placeholder="Unesite naziv"
+                    placeholder={t('single_page.form_name_ph')} /* 👈 PREVEDENO */
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">Email</label>
+                    <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_email')}</label> {/* 👈 PREVEDENO */}
                     <input 
                       type="email" 
                       name="Email" 
                       required
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                      placeholder="vas@email.com"
+                      placeholder={t('single_page.form_email_ph')} /* 👈 PREVEDENO */
                     />
                   </div>
                   <div>
-                    <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">Telefon</label>
+                    <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_phone')}</label> {/* 👈 PREVEDENO */}
                     <input 
                       type="tel" 
                       name="Telefon" 
                       required
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                      placeholder="06x xxx xxxx"
+                      placeholder={t('single_page.form_phone_ph')} /* 👈 PREVEDENO */
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">Dodatna poruka (Opciono)</label>
+                  <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_msg')}</label> {/* 👈 PREVEDENO */}
                   <textarea 
                     name="Poruka"
                     rows="3"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                    placeholder="Npr. Zanima me rok isporuke..."
+                    placeholder={t('single_page.form_msg_ph')} /* 👈 PREVEDENO */
                   ></textarea>
                 </div>
 
@@ -410,7 +406,7 @@ function SinglePege() {
                   type="submit" 
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Šaljem...' : 'Pošalji Upit'}
+                  {isSubmitting ? t('single_page.btn_sending') : t('single_page.btn_send')} {/* 👈 PREVEDENO */}
                 </button>
               </form>
 
