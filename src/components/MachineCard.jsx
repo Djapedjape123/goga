@@ -219,7 +219,7 @@ export default function MachineCard({ masina }) {
 
         {masina.opis && (
           <p className="text-slate-500 text-sm line-clamp-2 leading-relaxed">
-            {masina.opis}
+            {t(`descriptions.${masina.id}`, { defaultValue: masina.opis })}
           </p>
         )}
 

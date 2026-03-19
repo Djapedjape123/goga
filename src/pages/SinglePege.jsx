@@ -197,7 +197,7 @@ function SinglePege() {
             </div>
 
             <p className="text-lg text-slate-500 leading-relaxed mb-10 font-medium italic border-l-4 border-blue-100 pl-4">
-              {masina.opis}
+              {t(`descriptions.${masina.id}`, { defaultValue: masina.opis })}
             </p>
 
             <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm mb-10">

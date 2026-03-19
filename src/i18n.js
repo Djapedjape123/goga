@@ -12,8 +12,8 @@ const resources = {
         consulting: "Konsultacije",
         contact: "Kontakt",
         favorites: "Omiljene mašine",
-        do:"Do",
-        od:"Od"
+        do: "Do",
+        od: "Od"
       },
       home: {
         badge: "Lideri u mehanizaciji",
@@ -180,7 +180,6 @@ const resources = {
           max_mow_width: "Max širina košenja"
         }
       },
-      // 👇 NOVI DEO ZA MACHINE MARQUEE 👇
       machine_marquee: {
         title: "Još mašina",
         price_on_request: "Na upit",
@@ -196,6 +195,69 @@ const resources = {
           area: "Površina:",
           tilt: "Nagib:"
         }
+      },
+      // 👇 OPISI MAŠINA NA SRPSKOM 👇
+      descriptions: {
+        // Viljuškari
+        "el-20pro-viljuskar": "Električni viljuškar BYD EL-20PRO sa litijumskom baterijom. Nosivost 2000kg, maksimalna visina dizanja do 6m.",
+        "el-25pro-viljuskar": "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
+        "el-30pro-viljuskar": "Pouzdan električni viljuškar BYD EL-30PRO. Nosivost 3000kg i snažan AC motor garantuju visoku efikasnost.",
+        "el-35pro-viljuskar": "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
+        "el-40pro-viljuskar": "Teški električni viljuškar BYD EL-40PRO sa nosivošću od 4000kg i pojačanim kapacitetom baterije od 420Ah.",
+        "el-50pro-viljuskar": "Najteži i najsnažniji model u seriji - BYD EL-50PRO. Nosivost od neverovatnih 5000kg, idealan za najzahtevnije terete.",
+        
+        // Telehendleri
+        "te3007-A": "TE3007-A | 2026 | 7m | 3000Kg |",
+        "te3007": "TE3007 | 2026 | 7m | 3000Kg |",
+        "te3507": "TE3507 | 2026 | 7m | 3500Kg | Novo sa garancijom",
+        "te3510": "TE3510 | 2026 | 10m | 3500Kg | Novo sa garancijom",
+        "te4007": "TE4007 | 2026 | 7m | 4000kg | Novo sa garancijom",
+        "te4010": "TE4010 | 2026 | 10m | 4000Kg | Novo sa garancijom",
+        "te4014": "TE4014 | 2026 | 14m | 4000kg | Novo sa garancijom",
+        "te4018": "TE4018 | 2026 | 18m | 4000kg | Novo sa garancijom",
+        "te5010": "TE5010 | 2026 | 10m | 5000Kg | Novo sa garancijom",
+        "te5014": "TE5014 | 2026 | 14m | 5000Kg | Novo sa garancijom",
+        "te5018": "TE5018 | 2026 | 18m | 5000Kg | Novo sa garancijom",
+        "te6018": "TE6018 | 2026 | 18m | 6000Kg | Novo sa garancijom",
+        "te7018": "TE7018 | 2026 | 18m | 7000Kg | Novo sa garancijom",
+
+        // Mikseri
+        "szj07-mikser": "Kompaktni samoutovarni mini mikser. Idealno za građevinske firme, investitore, komunalne službe i poljoprivredna gazdinstva.",
+        "szj10-mikser": "Samoutovarni mini mikser SZJ10. Pouzdan i brz za rad na terenu.",
+        "szj15-mikser": "Samoutovarni mini mikser SZJ15. Kapacitet 1.5 kubika.",
+        "szj16-mikser": "Samoutovarni mini mikser SZJ16. Ekonomičan dizel motor.",
+        "szj18-mikser": "Samoutovarni mini mikser SZJ18 sa kapacitetom od 1.8 kubika.",
+        "szj20-mikser": "Samoutovarni mini mikser SZJ20. Idealan balans snage i kapaciteta.",
+        "szj26-mikser": "Srednji samoutovarni mikser SZJ26 sa 2.6 kubika kapaciteta.",
+        "szj30-mikser": "Samoutovarni mini mikser SZJ30, 3 kubika, izuzetna snaga.",
+        "szj35-mikser": "Veliki samoutovarni mikser SZJ35, kapacitet 3.5 kubika.",
+        "szj40a-mikser": "Teški samoutovarni mikser SZJ40A. 4 kubika betona po mešanju.",
+        "szj40b-mikser": "Premium samoutovarni mikser SZJ40B. Povećan rezervoar za vodu.",
+        "szj45-mikser": "Najveći u klasi - SZJ45. Kapacitet od 4.5 kubika sa duplim rezervoarom.",
+
+        // Mini bageri
+        "se10-bager": "Kompaktni mini bager SE10. Nosivost 1000kg, idealan za rad u uskim prostorima i manja gradilišta.",
+        "se18-bager": "Mini bager SE12. Nosivost 1200kg sa odličnim dohvatom i efikasnim motorom.",
+        "se15-bager": "Mini bager SE15 kapaciteta 1500kg. Idealan balans snage (14.1kW) i kompaktnosti.",
+        "se20l-bager": "Snažan mini bager SE20L sa nosivošću od 2000kg. Motor od 22kW osigurava brzo obavljanje zadataka.",
+        "se25-bager": "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
+        "se30l-bager": "Bager SE30L nudi odlične performanse sa nosivošću od 3000kg i dubinom kopanja do 2000mm.",
+        "se35-bager": "Izuzetno snažan model SE35 sa motorom od 36.8kW. Nosivost od 3500kg savlađuje najteže prepreke.",
+        "se40-bager": "Najteži mini bager u ponudi - SE40. Nosivost 4000kg i kašika od 0.12m³ osiguravaju maksimalnu produktivnost.",
+
+        // Bageri
+        "wz06-10-bager": "Kompaktni bager WZ06-10 sa pouzdanim Kubota motorom. Operativna težina od 1800kg ga čini odličnim za uže prostore.",
+        "wz08-12-bager": "Snažan bager WZ08-12 sa Yunnei motorom (opciono Kubota). Odličan balans snage od 37kW i kapaciteta.",
+        "wz10-20-bager": "Srednji bager WZ10-20, operativna težina 3400kg uz veliku prednju kašiku od 0.75m³ za efikasan utovar.",
+        "wz15-26-bager": "Najteži model WZ15-26. Sa težinom od skoro 5 tona i motorom od 79 konjskih snaga, dizajniran je za najveće izazove.",
+
+        // Dronovi
+        "jt80-dron": "JT-80 Agri Drone je profesionalni poljoprivredni dron dizajniran za efikasno i precizno prskanje pesticida, herbicida i tečnih đubriva. Zahvaljujući velikom rezervoaru od 70L i naprednim navigacionim sistemima (GPS + RTK), omogućava brzo tretiranje velikih površina uz minimalan utrošak hemikalija i radne snage. Opremljen je centrifugalnim diznama za ravnomerno raspršivanje, radarskim senzorima za izbegavanje prepreka i FPV kamerom za nadzor leta. Integrisana aplikacija i daljinski upravljač omogućavaju precizno planiranje leta i potpuno automatsko prskanje, smanjujući troškove i povećavajući produktivnost.",
+
+        // Kosilice
+        "mai-an1000v": "Pametna robotska kosilica MAI AN1000V idealna za dvorišta i travnjake do 1000 m². Koristi naprednu AI Vision kameru i IMU za izbegavanje prepreka i planiranje rute bez potrebe za graničnim žicama. Upravljanje je potpuno automatizovano putem mobilne aplikacije.",
+        "mai-an3000v": "Unapređeni model MAI AN3000V namenjen srednjim i većim površinama do 3000 m². Uz AI Vision kameru, ovaj model koristi i RTK satelitsku navigaciju za centimetarsku preciznost, kao i ugrađen GPS praćenje (Anti-theft).",
+        "mai-commercialpro": "Zver za komercijalnu upotrebu – MAI COMMERCIALPRO. Dizajnirana za ogromne površine do neverovatnih 50.000 m² (sportski tereni, parkovi, golf tereni). Opremljena moćnom 48V LiFePO4 baterijom, industrijskim diskovima za košenje, 4G + RTK povezivanjem i ultrazvučnim senzorima."
       }
     }
   },
@@ -209,8 +271,8 @@ const resources = {
         consulting: "Consulting",
         contact: "Contact",
         favorites: "Favorite Machines",
-        do:"To",
-        od:"From",
+        do: "To",
+        od: "From"
       },
       home: {
         badge: "Leaders in machinery",
@@ -423,7 +485,6 @@ const resources = {
           max_mow_width: "Max mow width"
         }
       },
-      // 👇 NOVI DEO ZA MACHINE MARQUEE 👇
       machine_marquee: {
         title: "More machines",
         price_on_request: "On request",
@@ -439,6 +500,69 @@ const resources = {
           area: "Area:",
           tilt: "Tilt:"
         }
+      },
+      // 👇 OPISI MAŠINA NA ENGLESKOM 👇
+      descriptions: {
+        // Forklifts
+        "el-20pro-viljuskar": "Electric forklift BYD EL-20PRO with a lithium battery. Capacity 2000kg, max lifting height up to 6m.",
+        "el-25pro-viljuskar": "Electric forklift BYD EL-25PRO with a capacity of 2500kg. Ideal for warehouse work with a long-lasting lithium battery.",
+        "el-30pro-viljuskar": "Reliable electric forklift BYD EL-30PRO. Capacity 3000kg and a powerful AC motor guarantee high efficiency.",
+        "el-35pro-viljuskar": "Powerful BYD EL-35PRO electric forklift. The 3500kg capacity makes it perfect for tougher industrial conditions.",
+        "el-40pro-viljuskar": "Heavy-duty electric forklift BYD EL-40PRO with 4000kg capacity and an enhanced 420Ah battery.",
+        "el-50pro-viljuskar": "The heaviest and most powerful model in the series - BYD EL-50PRO. An incredible 5000kg capacity, ideal for the most demanding loads.",
+        
+        // Telehandlers
+        "te3007-A": "TE3007-A | 2026 | 7m | 3000Kg |",
+        "te3007": "TE3007 | 2026 | 7m | 3000Kg |",
+        "te3507": "TE3507 | 2026 | 7m | 3500Kg | New with warranty",
+        "te3510": "TE3510 | 2026 | 10m | 3500Kg | New with warranty",
+        "te4007": "TE4007 | 2026 | 7m | 4000kg | New with warranty",
+        "te4010": "TE4010 | 2026 | 10m | 4000Kg | New with warranty",
+        "te4014": "TE4014 | 2026 | 14m | 4000kg | New with warranty",
+        "te4018": "TE4018 | 2026 | 18m | 4000kg | New with warranty",
+        "te5010": "TE5010 | 2026 | 10m | 5000Kg | New with warranty",
+        "te5014": "TE5014 | 2026 | 14m | 5000Kg | New with warranty",
+        "te5018": "TE5018 | 2026 | 18m | 5000Kg | New with warranty",
+        "te6018": "TE6018 | 2026 | 18m | 6000Kg | New with warranty",
+        "te7018": "TE7018 | 2026 | 18m | 7000Kg | New with warranty",
+
+        // Mixers
+        "szj07-mikser": "Compact self-loading mini mixer. Ideal for construction companies, investors, utility services, and agricultural farms.",
+        "szj10-mikser": "Self-loading mini mixer SZJ10. Reliable and fast for fieldwork.",
+        "szj15-mikser": "Self-loading mini mixer SZJ15. Capacity 1.5 cubic meters.",
+        "szj16-mikser": "Self-loading mini mixer SZJ16. Economical diesel engine.",
+        "szj18-mikser": "Self-loading mini mixer SZJ18 with a capacity of 1.8 cubic meters.",
+        "szj20-mikser": "Self-loading mini mixer SZJ20. Ideal balance of power and capacity.",
+        "szj26-mikser": "Medium self-loading mixer SZJ26 with 2.6 cubic meters of capacity.",
+        "szj30-mikser": "Self-loading mini mixer SZJ30, 3 cubic meters, exceptional power.",
+        "szj35-mikser": "Large self-loading mixer SZJ35, capacity 3.5 cubic meters.",
+        "szj40a-mikser": "Heavy self-loading mixer SZJ40A. 4 cubic meters of concrete per mix.",
+        "szj40b-mikser": "Premium self-loading mixer SZJ40B. Increased water tank.",
+        "szj45-mikser": "The largest in its class - SZJ45. Capacity of 4.5 cubic meters with a double tank.",
+
+        // Mini Excavators
+        "se10-bager": "Compact mini excavator SE10. Load capacity 1000kg, ideal for working in narrow spaces and smaller construction sites.",
+        "se18-bager": "Mini excavator SE12. Load capacity 1200kg with excellent reach and an efficient engine.",
+        "se15-bager": "Mini excavator SE15 with 1500kg capacity. Ideal balance of power (14.1kW) and compactness.",
+        "se20l-bager": "Powerful mini excavator SE20L with a 2000kg capacity. The 22kW engine ensures fast task completion.",
+        "se25-bager": "Medium excavator SE25L. Capacity 2500kg and 0.1m³ bucket for more serious earthworks.",
+        "se30l-bager": "Excavator SE30L offers excellent performance with 3000kg capacity and digging depth up to 2000mm.",
+        "se35-bager": "Extremely powerful SE35 model with a 36.8kW engine. The 3500kg capacity overcomes the toughest obstacles.",
+        "se40-bager": "The heaviest mini excavator in the lineup - SE40. 4000kg capacity and 0.12m³ bucket ensure maximum productivity.",
+
+        // Excavators
+        "wz06-10-bager": "Compact excavator WZ06-10 with a reliable Kubota engine. The 1800kg operating weight makes it excellent for narrow spaces.",
+        "wz08-12-bager": "Powerful excavator WZ08-12 with Yunnei engine (optional Kubota). Excellent balance of 37kW power and capacity.",
+        "wz10-20-bager": "Medium excavator WZ10-20, operating weight 3400kg with a large 0.75m³ front bucket for efficient loading.",
+        "wz15-26-bager": "Heaviest model WZ15-26. Weighing nearly 5 tons with a 79 horsepower engine, it is designed for the biggest challenges.",
+
+        // Drones
+        "jt80-dron": "The JT-80 Agri Drone is a professional agricultural drone designed for efficient and precise spraying of pesticides, herbicides, and liquid fertilizers. Thanks to a large 70L tank and advanced navigation systems (GPS + RTK), it enables rapid treatment of large areas with minimal use of chemicals and labor. It is equipped with centrifugal nozzles for even spraying, radar sensors for obstacle avoidance, and an FPV camera for flight monitoring. The integrated app and remote controller allow precise flight planning and fully automatic spraying, reducing costs and increasing productivity.",
+
+        // Mowers
+        "mai-an1000v": "Smart robotic lawnmower MAI AN1000V ideal for yards and lawns up to 1000 m². It uses an advanced AI Vision camera and IMU for obstacle avoidance and route planning without the need for boundary wires. Fully automated control via a mobile app.",
+        "mai-an3000v": "Upgraded MAI AN3000V model designed for medium to large areas up to 3000 m². Along with the AI Vision camera, this model uses RTK satellite navigation for centimeter precision, as well as built-in GPS tracking (Anti-theft).",
+        "mai-commercialpro": "A beast for commercial use – MAI COMMERCIALPRO. Designed for huge areas up to an incredible 50,000 m² (sports fields, parks, golf courses). Equipped with a powerful 48V LiFePO4 battery, industrial mowing disks, 4G + RTK connectivity, and ultrasonic sensors."
       }
     }
   }
