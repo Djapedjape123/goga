@@ -1,11 +1,11 @@
 export const sveMasine = [
-  // --- TELEHENDERI ---
+
    {
     id: "el-20pro-viljuskar",
     slug: "el-20pro-elektricni-viljuskar",
     naziv: "EL-20PRO",
     kategorija: "viljuskari",
-    cena: "23000",
+    cena: "20900",
     opis: "Električni viljuškar BYD EL-20PRO sa litijumskom baterijom. Nosivost 2000kg, maksimalna visina dizanja do 6m.",
     specifikacije: {
       nosivost: "2000",
@@ -33,7 +33,7 @@ export const sveMasine = [
     slug: "el-25pro-elektricni-viljuskar",
     naziv: "EL-25PRO",
     kategorija: "viljuskari",
-    cena: "24000",
+    cena: "21900",
     opis: "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
     specifikacije: {
       nosivost: "2500",
@@ -61,7 +61,7 @@ export const sveMasine = [
     slug: "el-30pro-elektricni-viljuskar",
     naziv: "EL-30PRO",
     kategorija: "viljuskari",
-    cena: "26000",
+    cena: "22900",
     opis: "Pouzdan električni viljuškar BYD EL-30PRO. Nosivost 3000kg i snažan AC motor garantuju visoku efikasnost.",
     specifikacije: {
       nosivost: "3000",
@@ -89,7 +89,7 @@ export const sveMasine = [
     slug: "el-35pro-elektricni-viljuskar",
     naziv: "EL-35PRO",
     kategorija: "viljuskari",
-    cena: "28000",
+    cena: "23900",
     opis: "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
     specifikacije: {
       nosivost: "3500",
@@ -117,7 +117,7 @@ export const sveMasine = [
     slug: "el-40pro-elektricni-viljuskar",
     naziv: "EL-40PRO",
     kategorija: "viljuskari",
-    cena: "43000",
+    cena: "29900",
     opis: "Teški električni viljuškar BYD EL-40PRO sa nosivošću od 4000kg i pojačanim kapacitetom baterije od 420Ah.",
     specifikacije: {
       nosivost: "4000",
@@ -145,7 +145,7 @@ export const sveMasine = [
     slug: "el-50pro-elektricni-viljuskar",
     naziv: "EL-50PRO",
     kategorija: "viljuskari",
-    cena: "45000",
+    cena: "35900",
     opis: "Najteži i najsnažniji model u seriji - BYD EL-50PRO. Nosivost od neverovatnih 5000kg, idealan za najzahtevnije terete.",
     specifikacije: {
       nosivost: "5000",
@@ -172,7 +172,7 @@ export const sveMasine = [
     id: "te3007-A",
     slug: "te3007-telehender",
     naziv: "TE3007-A",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "52 900€",
     opis: "TE3007-A | 2026 | 7m | 3000Kg |",
     specifikacije: {
@@ -198,7 +198,7 @@ export const sveMasine = [
     id: "te3007",
     slug: "te3007-telehender-torque",
     naziv: "TE3007",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "41 900€",
     opis: "TE3007 | 2026 | 7m | 3000Kg |",
     specifikacije: {
@@ -224,7 +224,7 @@ export const sveMasine = [
     id: "te3507",
     slug: "te3507-telehender",
     naziv: "TE3507",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "44 900€",
     opis: "TE3507 | 2026 | 7m | 3500Kg | Novo sa garancijom",
     specifikacije: {
@@ -250,7 +250,7 @@ export const sveMasine = [
     id: "te3510",
     slug: "te3510-telehender",
     naziv: "TE3510",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "52 900€",
     opis: "TE3510 | 2026 | 10m | 3500Kg | Novo sa garancijom",
     specifikacije: {
@@ -276,7 +276,7 @@ export const sveMasine = [
     id: "te4007",
     slug: "te4007-telehender",
     naziv: "TE4007",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "49 900€",
     opis: "TE4007 | 2026 | 7m | 4000kg | Novo sa garancijom",
     specifikacije: {
@@ -302,7 +302,7 @@ export const sveMasine = [
     id: "te4010",
     slug: "te4010-telehender",
     naziv: "TE4010",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "55 900€",
     opis: "TE4010 | 2026 | 10m | 4000Kg | Novo sa garancijom",
     specifikacije: {
@@ -327,7 +327,7 @@ export const sveMasine = [
     id: "te4014",
     slug: "te4014-telehender",
     naziv: "TE4014",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "63 900€",
     opis: "TE4014 | 2026 | 14m | 4000kg | Novo sa garancijom",
     specifikacije: {
@@ -352,7 +352,7 @@ export const sveMasine = [
     id: "te4018",
     slug: "te4018-telehender",
     naziv: "TE4018",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "69 900€",
     opis: "TE4018 | 2026 | 18m | 4000kg | Novo sa garancijom",
     specifikacije: {
@@ -377,7 +377,7 @@ export const sveMasine = [
     id: "te5010",
     slug: "te5010-telehender",
     naziv: "TE5010",
-    kategorija: "telehenderi",
+    kategorija: "telehendleri",
     cena: "59 900€",
     opis: "TE5010 | 2026 | 10m | 5000Kg | Novo sa garancijom",
     specifikacije: {
@@ -402,7 +402,7 @@ export const sveMasine = [
     id: "te5014",
     slug: "te5014-telehender",
     naziv: "TE5014",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "67 900€",
     opis: "TE5014 | 2026 | 14m | 5000Kg | Novo sa garancijom",
     specifikacije: {
@@ -427,7 +427,7 @@ export const sveMasine = [
     id: "te5018",
     slug: "te5018-telehender",
     naziv: "TE5018",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "71 900€",
     opis: "TE5018 | 2026 | 18m | 5000Kg | Novo sa garancijom",
     specifikacije: {
@@ -452,7 +452,7 @@ export const sveMasine = [
     id: "te6018",
     slug: "te6018-telehender",
     naziv: "TE6018",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "99 900€",
     opis: "TE6018 | 2026 | 18m | 6000Kg | Novo sa garancijom",
     specifikacije: {
@@ -477,7 +477,7 @@ export const sveMasine = [
     id: "te7018",
     slug: "te7018-telehender",
     naziv: "TE7018",
-    kategorija: "telehenderi",
+   kategorija: "telehendleri",
     cena: "135 000€",
     opis: "TE7018 | 2026 | 18m | 7000Kg | Novo sa garancijom",
     specifikacije: {
@@ -838,7 +838,7 @@ export const sveMasine = [
     slug: "se10-mini-bager",
     naziv: "SE10",
     kategorija: "mini-bageri",
-    cena: "8000",
+    cena: "11 900",
     opis: "Kompaktni mini bager SE10. Nosivost 1000kg, idealan za rad u uskim prostorima i manja gradilišta.",
     specifikacije: {
       nosivost: 1000,
@@ -870,7 +870,7 @@ export const sveMasine = [
     slug: "se18-mini-bager",
     naziv: "SE18",
     kategorija: "mini-bageri",
-    cena: "13000",
+    cena: "14400",
     opis: "Mini bager SE12. Nosivost 1200kg sa odličnim dohvatom i efikasnim motorom.",
     specifikacije: {
       nosivost: 1800,
@@ -902,7 +902,7 @@ export const sveMasine = [
     slug: "se15-mini-bager",
     naziv: "SE15",
     kategorija: "mini-bageri",
-    cena: "11000",
+    cena: "13900",
     opis: "Mini bager SE15 kapaciteta 1500kg. Idealan balans snage (14.1kW) i kompaktnosti.",
     specifikacije: {
       nosivost: 1500,
@@ -929,7 +929,7 @@ export const sveMasine = [
     slug: "se20l-mini-bager",
     naziv: "SE20L",
     kategorija: "mini-bageri",
-    cena: "18000",
+    cena: "18 900",
     opis: "Snažan mini bager SE20L sa nosivošću od 2000kg. Motor od 22kW osigurava brzo obavljanje zadataka.",
     specifikacije: {
       nosivost: 2000,
@@ -957,7 +957,7 @@ export const sveMasine = [
     slug: "se25-mini-bager",
     naziv: "SE25",
     kategorija: "mini-bageri",
-    cena: "25000",
+    cena: "21900",
     opis: "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
     specifikacije: {
       nosivost: 2500,
@@ -980,7 +980,7 @@ export const sveMasine = [
     slug: "se30l-mini-bager",
     naziv: "SE30L",
     kategorija: "mini-bageri",
-    cena: "28000",
+    cena: "22900",
     opis: "Bager SE30L nudi odlične performanse sa nosivošću od 3000kg i dubinom kopanja do 2000mm.",
     specifikacije: {
       nosivost: 3000,
@@ -1007,7 +1007,7 @@ export const sveMasine = [
     slug: "se35-mini-bager",
     naziv: "SE35",
     kategorija: "mini-bageri",
-    cena: "30000",
+    cena: "27900",
     opis: "Izuzetno snažan model SE35 sa motorom od 36.8kW. Nosivost od 3500kg savlađuje najteže prepreke.",
     specifikacije: {
       nosivost: 3500,
@@ -1035,7 +1035,7 @@ export const sveMasine = [
     slug: "se40-mini-bager",
     naziv: "SE40",
     kategorija: "mini-bageri",
-    cena: "35000",
+    cena: "32900",
     opis: "Najteži mini bager u ponudi - SE40. Nosivost 4000kg i kašika od 0.12m³ osiguravaju maksimalnu produktivnost.",
     specifikacije: {
       nosivost: 4000,
@@ -1064,7 +1064,7 @@ export const sveMasine = [
     slug: "wz06-10-bager",
     naziv: "WZ06-10",
     kategorija: "bageri",
-    cena: "17900", // +PDV (možeš dodati tekst "bez PDV" u komponenti gde se ispisuje cena)
+    cena: "22 900", // +PDV (možeš dodati tekst "bez PDV" u komponenti gde se ispisuje cena)
     opis: "Kompaktni bager WZ06-10 sa pouzdanim Kubota motorom. Operativna težina od 1800kg ga čini odličnim za uže prostore.",
     specifikacije: {
       motor: "Kubota",
@@ -1092,7 +1092,7 @@ export const sveMasine = [
     slug: "wz08-12-bager",
     naziv: "WZ08-12",
     kategorija: "bageri",
-    cena: "14900",
+    cena: "24 900",
     opis: "Snažan bager WZ08-12 sa Yunnei motorom (opciono Kubota). Odličan balans snage od 37kW i kapaciteta.",
     specifikacije: {
       motor: "YUNNEI (Opcija: Kubota +3000€)",
@@ -1120,7 +1120,7 @@ export const sveMasine = [
     slug: "wz10-20-bager",
     naziv: "WZ10-20",
     kategorija: "bageri",
-    cena: "16900",
+    cena: "26 900",
     opis: "Srednji bager WZ10-20, operativna težina 3400kg uz veliku prednju kašiku od 0.75m³ za efikasan utovar.",
     specifikacije: {
       motor: "YUNNEI",
@@ -1148,7 +1148,7 @@ export const sveMasine = [
     slug: "wz15-26-bager",
     naziv: "WZ15-26",
     kategorija: "bageri",
-    cena: "18900",
+    cena: "29 900",
     opis: "Najteži model WZ15-26. Sa težinom od skoro 5 tona i motorom od 79 konjskih snaga, dizajniran je za najveće izazove.",
     specifikacije: {
       motor: "YUNNEI",
