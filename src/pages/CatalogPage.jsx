@@ -4,6 +4,7 @@ import MachineCard from '../components/MachineCard';
 import FilterSidebar from '../components/FilterSidebar';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next'; // 👈 DODATO ZA PREVOD
+import SEO from '../components/SEO'; // 👈 DODATO: Import naše SEO komponente
 
 // --- LAZY LOAD ZA 3D PREGLEDAČ (Da ne uspori katalog!) ---
 const Mini3DViewer = lazy(() => import('../components/Mini3DViewer'));
@@ -125,6 +126,12 @@ function CatalogPage() {
 
   return (
     <>
+      {/* 👇 DODATO: SEO KOMPONENTA ZA KATALOG 👇 */}
+      <SEO 
+        title={t('catalog.seo_title', { defaultValue: "Katalog Mašina | Masine.ai" })}
+        description={t('catalog.seo_desc', { defaultValue: "Pregledajte naš celokupan asortiman građevinskih mašina, viljuškara i mehanizacije. Koristite pametne filtere za brzu i laku pretragu." })}
+      />
+
       <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>

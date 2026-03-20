@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense fallback={<Loader tekst="Omiljene mašine" />}>
+          <Suspense fallback={<Loader tekst="Učitavam kontakt" />}>
             <Contact />
           </Suspense>
         )

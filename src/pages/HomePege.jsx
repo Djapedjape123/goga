@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next'; // 👈 1. IMPORT KUKICE ZA PREVOD
+import SEO from '../components/SEO'; // 👈 2. IMPORT NAŠE SEO KOMPONENTE
 
 // LAZY IMPORT KOMPONENTI
 const Onama = lazy(() => import('../components/Onama'));
 const KakoRadimo = lazy(() => import('../components/KakoRadimo'));
 
 function HomePage() {
-  const { t } = useTranslation(); // 👈 2. INICIJALIZACIJA PREVODA
+  const { t } = useTranslation(); // 👈 3. INICIJALIZACIJA PREVODA
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,6 +34,12 @@ function HomePage() {
 
   return (
     <> 
+      {/* 👇 SEO MAGIJA ZA POČETNU STRANU 👇 */}
+      <SEO 
+        title={t('home.seo_title', { defaultValue: "Masine.ai | Lideri u prodaji građevinskih mašina" })}
+        description={t('home.seo_desc', { defaultValue: "Pouzdan izbor građevinskih mašina i poljoprivredne mehanizacije. Vrhunski brendovi spremni za najteže terenske izazove." })}
+      />
+
       {/* --- 1. HERO SEKCIJA SA VIDEOM --- */}
       <div className="relative min-h-[100svh] w-full overflow-x-hidden bg-slate-900 flex flex-col items-center justify-center py-16 px-4">
         
@@ -62,7 +69,7 @@ function HomePage() {
             variants={itemVariants} 
             className="text-orange-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm md:text-base"
           >
-            {t('home.badge')} {/* 👈 ZAMENJEN TEKST */}
+            {t('home.badge')}
           </motion.p>
           
           {/* Glavni Naslov */}
@@ -79,7 +86,7 @@ function HomePage() {
             variants={itemVariants} 
             className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed px-2"
           >
-            {t('home.subtitle')} {/* 👈 ZAMENJEN TEKST */}
+            {t('home.subtitle')}
           </motion.p>
           
           {/* Dugmad */}
@@ -92,7 +99,7 @@ function HomePage() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:scale-105"
             >
               <FaTractor className="text-lg" />
-              {t('home.btn_catalog')} {/* 👈 ZAMENJEN TEKST */}
+              {t('home.btn_catalog')}
             </Link>
 
             <Link 
@@ -100,7 +107,7 @@ function HomePage() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all hover:scale-105"
             >
               <FaPhoneAlt className="text-sm" />
-              {t('nav.contact')} {/* 👈 ZAMENJEN TEKST IZ NAV SEKCIJE */}
+              {t('nav.contact')}
             </Link>
           </motion.div>
         </motion.div>
