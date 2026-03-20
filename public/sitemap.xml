@@ -1,28 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
   <url>
     <loc>https://masine.ai/</loc>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://masine.ai/katalog</loc>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://masine.ai/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://masine.ai/masina/el-20pro-viljuskar</loc>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
+  <url><loc>https://masine.ai/masina/el-20pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/el-25pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/el-30pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/el-35pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/el-40pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/el-50pro-elektricni-viljuskar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://masine.ai/masina/te3007-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te3007-telehender-torque</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te3507-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te3510-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te4007-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te4010-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te4014-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te4018-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te5010-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te5014-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te5018-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te6018-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/te7018-telehender</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://masine.ai/masina/szj07-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj10-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj15-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj16-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj18-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj20-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj26-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj30-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj35-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj40a-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj40b-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/szj45-mini-mikser</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://masine.ai/masina/se10-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se18-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se15-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se20l-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se25-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se30l-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se35-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/se40-mini-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://masine.ai/masina/wz06-10-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/wz08-12-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/wz10-20-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/wz15-26-bager</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://masine.ai/masina/jt-80-poljoprivredni-dron</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/mai-an1000v-robotska-kosilica</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/mai-an3000v-robotska-kosilica</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masine.ai/masina/mai-commercialpro-kosilica</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

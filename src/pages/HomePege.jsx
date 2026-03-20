@@ -2,15 +2,14 @@ import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next'; // 👈 1. IMPORT KUKICE ZA PREVOD
-import SEO from '../components/SEO'; // 👈 2. IMPORT NAŠE SEO KOMPONENTE
+import { useTranslation } from 'react-i18next'; 
+import SEO from '../components/SEO'; 
 
-// LAZY IMPORT KOMPONENTI
 const Onama = lazy(() => import('../components/Onama'));
 const KakoRadimo = lazy(() => import('../components/KakoRadimo'));
 
 function HomePage() {
-  const { t } = useTranslation(); // 👈 3. INICIJALIZACIJA PREVODA
+  const { t } = useTranslation(); 
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,39 +31,67 @@ function HomePage() {
     },
   };
 
+  // 👇 NOVO: LocalBusiness Schema za početnu stranicu 👇
+  // Ovo govori Google-u KO si, ŠTA radiš i GDE se nalaziš
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Masine.ai",
+    "image": "https://masine.ai/gogaF.webp", // Tvoj logo ili glavna slika
+    "description": t('home.seo_desc', { defaultValue: "Pouzdan izbor građevinskih mašina i poljoprivredne mehanizacije u Srbiji." }),
+    "@id": "https://masine.ai",
+    "url": "https://masine.ai",
+    "telephone": "+381640000000", // Unesi tačan broj telefona
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Novi Sad",
+      "addressCountry": "RS"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.2671, // Koordinate Novog Sada (možeš staviti tačne koordinate placa)
+      "longitude": 19.8335
+    },
+    "sameAs": [
+      // Ovde idu linkovi ka tvojim mrežama ako ih imaš
+      "https://www.facebook.com/masine.ai",
+      "https://www.instagram.com/masine.ai"
+    ]
+  };
+
   return (
     <> 
-      {/* 👇 SEO MAGIJA ZA POČETNU STRANU 👇 */}
+      {/* 👇 SEO MAGIJA SADA SADRŽI I PODATKE O FIRMI 👇 */}
       <SEO 
         title={t('home.seo_title', { defaultValue: "Masine.ai | Lideri u prodaji građevinskih mašina" })}
         description={t('home.seo_desc', { defaultValue: "Pouzdan izbor građevinskih mašina i poljoprivredne mehanizacije. Vrhunski brendovi spremni za najteže terenske izazove." })}
+        schema={localBusinessSchema}
       />
 
-      {/* --- 1. HERO SEKCIJA SA VIDEOM --- */}
       <div className="relative min-h-[100svh] w-full overflow-x-hidden bg-slate-900 flex flex-col items-center justify-center py-16 px-4">
         
         {/* VIDEO POZADINA */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 z-10"></div>
+          {/* 👇 NOVO: Dodat 'poster' atribut za savršeno brzo učitavanje (LCP) 👇 */}
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
+            poster="/images/video-poster.webp" /* 🚨 NAPOMENA: Izvadi jedan frejm iz videa, pretvori ga u .webp i sačuvaj ovde! */
             className="w-full h-full object-cover"
           >
             <source src="/videos/video2.mp4" type="video/mp4" />
           </video>
         </div>
 
-        {/* GLAVNI CENTRIRANI SADRŽAJ */}
         <motion.div 
           className="relative z-20 text-center w-full max-w-4xl mx-auto pt-16" 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Nadnaslov */}
           <motion.p 
             variants={itemVariants} 
             className="text-orange-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm md:text-base"
@@ -72,7 +99,7 @@ function HomePage() {
             {t('home.badge')}
           </motion.p>
           
-          {/* Glavni Naslov */}
+          {/* GLAVNI NASLOV - H1 */}
           <motion.h1 
             variants={itemVariants} 
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight md:leading-tight tracking-tight mb-6"
@@ -81,7 +108,6 @@ function HomePage() {
             {t('home.title_2')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-200">{t('home.title_highlight')}</span>
           </motion.h1>
           
-          {/* Podnaslov */}
           <motion.p 
             variants={itemVariants} 
             className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed px-2"
@@ -89,7 +115,6 @@ function HomePage() {
             {t('home.subtitle')}
           </motion.p>
           
-          {/* Dugmad */}
           <motion.div 
             variants={itemVariants} 
             className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 w-full max-w-md mx-auto sm:max-w-none"
@@ -112,11 +137,9 @@ function HomePage() {
           </motion.div>
         </motion.div>
 
-        {/* BLAGI PRELAZ */}
         <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
       </div>
 
-      {/* SEKCIJA O NAMA */}
       <Suspense fallback={
         <div className="py-32 flex justify-center items-center bg-white min-h-[400px]">
           <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin"></div>
@@ -125,7 +148,6 @@ function HomePage() {
         <Onama />
       </Suspense>
 
-      {/* SEKCIJA KAKO RADIMO */}
       <Suspense fallback={
         <div className="py-32 flex justify-center items-center bg-slate-50 min-h-[400px]">
           <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin"></div>
