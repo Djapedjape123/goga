@@ -40,14 +40,28 @@ function CatalogPage() {
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
   // 👇 NOVO: Rekonstruišemo 'filters' objekat direktno iz URL-a da bi FilterSidebar radio normalno
-  const filters = useMemo(() => {
-    const currentFilters = { ...DEFAULT_FILTERS };
-    Object.keys(DEFAULT_FILTERS).forEach(key => {
-      const val = searchParams.get(key);
-      if (val !== null) currentFilters[key] = val;
-    });
-    return currentFilters;
-  }, [searchParams]);
+// 👇 ISPRAVLJENO: Sada pretvaramo stringove iz URL-a u brojeve gde je potrebno
+  const filters = useMemo(() => {
+    const currentFilters = { ...DEFAULT_FILTERS };
+    
+    Object.keys(DEFAULT_FILTERS).forEach(key => {
+      const val = searchParams.get(key);
+      if (val !== null) {
+        // Ako je ključ vezan za cenu ili specifikacije, pretvori ga u broj
+        // Ovo osigurava da FilterSidebar dobije broj i može da ga formatira
+        if (key.toLowerCase().includes('cena') || 
+            key.toLowerCase().includes('visina') || 
+            key.toLowerCase().includes('nosivost') || 
+            key.toLowerCase().includes('kapacitet') || 
+            key.toLowerCase().includes('dubina')) {
+          currentFilters[key] = val === "" ? "" : Number(val);
+        } else {
+          currentFilters[key] = val;
+        }
+      }
+    });
+    return currentFilters;
+  }, [searchParams]);
 
   // 👇 NOVO: Prilagođena funkcija za ažuriranje filtera koja sada menja URL
   const handleSetFilters = (updater) => {
