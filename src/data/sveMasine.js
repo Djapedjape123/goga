@@ -5,7 +5,7 @@ export const sveMasine = [
     slug: "el-20pro-elektricni-viljuskar",
     naziv: "EL-20PRO",
     kategorija: "viljuskari",
-    cena: "20900",
+    cena: "20 900€",
     opis: "Električni viljuškar BYD EL-20PRO sa litijumskom baterijom. Nosivost 2000kg, maksimalna visina dizanja do 6m.",
     specifikacije: {
       nosivost: "2000",
@@ -34,7 +34,7 @@ export const sveMasine = [
     slug: "el-25pro-elektricni-viljuskar",
     naziv: "EL-25PRO",
     kategorija: "viljuskari",
-    cena: "21900",
+    cena: "21 900€",
     opis: "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
     specifikacije: {
       nosivost: "2500",
@@ -63,7 +63,7 @@ export const sveMasine = [
     slug: "el-30pro-elektricni-viljuskar",
     naziv: "EL-30PRO",
     kategorija: "viljuskari",
-    cena: "22900",
+    cena: "22 900€",
     opis: "Pouzdan električni viljuškar BYD EL-30PRO. Nosivost 3000kg i snažan AC motor garantuju visoku efikasnost.",
     specifikacije: {
       nosivost: "3000",
@@ -92,7 +92,7 @@ export const sveMasine = [
     slug: "el-35pro-elektricni-viljuskar",
     naziv: "EL-35PRO",
     kategorija: "viljuskari",
-    cena: "23900",
+    cena: "23900€",
     opis: "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
     specifikacije: {
       nosivost: "3500",
@@ -121,7 +121,7 @@ export const sveMasine = [
     slug: "el-40pro-elektricni-viljuskar",
     naziv: "EL-40PRO",
     kategorija: "viljuskari",
-    cena: "29900",
+    cena: "29 900€",
     opis: "Teški električni viljuškar BYD EL-40PRO sa nosivošću od 4000kg i pojačanim kapacitetom baterije od 420Ah.",
     specifikacije: {
       nosivost: "4000",
@@ -150,7 +150,7 @@ export const sveMasine = [
     slug: "el-50pro-elektricni-viljuskar",
     naziv: "EL-50PRO",
     kategorija: "viljuskari",
-    cena: "35900",
+    cena: "35 900€",
     opis: "Najteži i najsnažniji model u seriji - BYD EL-50PRO. Nosivost od neverovatnih 5000kg, idealan za najzahtevnije terete.",
     specifikacije: {
       nosivost: "5000",
@@ -844,7 +844,7 @@ export const sveMasine = [
     slug: "se10-mini-bager",
     naziv: "SE10",
     kategorija: "mini-bageri",
-    cena: "11 900",
+    cena: "11 900€",
     opis: "Kompaktni mini bager SE10. Nosivost 1000kg, idealan za rad u uskim prostorima i manja gradilišta.",
     specifikacije: {
       nosivost: 1000,
@@ -876,7 +876,7 @@ export const sveMasine = [
     slug: "se18-mini-bager",
     naziv: "SE18",
     kategorija: "mini-bageri",
-    cena: "14400",
+    cena: "14 400€",
     opis: "Mini bager SE12. Nosivost 1200kg sa odličnim dohvatom i efikasnim motorom.",
     specifikacije: {
       nosivost: 1800,
@@ -908,7 +908,7 @@ export const sveMasine = [
     slug: "se15-mini-bager",
     naziv: "SE15",
     kategorija: "mini-bageri",
-    cena: "13900",
+    cena: "13 900€",
     opis: "Mini bager SE15 kapaciteta 1500kg. Idealan balans snage (14.1kW) i kompaktnosti.",
     specifikacije: {
       nosivost: 1500,
@@ -935,7 +935,7 @@ export const sveMasine = [
     slug: "se20l-mini-bager",
     naziv: "SE20L",
     kategorija: "mini-bageri",
-    cena: "18 900",
+    cena: "18 900€",
     opis: "Snažan mini bager SE20L sa nosivošću od 2000kg. Motor od 22kW osigurava brzo obavljanje zadataka.",
     specifikacije: {
       nosivost: 2000,
@@ -963,7 +963,7 @@ export const sveMasine = [
     slug: "se25-mini-bager",
     naziv: "SE25",
     kategorija: "mini-bageri",
-    cena: "21900",
+    cena: "21 900€",
     opis: "Srednji bager SE25L. Nosivost 2500kg i zapremina kašike od 0.1m³ za ozbiljnije zemljane radove.",
     specifikacije: {
       nosivost: 2500,
@@ -986,7 +986,7 @@ export const sveMasine = [
     slug: "se30l-mini-bager",
     naziv: "SE30L",
     kategorija: "mini-bageri",
-    cena: "22900",
+    cena: "22 900€",
     opis: "Bager SE30L nudi odlične performanse sa nosivošću od 3000kg i dubinom kopanja do 2000mm.",
     specifikacije: {
       nosivost: 3000,
@@ -1013,7 +1013,7 @@ export const sveMasine = [
     slug: "se35-mini-bager",
     naziv: "SE35",
     kategorija: "mini-bageri",
-    cena: "27900",
+    cena: "27 900€",
     opis: "Izuzetno snažan model SE35 sa motorom od 36.8kW. Nosivost od 3500kg savlađuje najteže prepreke.",
     specifikacije: {
       nosivost: 3500,
@@ -1041,7 +1041,7 @@ export const sveMasine = [
     slug: "se40-mini-bager",
     naziv: "SE40",
     kategorija: "mini-bageri",
-    cena: "32900",
+    cena: "32 900€",
     opis: "Najteži mini bager u ponudi - SE40. Nosivost 4000kg i kašika od 0.12m³ osiguravaju maksimalnu produktivnost.",
     specifikacije: {
       nosivost: 4000,
@@ -1070,7 +1070,7 @@ export const sveMasine = [
     slug: "wz06-10-bager",
     naziv: "WZ06-10",
     kategorija: "bageri",
-    cena: "22 900", // +PDV (možeš dodati tekst "bez PDV" u komponenti gde se ispisuje cena)
+    cena: "22 900€", // +PDV (možeš dodati tekst "bez PDV" u komponenti gde se ispisuje cena)
     opis: "Kompaktni bager WZ06-10 sa pouzdanim Kubota motorom. Operativna težina od 1800kg ga čini odličnim za uže prostore.",
     specifikacije: {
       motor: "Kubota",
@@ -1098,7 +1098,7 @@ export const sveMasine = [
     slug: "wz08-12-bager",
     naziv: "WZ08-12",
     kategorija: "bageri",
-    cena: "24 900",
+    cena: "24 900€",
     opis: "Snažan bager WZ08-12 sa Yunnei motorom (opciono Kubota). Odličan balans snage od 37kW i kapaciteta.",
     specifikacije: {
       motor: "YUNNEI (Opcija: Kubota +3000€)",
@@ -1126,7 +1126,7 @@ export const sveMasine = [
     slug: "wz10-20-bager",
     naziv: "WZ10-20",
     kategorija: "bageri",
-    cena: "26 900",
+    cena: "26 900€",
     opis: "Srednji bager WZ10-20, operativna težina 3400kg uz veliku prednju kašiku od 0.75m³ za efikasan utovar.",
     specifikacije: {
       motor: "YUNNEI",
@@ -1154,7 +1154,7 @@ export const sveMasine = [
     slug: "wz15-26-bager",
     naziv: "WZ15-26",
     kategorija: "bageri",
-    cena: "29 900",
+    cena: "29 900€",
     opis: "Najteži model WZ15-26. Sa težinom od skoro 5 tona i motorom od 79 konjskih snaga, dizajniran je za najveće izazove.",
     specifikacije: {
       motor: "YUNNEI",
@@ -1185,7 +1185,7 @@ export const sveMasine = [
     slug: "jt-80-poljoprivredni-dron",
     naziv: "JT-80 Agri Drone",
     kategorija: "dronovi", // <-- Nova kategorija
-    cena: "14900", // +PDV (Prikazaće se automatski zbog koda u kartici)
+    cena: "14 900€", // +PDV (Prikazaće se automatski zbog koda u kartici)
     opis: "JT-80 Agri Drone je profesionalni poljoprivredni dron dizajniran za efikasno i precizno prskanje pesticida, herbicida i tečnih đubriva. Zahvaljujući velikom rezervoaru od 70L i naprednim navigacionim sistemima (GPS + RTK), omogućava brzo tretiranje velikih površina uz minimalan utrošak hemikalija i radne snage. Opremljen je centrifugalnim diznama za ravnomerno raspršivanje, radarskim senzorima za izbegavanje prepreka i FPV kamerom za nadzor leta. Integrisana aplikacija i daljinski upravljač omogućavaju precizno planiranje leta i potpuno automatsko prskanje, smanjujući troškove i povećavajući produktivnost.",
     specifikacije: {
       kapacitetRezervoara: "70 L",
@@ -1217,7 +1217,7 @@ export const sveMasine = [
     slug: "mai-an1000v-robotska-kosilica",
     naziv: "MAI AN1000V",
     kategorija: "kosilice", // <-- Nova kategorija
-    cena: "1490", // U fajlu je prazno, pa stavljamo "Na upit"
+    cena: "1 490€", // U fajlu je prazno, pa stavljamo "Na upit"
     opis: "Pametna robotska kosilica MAI AN1000V idealna za dvorišta i travnjake do 1000 m². Koristi naprednu AI Vision kameru i IMU za izbegavanje prepreka i planiranje rute bez potrebe za graničnim žicama. Upravljanje je potpuno automatizovano putem mobilne aplikacije.",
     specifikacije: {
       maksimalnaPovrsina: "1000 m²",
@@ -1251,7 +1251,7 @@ export const sveMasine = [
     slug: "mai-an3000v-robotska-kosilica",
     naziv: "MAI AN3000V",
     kategorija: "kosilice",
-    cena: "1990",
+    cena: "1 990€",
     opis: "Unapređeni model MAI AN3000V namenjen srednjim i većim površinama do 3000 m². Uz AI Vision kameru, ovaj model koristi i RTK satelitsku navigaciju za centimetarsku preciznost, kao i ugrađen GPS praćenje (Anti-theft).",
     specifikacije: {
       maksimalnaPovrsina: "3000 m²",
@@ -1285,7 +1285,7 @@ export const sveMasine = [
     slug: "mai-commercialpro-kosilica",
     naziv: "MAI COMMERCIALPRO",
     kategorija: "kosilice",
-    cena: "2690",
+    cena: "2 690€",
     opis: "Zver za komercijalnu upotrebu – MAI COMMERCIALPRO. Dizajnirana za ogromne površine do neverovatnih 50.000 m² (sportski tereni, parkovi, golf tereni). Opremljena moćnom 48V LiFePO4 baterijom, industrijskim diskovima za košenje, 4G + RTK povezivanjem i ultrazvučnim senzorima.",
     specifikacije: {
       maksimalnaPovrsina: "50000 m²",

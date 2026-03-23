@@ -2,13 +2,12 @@ import React from 'react';
 import { Facebook, Instagram, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // 👈 IMPORT ZA PREVOD
-
+import { useTranslation } from 'react-i18next';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
+  const { t } = useTranslation(); 
 
-  // Navigacija sada koristi ključeve za prevod imena
+  
   const navigacija = [
     { ime: t('nav.home'), putanja: '/' },
     { ime: t('nav.catalog'), putanja: '/katalog' },
@@ -18,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#05070a] text-slate-300 pt-20 pb-10 overflow-hidden border-t border-white/5 mt-auto">
-      {/* Suptilni plavi sjaj na vrhu footera */}
+      
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
       
       {/* Pozadinski glow efekat */}
@@ -92,7 +91,7 @@ const Footer = () => {
               </div>
               <span 
                 className="text-slate-400 pt-1 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: t('footer.address') }} // 👈 PREVEDENA ADRESA SA <br/>
+                dangerouslySetInnerHTML={{ __html: t('footer.address') }} 
               ></span>
             </div>
             <div className="flex items-center gap-4 group cursor-pointer">
@@ -116,8 +115,7 @@ const Footer = () => {
           <p>© {currentYear} MASINE.AI. {t('footer.rights')}</p> {/* 👈 PREVEDENO */}
           <div className="flex gap-6 uppercase tracking-widest">
             <a href='https://www.pedjadev.com/' className="hover:text-blue-400 transition-colors">{t('footer.dev_by')} prWeb</a> {/* 👈 PREVEDENO */}
-            <Link to="/" className="hover:text-blue-400 transition-colors">{t('footer.privacy')}</Link> {/* 👈 PREVEDENO */}
-            <Link to="/" className="hover:text-blue-400 transition-colors">{t('footer.terms')}</Link> {/* 👈 PREVEDENO */}
+            
           </div>
         </div>
       </div>
