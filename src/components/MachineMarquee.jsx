@@ -110,6 +110,8 @@ const MachineMarquee = ({ currentSlug }) => {
     }
     if (kategorija === "mini-bageri") {
       return (
+
+        
         <>
           <span>{t('machine_marquee.specs.digging')} {s.maxDubinaKopanja || "-"}</span>
           <span>{t('machine_marquee.specs.weight')} {s.nosivost || "-"} kg</span>
