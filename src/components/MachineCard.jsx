@@ -62,8 +62,8 @@ export default function MachineCard({ masina }) {
     spec2Label = t('machine_card.specs.dig_height');
     spec2Value = `${masina?.specifikacije?.maxVisinaKopanja ?? ""} `;
   } else if (isViljuskar) {
-    spec1Label = t('machine_card.specs.max_height');
-    spec1Value = `${masina?.specifikacije?.maksVisinaDizanja ?? "-"}`;
+    spec1Label = t('machine_card.specs.punjenje');
+    spec1Value = `${masina?.specifikacije?.punjenje ?? "-"}`;
     spec2Label = t('machine_card.specs.load_capacity');
     spec2Value = `${masina?.specifikacije?.nosivost ?? "-"}kg`;
   } else if (isBagerV) {

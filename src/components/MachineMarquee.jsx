@@ -103,7 +103,7 @@ const MachineMarquee = ({ currentSlug }) => {
     if (kategorija === "viljuskari") {
       return (
         <>
-          <span>{t('machine_marquee.specs.lifting')} {s.maksVisinaDizanja || "-"}</span>
+          <span>{t('machine_marquee.specs.punjenje')} {s.punjenje || "-"}</span>
           <span>{t('machine_marquee.specs.load')} {s.nosivost || "-"} kg</span>
         </>
       );

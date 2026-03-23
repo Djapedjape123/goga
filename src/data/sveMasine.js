@@ -10,6 +10,7 @@ export const sveMasine = [
     specifikacije: {
       nosivost: "2000",
       ukupnaMasa: "3550kg",
+      punjenje: "2h",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
       napon: "80V",
@@ -37,6 +38,7 @@ export const sveMasine = [
     opis: "Električni viljuškar BYD EL-25PRO sa nosivošću od 2500kg. Idealan za magacinski rad uz dugotrajnu litijumsku bateriju.",
     specifikacije: {
       nosivost: "2500",
+      punjenje: "2h",
       ukupnaMasa: "3800",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
@@ -66,6 +68,7 @@ export const sveMasine = [
     specifikacije: {
       nosivost: "3000",
       ukupnaMasa: "4500kg",
+      punjenje: "2h",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
       napon: "80V",
@@ -94,6 +97,7 @@ export const sveMasine = [
     specifikacije: {
       nosivost: "3500",
       ukupnaMasa: "4820kg",
+      punjenje: "2h",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
       napon: "80V",
@@ -122,6 +126,7 @@ export const sveMasine = [
     specifikacije: {
       nosivost: "4000",
       ukupnaMasa: "6750kg",
+      punjenje: "2h",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
       napon: "80V",
@@ -150,6 +155,7 @@ export const sveMasine = [
     specifikacije: {
       nosivost: "5000",
       ukupnaMasa: "7350kg",
+      punjenje: "2h",
       tipPogona: "Električni AC motor",
       baterija: "Litijum (LiFePO4)",
       napon: "80V",

@@ -39,7 +39,7 @@ function CatalogPage() {
   // 👇 NOVO: Čitamo trenutnu stranicu iz URL-a (npr. ?page=2). Ako nema, podrazumevano je 1.
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  // 👇 NOVO: Rekonstruišemo 'filters' objekat direktno iz URL-a da bi FilterSidebar radio normalno
+  
 // 👇 ISPRAVLJENO: Sada pretvaramo stringove iz URL-a u brojeve gde je potrebno
   const filters = useMemo(() => {
     const currentFilters = { ...DEFAULT_FILTERS };
@@ -67,7 +67,7 @@ function CatalogPage() {
   const handleSetFilters = (updater) => {
     const nextState = typeof updater === 'function' ? updater(filters) : updater;
     const newParams = new URLSearchParams(searchParams);
-
+  
     if (nextState.kategorija !== filters.kategorija) {
       // Ako se promeni kategorija, brišemo sve ostale filtere i vraćamo na 1. stranu
       const resetParams = new URLSearchParams();

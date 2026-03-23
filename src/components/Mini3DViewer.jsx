@@ -5,7 +5,7 @@ import { OrbitControls, Stage, useGLTF, Html } from '@react-three/drei';
 const CATEGORY_MODELS = {
     "viljuskari": "/models/viliskar-v1.glb",
     "mini-bageri": "/models/miniBager-v1.glb",
-    "bageri": "/models/bagerV-v1.glb",
+    "bageri": "/models/bagerNovi-v1.glb",
     "mini-mikseri": "/models/mixer-v1.glb",
     "kosilice": "/models/kosilica-v1.glb",
     "telehendleri": "/models/tekegDD-v1.glb",

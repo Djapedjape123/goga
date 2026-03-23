@@ -187,6 +187,7 @@ const resources = {
         email_subject: "Novi upit za mašinu:",
         specs: {
           visinaDizanja: "Visina dizanja",
+         
           maksVisinaDizanja: "Max visina dizanja",
           nosivost: "Nosivost",
           kapacitetMesanja: "Kapacitet mešanja",
@@ -215,6 +216,7 @@ const resources = {
         price_label: "Cena",
         btn_details: "Detalji",
         specs: {
+          punjenje: "Vreme do pune baterije",
           height: "Visina",
           max_height: "Max visina",
           load_capacity: "Nosivost",
@@ -227,6 +229,7 @@ const resources = {
           battery: "Baterija",
           max_mow_area: "Max površina košenja",
           max_mow_width: "Max širina košenja"
+          
         }
       },
       machine_marquee: {
@@ -234,6 +237,7 @@ const resources = {
         price_on_request: "Na upit",
         btn_details: "Detalji",
         specs: {
+          punjenje: "Vreme do pune baterije",
           lifting: "Dizanje:",
           load: "Nosivost:",
           digging: "Kopanje:",
@@ -505,6 +509,8 @@ const resources = {
           brzinaKretanja: "Travel speed",
           maksBrzina: "Max speed",
           garancija: "Warranty",
+
+          
           
           // Weight and Capacity
           nosivost: "Load capacity",
@@ -569,6 +575,7 @@ const resources = {
         price_label: "Price",
         btn_details: "Details",
         specs: {
+          punjenje: "Charging", 
           height: "Height",
           max_height: "Max height",
           load_capacity: "Load capacity",
@@ -588,6 +595,7 @@ const resources = {
         price_on_request: "On request",
         btn_details: "Details",
         specs: {
+          punjenje: "Charging:",
           lifting: "Lifting:",
           load: "Capacity:",
           digging: "Digging:",
