@@ -1,5 +1,5 @@
 import React, { useMemo, lazy, Suspense } from 'react';
-import { useSearchParams } from 'react-router-dom'; // 👈 NOVO: Importujemo search params
+import { useSearchParams } from 'react-router-dom';
 import { sveMasine } from '../data/sveMasine';
 import MachineCard from '../components/MachineCard';
 import FilterSidebar from '../components/FilterSidebar';
@@ -33,58 +33,48 @@ const MASINA_PO_STRANI = 6;
 function CatalogPage() {
   const { t } = useTranslation();
   
-  // 👇 NOVO: Inicijalizacija URL parametara umesto useState-a
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // 👇 NOVO: Čitamo trenutnu stranicu iz URL-a (npr. ?page=2). Ako nema, podrazumevano je 1.
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  
-// 👇 ISPRAVLJENO: Sada pretvaramo stringove iz URL-a u brojeve gde je potrebno
-  const filters = useMemo(() => {
-    const currentFilters = { ...DEFAULT_FILTERS };
-    
-    Object.keys(DEFAULT_FILTERS).forEach(key => {
-      const val = searchParams.get(key);
-      if (val !== null) {
-        // Ako je ključ vezan za cenu ili specifikacije, pretvori ga u broj
-        // Ovo osigurava da FilterSidebar dobije broj i može da ga formatira
-        if (key.toLowerCase().includes('cena') || 
-            key.toLowerCase().includes('visina') || 
-            key.toLowerCase().includes('nosivost') || 
-            key.toLowerCase().includes('kapacitet') || 
-            key.toLowerCase().includes('dubina')) {
-          currentFilters[key] = val === "" ? "" : Number(val);
-        } else {
-          currentFilters[key] = val;
-        }
-      }
-    });
-    return currentFilters;
-  }, [searchParams]);
+  const filters = useMemo(() => {
+    const currentFilters = { ...DEFAULT_FILTERS };
+    
+    Object.keys(DEFAULT_FILTERS).forEach(key => {
+      const val = searchParams.get(key);
+      if (val !== null) {
+        if (key.toLowerCase().includes('cena') || 
+            key.toLowerCase().includes('visina') || 
+            key.toLowerCase().includes('nosivost') || 
+            key.toLowerCase().includes('kapacitet') || 
+            key.toLowerCase().includes('dubina')) {
+          currentFilters[key] = val === "" ? "" : Number(val);
+        } else {
+          currentFilters[key] = val;
+        }
+      }
+    });
+    return currentFilters;
+  }, [searchParams]);
 
-  // 👇 NOVO: Prilagođena funkcija za ažuriranje filtera koja sada menja URL
   const handleSetFilters = (updater) => {
     const nextState = typeof updater === 'function' ? updater(filters) : updater;
     const newParams = new URLSearchParams(searchParams);
   
     if (nextState.kategorija !== filters.kategorija) {
-      // Ako se promeni kategorija, brišemo sve ostale filtere i vraćamo na 1. stranu
       const resetParams = new URLSearchParams();
       if (nextState.kategorija !== 'sve') {
         resetParams.set('kategorija', nextState.kategorija);
       }
       setSearchParams(resetParams);
     } else {
-      // Ažuriramo specifične filtere
       Object.keys(nextState).forEach(key => {
         if (nextState[key] && nextState[key] !== 'sve' && nextState[key] !== '') {
           newParams.set(key, nextState[key]);
         } else {
-          newParams.delete(key); // Brišemo prazne parametre iz URL-a da bi bio lepši
+          newParams.delete(key);
         }
       });
-      newParams.delete('page'); // Kad god se promeni filter, vraćamo korisnika na prvu stranu
+      newParams.delete('page');
       setSearchParams(newParams);
     }
   };
@@ -93,7 +83,6 @@ function CatalogPage() {
     return ['sve', ...new Set(sveMasine.map(m => m.kategorija))];
   }, []);
 
-  // GLAVNA LOGIKA FILTRIRANJA (Ostaje ista!)
   const filteredMasine = useMemo(() => {
     return sveMasine.filter(masina => {
       if (filters.kategorija !== 'sve' && masina.kategorija !== filters.kategorija) return false;
@@ -101,49 +90,50 @@ function CatalogPage() {
       const s = masina.specifikacije || {};
       const mCena = parseToNumber(masina.cena);
       
+      // 👇 ISPRAVLJENO: Uklonjen je bag sa limitom od 150.000. Sada filter radi za sve cene.
       const isPriceFiltered = (filters.minCena !== "" && filters.minCena > 0) || 
-                              (filters.maxCena !== "" && filters.maxCena < 150000);
+                              (filters.maxCena !== "");
 
       if (isPriceFiltered) {
         if (mCena === 0) return false; 
-        if (filters.minCena && mCena < parseToNumber(filters.minCena)) return false;
-        if (filters.maxCena && mCena > parseToNumber(filters.maxCena)) return false;
+        if (filters.minCena !== "" && mCena < parseToNumber(filters.minCena)) return false;
+        if (filters.maxCena !== "" && mCena > parseToNumber(filters.maxCena)) return false;
       }
 
       if (['sve', 'telehendleri', 'viljuskari'].includes(filters.kategorija)) {
         const mVisina = parseToNumber(s.visinaDizanja || s.maksVisinaDizanja);
         const mNosivost = parseToNumber(s.nosivost);
 
-        if (filters.minVisina && mVisina < parseToNumber(filters.minVisina)) return false;
-        if (filters.maxVisina && mVisina > parseToNumber(filters.maxVisina)) return false;
-        if (filters.minNosivost && mNosivost < parseToNumber(filters.minNosivost)) return false;
-        if (filters.maxNosivost && mNosivost > parseToNumber(filters.maxNosivost)) return false;
+        if (filters.minVisina !== "" && mVisina < parseToNumber(filters.minVisina)) return false;
+        if (filters.maxVisina !== "" && mVisina > parseToNumber(filters.maxVisina)) return false;
+        if (filters.minNosivost !== "" && mNosivost < parseToNumber(filters.minNosivost)) return false;
+        if (filters.maxNosivost !== "" && mNosivost > parseToNumber(filters.maxNosivost)) return false;
       }
 
       if (['sve', 'mini-mikseri'].includes(filters.kategorija)) {
         const mKapacitet = parseToNumber(s.kapacitetMesanja);
-        if (filters.minKapacitet && mKapacitet < parseToNumber(filters.minKapacitet)) return false;
-        if (filters.maxKapacitet && mKapacitet > parseToNumber(filters.maxKapacitet)) return false;
+        if (filters.minKapacitet !== "" && mKapacitet < parseToNumber(filters.minKapacitet)) return false;
+        if (filters.maxKapacitet !== "" && mKapacitet > parseToNumber(filters.maxKapacitet)) return false;
       }
 
       if (['sve', 'mini-bageri'].includes(filters.kategorija)) {
         const mDubina = parseToNumber(s.maxDubinaKopanja);
         const mVisinaK = parseToNumber(s.maxVisinaKopanja);
 
-        if (filters.minDubinaKopanja && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
-        if (filters.maxDubinaKopanja && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
-        if (filters.minVisinaKopanja && mVisinaK < parseToNumber(filters.minVisinaKopanja)) return false;
-        if (filters.maxVisinaKopanja && mVisinaK > parseToNumber(filters.maxVisinaKopanja)) return false;
+        if (filters.minDubinaKopanja !== "" && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
+        if (filters.maxDubinaKopanja !== "" && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
+        if (filters.minVisinaKopanja !== "" && mVisinaK < parseToNumber(filters.minVisinaKopanja)) return false;
+        if (filters.maxVisinaKopanja !== "" && mVisinaK > parseToNumber(filters.maxVisinaKopanja)) return false;
       }
 
       if (['sve', 'bageri'].includes(filters.kategorija)) {
         const mDubina = parseToNumber(s.maxDubinaKopanja);
         const mVisinaI = parseToNumber(s.maxVisinaIstovara);
 
-        if (filters.minDubinaKopanja && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
-        if (filters.maxDubinaKopanja && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
-        if (filters.minVisinaIstovara && mVisinaI < parseToNumber(filters.minVisinaIstovara)) return false;
-        if (filters.maxVisinaIstovara && mVisinaI > parseToNumber(filters.maxVisinaIstovara)) return false;
+        if (filters.minDubinaKopanja !== "" && mDubina < parseToNumber(filters.minDubinaKopanja)) return false;
+        if (filters.maxDubinaKopanja !== "" && mDubina > parseToNumber(filters.maxDubinaKopanja)) return false;
+        if (filters.minVisinaIstovara !== "" && mVisinaI < parseToNumber(filters.minVisinaIstovara)) return false;
+        if (filters.maxVisinaIstovara !== "" && mVisinaI > parseToNumber(filters.maxVisinaIstovara)) return false;
       }
 
       return true;
@@ -154,11 +144,10 @@ function CatalogPage() {
   const startIndex = (currentPage - 1) * MASINA_PO_STRANI;
   const currentMachines = filteredMasine.slice(startIndex, startIndex + MASINA_PO_STRANI);
 
-  // 👇 NOVO: Paginacija sada menja URL (?page=2)
   const handlePageChange = (newPage) => {
     const newParams = new URLSearchParams(searchParams);
     if (newPage === 1) {
-      newParams.delete('page'); // Čistimo URL ako je na prvoj strani
+      newParams.delete('page'); 
     } else {
       newParams.set('page', newPage);
     }
@@ -166,15 +155,12 @@ function CatalogPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 👇 NOVO: DINAMIČKI SEO NASLOVI I OPISI NA OSNOVU KATEGORIJE
   const getDynamicSEO = () => {
     const isFiltered = filters.kategorija !== 'sve';
-    // Uzimamo prevedeno ime kategorije (npr. "Mini Bageri")
     const categoryName = isFiltered 
       ? t(`filter_sidebar.categories.${filters.kategorija}`, { defaultValue: filters.kategorija.replace("-", " ") }) 
       : "";
       
-    // Generišemo pametne naslove
     const title = isFiltered 
       ? `Prodaja: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} | Masine.ai`
       : t('catalog.seo_title', { defaultValue: "Katalog Mašina | Masine.ai" });
@@ -190,11 +176,9 @@ function CatalogPage() {
 
   return (
     <>
-      {/* 👇 SEO SADA DINAMIČKI REAGUJE NA URL 👇 */}
       <SEO title={seoTitle} description={seoDesc} />
 
       <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Pozadinski efekti (ostaju isti) */}
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
         
@@ -206,7 +190,7 @@ function CatalogPage() {
                 : <>{t('catalog.title')} <span className="text-[#FEFFB9]">{t('catalog.title_highlight')}</span></>
               }
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-900 max-w-2xl mx-auto">
               {t('catalog.subtitle')}
             </p>
           </div>
@@ -218,7 +202,6 @@ function CatalogPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="w-full lg:w-1/4 lg:sticky top-28 self-start z-10"
             >
-              {/* FilterSidebar sada dobija stanje direktno iz URL-a, a menja ga preko setSearchParams */}
               <FilterSidebar
                 filters={filters}
                 setFilters={handleSetFilters}
@@ -275,7 +258,6 @@ function CatalogPage() {
                 </div>
               )}
 
-              {/* Paginacija (kod za renderovanje ostaje skoro isti, ali onclick poziva handlePageChange koji menja URL) */}
               {totalPages > 1 && (
                 <div className="mt-16 mb-8 flex justify-center items-center gap-2 sm:gap-4 w-full">
                   <button
