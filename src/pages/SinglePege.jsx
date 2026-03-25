@@ -70,7 +70,7 @@ function SinglePege() {
     formData.append('_captcha', 'false');
 
     try {
-      const response = await fetch("https://formsubmit.co/vidovicgoran@masine.ai", {
+      const response = await fetch("https://formsubmit.co/sales@masine.ai", {
         method: "POST",
         headers: {
           'Accept': 'application/json'

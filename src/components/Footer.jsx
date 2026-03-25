@@ -104,7 +104,7 @@ const Footer = () => {
               <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
                 <Mail size={18} className="text-blue-400" />
               </div>
-              <span className="text-slate-400 group-hover:text-white transition-colors"><a href="mailto:vidovicgoran@masine.ai"> vidovicgoran@masine.ai</a></span>
+              <span className="text-slate-400 group-hover:text-white transition-colors"><a href="mailto:sales@masine.ai">sales@masine.ai</a></span>
             </div>
           </div>
 

@@ -17,7 +17,7 @@ const Contact = () => {
   // Stanje za kopiranje maila
   const [copied, setCopied] = useState(false);
 
-  const emailAdresa = "vidovicgoran@masine.ai";
+  const emailAdresa = "sales@masine.ai";
 
   // Funkcija za brzo kopiranje maila
   const handleCopyEmail = () => {
@@ -43,7 +43,7 @@ const Contact = () => {
     formData.append('_captcha', 'false'); // Isključujemo dosadni reCaptcha
 
     try {
-      const response = await fetch("https://formsubmit.co/vidovicgoran@masine.ai", {
+      const response = await fetch("https://formsubmit.co/sales@masine.ai", {
         method: "POST",
         headers: { 'Accept': 'application/json' },
         body: formData
