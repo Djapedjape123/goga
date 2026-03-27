@@ -249,8 +249,11 @@ function CatalogPage() {
                   <div className="text-6xl mb-4">🚜</div>
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">{t('catalog.no_results_title')}</h3>
                   <p className="text-slate-500 mb-6">{t('catalog.no_results_desc')}</p>
-                  <button
-                    onClick={() => handleSetFilters({ kategorija: 'sve' })}
+                 <button
+                    // 👇 OVO JE PROMENJENO: Brišemo ceo URL umesto samo kategorije
+                    onClick={() => {
+                      setSearchParams(new URLSearchParams()); 
+                    }}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >
                     {t('catalog.btn_reset')}
