@@ -126,9 +126,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-900">{t('contact_page.phone_label')}</p>
-                    <a href="tel:+381 62 970 1426" className="text-slate-600 group-hover:text-blue-600 transition-colors">
+                    <span  className="text-slate-600 group-hover:text-blue-600 transition-colors">
                       +381 62 970 1426
-                    </a>
+                    </span>
                   </div>
                 </a>
 
@@ -141,7 +141,7 @@ const Contact = () => {
               <div>
                 <p className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wider">{t('contact_page.social_label')}</p>
                 <div className="flex gap-4">
-                  <a href="#" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.3)] transition-all">
+                  <a href="https://www.facebook.com/share/18NMx3qFG1/" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.3)] transition-all">
                     <Facebook size={24} />
                   </a>
                   <a href="https://www.instagram.com/masine.ai/" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#E4405F] hover:text-[#E4405F] hover:shadow-[0_0_15px_rgba(228,64,95,0.3)] transition-all">

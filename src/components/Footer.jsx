@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="flex gap-4 pt-2">
               {/* Društvene mreže */}
               {[
-                { icon: <Facebook size={20} />, link: "#", label: "Facebook" },
+                { icon: <Facebook size={20} />, link: "https://www.facebook.com/share/18NMx3qFG1/", label: "Facebook" },
                 { icon: <Instagram size={20} />, link: "https://www.instagram.com/masine.ai/", label: "Instagram" }
               ].map((social, idx) => (
                 <motion.a
