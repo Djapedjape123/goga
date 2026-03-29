@@ -92,7 +92,7 @@ export const sveMasine = [
     slug: "el-35pro-elektricni-viljuskar",
     naziv: "EL-35PRO",
     kategorija: "viljuskari",
-    cena: "23900€",
+    cena: "23 900€",
     opis: "Snažan BYD EL-35PRO električni viljuškar. Nosivost od 3500kg ga čini savršenim za teže industrijske uslove.",
     specifikacije: {
       nosivost: "3500",

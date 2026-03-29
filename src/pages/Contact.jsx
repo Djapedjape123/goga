@@ -120,7 +120,7 @@ const Contact = () => {
                 </div>
 
                 {/* Telefon Kartica */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                <a href="tel:+381 62 970 1426" className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                   <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Phone size={24} />
                   </div>
@@ -130,18 +130,11 @@ const Contact = () => {
                       +381 62 970 1426
                     </a>
                   </div>
-                </div>
+                </a>
 
-                {/* Lokacija Kartica */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                  <div className="w-12 h-12 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">{t('contact_page.location_label')}</p>
-                    <p className="text-slate-600">{t('contact_page.location_address')}</p>
-                  </div>
-                </div>
+                
+                
+                
               </div>
 
               {/* Društvene mreže - Glow efekti */}
@@ -151,7 +144,7 @@ const Contact = () => {
                   <a href="#" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.3)] transition-all">
                     <Facebook size={24} />
                   </a>
-                  <a href="#" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#E4405F] hover:text-[#E4405F] hover:shadow-[0_0_15px_rgba(228,64,95,0.3)] transition-all">
+                  <a href="https://www.instagram.com/masine.ai/" className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 shadow-sm hover:border-[#E4405F] hover:text-[#E4405F] hover:shadow-[0_0_15px_rgba(228,64,95,0.3)] transition-all">
                     <Instagram size={24} />
                   </a>
                 </div>

@@ -38,7 +38,7 @@ const Footer = () => {
               {/* Društvene mreže */}
               {[
                 { icon: <Facebook size={20} />, link: "#", label: "Facebook" },
-                { icon: <Instagram size={20} />, link: "#", label: "Instagram" }
+                { icon: <Instagram size={20} />, link: "https://www.instagram.com/masine.ai/", label: "Instagram" }
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -85,7 +85,7 @@ const Footer = () => {
               <div className="w-1.5 h-6 bg-blue-500 rounded-full"></div>
               {t('footer.contact_title')} {/* 👈 PREVEDEN NASLOV */}
             </h3>
-            <div className="flex items-start gap-4 group cursor-default">
+            {/* <div className="flex items-start gap-4 group cursor-default">
               <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
                 <MapPin size={18} className="text-blue-400" />
               </div>
@@ -93,7 +93,7 @@ const Footer = () => {
                 className="text-slate-400 pt-1 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: t('footer.address') }} 
               ></span>
-            </div>
+            </div> */}
             <div className="flex items-center gap-4 group cursor-pointer">
               <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
                 <Phone size={18} className="text-blue-400" />
