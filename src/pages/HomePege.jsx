@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useRef } from 'react';
+import React, { Suspense, lazy, useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
@@ -11,13 +11,29 @@ const KakoRadimo = lazy(() => import('../components/KakoRadimo'));
 function HomePage() {
   const videoRef = useRef(null);
 
-  // Ова функција се окида тачно кад се видео заврши
-  const handleVideoEnd = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0; // Премотај на почетак (0 секунди)
-      videoRef.current.play(); // Присилно пусти поново
+  useEffect(() => {
+    const video = videoRef.current;
+    
+    if (video) {
+      // 1. Safari OBOŽAVA kada mu se ovo kaže eksplicitno kroz JavaScript
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+
+      // 2. Forsiramo Play
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn("Safari blokira, pokušavam ponovo...", error);
+          // Ako Safari uhvati paniku, čekamo pola sekunde i forsiramo opet
+          setTimeout(() => {
+            video.play();
+          }, 500);
+        });
+      }
     }
-  };
+  }, []);
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -82,16 +98,16 @@ function HomePage() {
         {/* VIDEO POZADINA */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 z-10"></div>
-
+          
           <video
-            ref={videoRef} /* 👈 ПОВЕЗАНО СА НАШИМ РЕФОМ */
+            ref={videoRef}
             autoPlay
+            loop /* Vratili smo native loop, onEnded nam više ne treba */
             muted
-           
-            playsInline
-            onEnded={handleVideoEnd} /* 👈 ЗАМЕНА ЗА LOOP: Чим се заврши, пусти опет */
+            playsInline /* Apsolutno kritično za iPhone */
             poster="/images/video-poster.webp"
-            className="w-full h-full object-cover"
+            /* Dodali smo pointer-events-none da korisnik ne može slučajno da pauzira video dodirom na telefonu */
+            className="w-full h-full object-cover pointer-events-none" 
           >
             <source src="/videos/video2.mp4" type="video/mp4" />
           </video>
