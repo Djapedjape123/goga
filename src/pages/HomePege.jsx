@@ -1,15 +1,24 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTractor, FaPhoneAlt } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next'; 
-import SEO from '../components/SEO'; 
+import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const Onama = lazy(() => import('../components/Onama'));
 const KakoRadimo = lazy(() => import('../components/KakoRadimo'));
 
 function HomePage() {
-  const { t } = useTranslation(); 
+  const videoRef = useRef(null);
+
+  // Ова функција се окида тачно кад се видео заврши
+  const handleVideoEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0; // Премотај на почетак (0 секунди)
+      videoRef.current.play(); // Присилно пусти поново
+    }
+  };
+  const { t } = useTranslation();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,10 +33,10 @@ function HomePage() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: "spring", stiffness: 60, damping: 15 } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 60, damping: 15 }
     },
   };
 
@@ -60,75 +69,77 @@ function HomePage() {
   };
 
   return (
-    <> 
+    <>
       {/* 👇 SEO MAGIJA SADA SADRŽI I PODATKE O FIRMI 👇 */}
-      <SEO 
+      <SEO
         title={t('home.seo_title', { defaultValue: "Masine.ai | Lideri u prodaji građevinskih mašina" })}
         description={t('home.seo_desc', { defaultValue: "Pouzdan izbor građevinskih mašina i poljoprivredne mehanizacije. Vrhunski brendovi spremni za najteže terenske izazove." })}
         schema={localBusinessSchema}
       />
 
       <div className="relative min-h-[100svh] w-full overflow-x-hidden bg-slate-900 flex flex-col items-center justify-center py-16 px-4">
-        
+
         {/* VIDEO POZADINA */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 z-10"></div>
-          {/* 👇 NOVO: Dodat 'poster' atribut za savršeno brzo učitavanje (LCP) 👇 */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
+
+          <video
+            ref={videoRef} /* 👈 ПОВЕЗАНО СА НАШИМ РЕФОМ */
+            autoPlay
+            muted
+           
             playsInline
-            poster="/images/video-poster.webp" /* 🚨 NAPOMENA: Izvadi jedan frejm iz videa, pretvori ga u .webp i sačuvaj ovde! */
+            onEnded={handleVideoEnd} /* 👈 ЗАМЕНА ЗА LOOP: Чим се заврши, пусти опет */
+            poster="/images/video-poster.webp"
             className="w-full h-full object-cover"
           >
             <source src="/videos/video2.mp4" type="video/mp4" />
           </video>
         </div>
 
-        <motion.div 
-          className="relative z-20 text-center w-full max-w-4xl mx-auto pt-16" 
+        <motion.div
+          className="relative z-20 text-center w-full max-w-4xl mx-auto pt-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.p 
-            variants={itemVariants} 
+          <motion.p
+            variants={itemVariants}
             className="text-orange-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm md:text-base"
           >
             {t('home.badge')}
           </motion.p>
-          
+
           {/* GLAVNI NASLOV - H1 */}
-          <motion.h1 
-            variants={itemVariants} 
+          <motion.h1
+            variants={itemVariants}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight md:leading-tight tracking-tight mb-6"
           >
             {t('home.title_1')} <br className="hidden sm:block" />
             {t('home.title_2')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-200">{t('home.title_highlight')}</span>
           </motion.h1>
-          
-          <motion.p 
-            variants={itemVariants} 
+
+          <motion.p
+            variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed px-2"
           >
             {t('home.subtitle')}
           </motion.p>
-          
-          <motion.div 
-            variants={itemVariants} 
+
+          <motion.div
+            variants={itemVariants}
             className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 w-full max-w-md mx-auto sm:max-w-none"
           >
-            <Link 
-              to="/katalog" 
+            <Link
+              to="/katalog"
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:scale-105"
             >
               <FaTractor className="text-lg" />
               {t('home.btn_catalog')}
             </Link>
 
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-extrabold rounded-lg text-sm md:text-base uppercase tracking-wider transition-all hover:scale-105"
             >
               <FaPhoneAlt className="text-sm" />
