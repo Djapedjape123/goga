@@ -98,7 +98,7 @@ const Footer = () => {
               <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
                 <Phone size={18} className="text-blue-400" />
               </div>
-              <span className="text-slate-400 group-hover:text-white transition-colors"><a href="tel:+381 62 970 1426">+381 62 970 1426</a></span>
+              <span className="text-slate-400 group-hover:text-white transition-colors"><a href="tel:+38162746324">+381 62 746 324</a></span>
             </div>
             <div className="flex items-center gap-4 group cursor-pointer">
               <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">

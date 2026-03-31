@@ -120,21 +120,18 @@ const Contact = () => {
                 </div>
 
                 {/* Telefon Kartica */}
-                <a href="tel:+381 62 970 1426" className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                <a href="tel:+38162746324" className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                   <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Phone size={24} />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-900">{t('contact_page.phone_label')}</p>
                     <span  className="text-slate-600 group-hover:text-blue-600 transition-colors">
-                      +381 62 970 1426
+                      +381 62 746 324
                     </span>
                   </div>
                 </a>
 
-                
-                
-                
               </div>
 
               {/* Društvene mreže - Glow efekti */}
