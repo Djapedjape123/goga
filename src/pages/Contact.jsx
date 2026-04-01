@@ -131,6 +131,22 @@ const Contact = () => {
                     </span>
                   </div>
                 </a>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Turgenjeva+4,+Novi+Sad" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                >
+                  <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-900">{t('contact_page.address_label', { defaultValue: 'Adresa' })}</p>
+                    <span className="text-slate-600 group-hover:text-blue-600 transition-colors">
+                      Turgenjeva 4, Novi Sad
+                    </span>
+                  </div>
+                </a>
 
               </div>
 
