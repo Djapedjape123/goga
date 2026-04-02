@@ -1,6 +1,8 @@
 import { useState, useEffect, Suspense,lazy } from 'react'
 import NavBar from './components/NavBar'
-import { Outlet } from 'react-router-dom'
+import { Outlet,useLocation } from 'react-router-dom'
+// 2. DODAJ ReactGA OVDE 👇
+import ReactGA from "react-ga4";
 
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTop from './components/ScrollToTop';
@@ -15,6 +17,15 @@ import logo from './assets/gogaPoz.webp'
 function App() {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const location = useLocation();
+
+  // RADAR: Prati svaku promenu stranice
+  useEffect(() => {
+    ReactGA.send({ 
+      hitType: "pageview", 
+      page: location.pathname + location.search 
+    });
+  }, [location]);
 
   useEffect(() => {
     // Posle 1.5 sekundi (1500ms) kreće animacija gašenja
