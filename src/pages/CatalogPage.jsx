@@ -6,6 +6,8 @@ import FilterSidebar from '../components/FilterSidebar';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
+//error 
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Mini3DViewer = lazy(() => import('../components/Mini3DViewer'));
 
@@ -32,21 +34,21 @@ const MASINA_PO_STRANI = 6;
 
 function CatalogPage() {
   const { t } = useTranslation();
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
   const filters = useMemo(() => {
     const currentFilters = { ...DEFAULT_FILTERS };
-    
+
     Object.keys(DEFAULT_FILTERS).forEach(key => {
       const val = searchParams.get(key);
       if (val !== null) {
-        if (key.toLowerCase().includes('cena') || 
-            key.toLowerCase().includes('visina') || 
-            key.toLowerCase().includes('nosivost') || 
-            key.toLowerCase().includes('kapacitet') || 
-            key.toLowerCase().includes('dubina')) {
+        if (key.toLowerCase().includes('cena') ||
+          key.toLowerCase().includes('visina') ||
+          key.toLowerCase().includes('nosivost') ||
+          key.toLowerCase().includes('kapacitet') ||
+          key.toLowerCase().includes('dubina')) {
           currentFilters[key] = val === "" ? "" : Number(val);
         } else {
           currentFilters[key] = val;
@@ -59,7 +61,7 @@ function CatalogPage() {
   const handleSetFilters = (updater) => {
     const nextState = typeof updater === 'function' ? updater(filters) : updater;
     const newParams = new URLSearchParams(searchParams);
-  
+
     if (nextState.kategorija !== filters.kategorija) {
       const resetParams = new URLSearchParams();
       if (nextState.kategorija !== 'sve') {
@@ -89,13 +91,13 @@ function CatalogPage() {
 
       const s = masina.specifikacije || {};
       const mCena = parseToNumber(masina.cena);
-      
+
       // 👇 ISPRAVLJENO: Uklonjen je bag sa limitom od 150.000. Sada filter radi za sve cene.
-      const isPriceFiltered = (filters.minCena !== "" && filters.minCena > 0) || 
-                              (filters.maxCena !== "");
+      const isPriceFiltered = (filters.minCena !== "" && filters.minCena > 0) ||
+        (filters.maxCena !== "");
 
       if (isPriceFiltered) {
-        if (mCena === 0) return false; 
+        if (mCena === 0) return false;
         if (filters.minCena !== "" && mCena < parseToNumber(filters.minCena)) return false;
         if (filters.maxCena !== "" && mCena > parseToNumber(filters.maxCena)) return false;
       }
@@ -147,7 +149,7 @@ function CatalogPage() {
   const handlePageChange = (newPage) => {
     const newParams = new URLSearchParams(searchParams);
     if (newPage === 1) {
-      newParams.delete('page'); 
+      newParams.delete('page');
     } else {
       newParams.set('page', newPage);
     }
@@ -157,14 +159,14 @@ function CatalogPage() {
 
   const getDynamicSEO = () => {
     const isFiltered = filters.kategorija !== 'sve';
-    const categoryName = isFiltered 
-      ? t(`filter_sidebar.categories.${filters.kategorija}`, { defaultValue: filters.kategorija.replace("-", " ") }) 
+    const categoryName = isFiltered
+      ? t(`filter_sidebar.categories.${filters.kategorija}`, { defaultValue: filters.kategorija.replace("-", " ") })
       : "";
-      
-    const title = isFiltered 
+
+    const title = isFiltered
       ? `Prodaja: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} | Masine.ai`
       : t('catalog.seo_title', { defaultValue: "Katalog Mašina | Masine.ai" });
-      
+
     const description = isFiltered
       ? `Pogledajte našu ponudu za ${categoryName}. Vrhunska mehanizacija spremna za rad. Filtrirajte po ceni i specifikacijama.`
       : t('catalog.seo_desc', { defaultValue: "Pregledajte naš celokupan asortiman građevinskih mašina i mehanizacije." });
@@ -181,11 +183,11 @@ function CatalogPage() {
       <div className="min-h-screen bg-gradient-to-br from-[#0A0F3C] via-[#2C5DA9] to-[#C8DAF9] pt-32 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-              {filters.kategorija !== 'sve' 
+              {filters.kategorija !== 'sve'
                 ? <span className="capitalize">{t(`filter_sidebar.categories.${filters.kategorija}`, { defaultValue: filters.kategorija.replace("-", " ") })}</span>
                 : <>{t('catalog.title')} <span className="text-[#FEFFB9]">{t('catalog.title_highlight')}</span></>
               }
@@ -233,9 +235,11 @@ function CatalogPage() {
               </div>
 
               {filters.kategorija !== 'sve' && (
-                <Suspense fallback={<div className="h-48 mb-8 bg-white/40 animate-pulse rounded-3xl"></div>}>
-                  <Mini3DViewer kategorija={filters.kategorija} />
-                </Suspense>
+                <ErrorBoundary>
+                  <Suspense fallback={<div className="h-48 mb-8 bg-white/40 animate-pulse rounded-3xl"></div>}>
+                    <Mini3DViewer kategorija={filters.kategorija} />
+                  </Suspense>
+                </ErrorBoundary>
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 flex-grow">
@@ -249,10 +253,10 @@ function CatalogPage() {
                   <div className="text-6xl mb-4">🚜</div>
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">{t('catalog.no_results_title')}</h3>
                   <p className="text-slate-500 mb-6">{t('catalog.no_results_desc')}</p>
-                 <button
+                  <button
                     // 👇 OVO JE PROMENJENO: Brišemo ceo URL umesto samo kategorije
                     onClick={() => {
-                      setSearchParams(new URLSearchParams()); 
+                      setSearchParams(new URLSearchParams());
                     }}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
                   >

@@ -9,11 +9,9 @@ ReactGA.initialize("G-RK7FY6C2FN");
 //prevod
 import './i18n';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// 👇 ДОДАТО: Увезен useRouteError
+import { createBrowserRouter, RouterProvider, useRouteError } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
-// import Contact from './pages/Contact.jsx';
-// import D3modelPage from './pages/D3modelPage.jsx';
-
 
 // --- SVE STRANICE SU SADA LAZY LOADED ---
 const HomePage = lazy(() => import('./pages/HomePege.jsx'));
@@ -31,11 +29,28 @@ const Loader = ({ tekst }) => (
   </div>
 );
 
+// 👇 ДОДАТО: Глобална страница за грешке (лепша од белог екрана смрти)
+const GlobalError = () => {
+  const error = useRouteError();
+  console.error("Глобална грешка:", error);
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4 text-center">
+      <div className="text-6xl mb-4">🔧</div>
+      <h1 className="text-3xl font-black text-slate-800 mb-2">Упс, дошло је до прекида!</h1>
+      <p className="text-slate-500 mb-6">Проверите интернет конекцију или покушајте поново.</p>
+      <button onClick={() => window.location.reload()} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-colors">
+        Освежи страницу
+      </button>
+    </div>
+  );
+};
+
 // Rute sa Suspense omotačima
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <GlobalError />, // 👈 ДОДАТО: Ово спречава "Unexpected Application Error!" екран
     children: [
       {
         path: '/',
