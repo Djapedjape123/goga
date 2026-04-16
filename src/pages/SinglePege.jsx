@@ -18,7 +18,7 @@ function SinglePege() {
   const { t } = useTranslation(); // 👈 INICIJALIZACIJA PREVODA
 
   const [glavnaSlika, setGlavnaSlika] = useState(null);
-  
+
   // --- STATE ZA MODAL FORMU ---
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,9 +43,9 @@ function SinglePege() {
   };
 
   const nextImage = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     if (!masina?.galerija) return;
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === masina.galerija.length - 1 ? 0 : prev + 1
     );
   };
@@ -53,7 +53,7 @@ function SinglePege() {
   const prevImage = (e) => {
     e.stopPropagation();
     if (!masina?.galerija) return;
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === 0 ? masina.galerija.length - 1 : prev - 1
     );
   };
@@ -80,8 +80,8 @@ function SinglePege() {
 
       if (response.ok) {
         setStatusMessage('uspeh');
-        e.target.reset(); 
-        
+        e.target.reset();
+
         setTimeout(() => {
           setIsModalOpen(false);
           setStatusMessage('');
@@ -123,7 +123,7 @@ function SinglePege() {
       "@type": "Offer",
       "priceCurrency": "EUR",
       // Čistimo sve osim brojeva za Google (ako je "Na upit", šalje 0)
-      "price": String(masina.cena).replace(/[^0-9]/g, '') || "0", 
+      "price": String(masina.cena).replace(/[^0-9]/g, '') || "0",
       "availability": "https://schema.org/InStock",
       "url": typeof window !== 'undefined' ? window.location.href : `https://masine.ai/masina/${masina.slug}`
     }
@@ -135,11 +135,12 @@ function SinglePege() {
   return (
     <>
       {/* 👇 DODATO: SEO KOMPONENTA SA SCHEMA KODOM 👇 */}
-      <SEO 
+      {/* 👇 DODATO: SEO KOMPONENTA SA SCHEMA KODOM 👇 */}
+      <SEO
         title={`${masina.naziv} | Masine.ai`}
         description={t(`descriptions.${masina.id}`, { defaultValue: masina.opis })}
         type="product"
-        image={masina.coverSlika}
+        image={`https://masine.ai${masina.coverSlika}`} // 👈 ИСПРАВЉЕНО
         schema={productSchema}
       />
 
@@ -164,12 +165,12 @@ function SinglePege() {
               animate={{ opacity: 1, x: 0 }}
               className="flex flex-col gap-6"
             >
-              <div 
+              <div
                 onClick={openImageModal}
                 className="relative aspect-square bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden group cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-3 rounded-2xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg z-20">
                   <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -252,7 +253,7 @@ function SinglePege() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={() => setIsModalOpen(true)}
                   className="flex-[2] bg-slate-900 hover:bg-blue-600 text-white font-black py-5 px-8 rounded-2xl transition-all duration-300 shadow-xl shadow-slate-900/10 flex items-center justify-center gap-3 group"
                 >
@@ -275,7 +276,7 @@ function SinglePege() {
         <AnimatePresence>
           {isImageModalOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -283,7 +284,7 @@ function SinglePege() {
                 className="absolute inset-0 bg-slate-900/95 backdrop-blur-md cursor-pointer"
               />
 
-              <button 
+              <button
                 onClick={() => setIsImageModalOpen(false)}
                 className="absolute top-6 right-6 z-[110] text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-md transition-all"
               >
@@ -293,7 +294,7 @@ function SinglePege() {
               </button>
 
               {imaViseSlika && (
-                <button 
+                <button
                   onClick={prevImage}
                   className="absolute left-4 sm:left-8 z-[110] text-white/50 hover:text-white bg-white/5 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all active:scale-95"
                 >
@@ -303,7 +304,7 @@ function SinglePege() {
                 </button>
               )}
 
-              <motion.div 
+              <motion.div
                 key={currentImageIndex}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -324,7 +325,7 @@ function SinglePege() {
               </motion.div>
 
               {imaViseSlika && (
-                <button 
+                <button
                   onClick={nextImage}
                   className="absolute right-4 sm:right-8 z-[110] text-white/50 hover:text-white bg-white/5 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all active:scale-95"
                 >
@@ -342,7 +343,7 @@ function SinglePege() {
         <AnimatePresence>
           {isModalOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -350,13 +351,13 @@ function SinglePege() {
                 className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
               ></motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 className="relative bg-white rounded-[2rem] p-6 sm:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10"
               >
-                <button 
+                <button
                   onClick={() => setIsModalOpen(false)}
                   className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 transition-colors bg-slate-100 hover:bg-slate-200 p-2 rounded-full z-20"
                 >
@@ -387,9 +388,9 @@ function SinglePege() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_name')}</label> {/* 👈 PREVEDENO */}
-                    <input 
-                      type="text" 
-                      name="Ime" 
+                    <input
+                      type="text"
+                      name="Ime"
                       required
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                       placeholder={t('single_page.form_name_ph')} /* 👈 PREVEDENO */
@@ -399,9 +400,9 @@ function SinglePege() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_email')}</label> {/* 👈 PREVEDENO */}
-                      <input 
-                        type="email" 
-                        name="Email" 
+                      <input
+                        type="email"
+                        name="Email"
                         required
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                         placeholder={t('single_page.form_email_ph')} /* 👈 PREVEDENO */
@@ -409,9 +410,9 @@ function SinglePege() {
                     </div>
                     <div>
                       <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_phone')}</label> {/* 👈 PREVEDENO */}
-                      <input 
-                        type="tel" 
-                        name="Telefon" 
+                      <input
+                        type="tel"
+                        name="Telefon"
                         required
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                         placeholder={t('single_page.form_phone_ph')} /* 👈 PREVEDENO */
@@ -421,7 +422,7 @@ function SinglePege() {
 
                   <div>
                     <label className="text-slate-700 text-sm font-bold mb-1 ml-1 block">{t('single_page.form_msg')}</label> {/* 👈 PREVEDENO */}
-                    <textarea 
+                    <textarea
                       name="Poruka"
                       rows="3"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
@@ -429,9 +430,9 @@ function SinglePege() {
                     ></textarea>
                   </div>
 
-                  <button 
-                    disabled={isSubmitting || statusMessage === 'uspeh'} 
-                    type="submit" 
+                  <button
+                    disabled={isSubmitting || statusMessage === 'uspeh'}
+                    type="submit"
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? t('single_page.btn_sending') : t('single_page.btn_send')} {/* 👈 PREVEDENO */}

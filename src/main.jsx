@@ -1,5 +1,6 @@
 import { StrictMode, lazy, Suspense } from 'react'
-import { createRoot } from 'react-dom/client'
+// 👇 ИЗМЕЊЕНО: Додат је hydrateRoot
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
@@ -9,7 +10,6 @@ ReactGA.initialize("G-RK7FY6C2FN");
 //prevod
 import './i18n';
 
-// 👇 ДОДАТО: Увезен useRouteError
 import { createBrowserRouter, RouterProvider, useRouteError } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
@@ -29,7 +29,7 @@ const Loader = ({ tekst }) => (
   </div>
 );
 
-// 👇 ДОДАТО: Глобална страница за грешке (лепша од белог екрана смрти)
+// Глобална страница за грешке
 const GlobalError = () => {
   const error = useRouteError();
   console.error("Глобална грешка:", error);
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <GlobalError />, // 👈 ДОДАТО: Ово спречава "Unexpected Application Error!" екран
+    errorElement: <GlobalError />,
     children: [
       {
         path: '/',
@@ -96,10 +96,20 @@ const router = createBrowserRouter([
   }
 ])
 
-createRoot(document.getElementById('root')).render(
+// 👇 ИЗМЕЊЕНО: Логика за react-snap (Hydrate vs Render)
+const rootElement = document.getElementById('root');
+
+const app = (
   <StrictMode>
     <HelmetProvider>
       <RouterProvider router={router} />
     </HelmetProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+// Ако постоји готов HTML (од react-snap), накачи се на њега. Ако не, рендеруј нормално.
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}
